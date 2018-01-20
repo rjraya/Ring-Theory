@@ -1,0 +1,136 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.8 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\sortlist[entry]{nty/global/}
+  \entry{dorronsoro}{book}{}
+    \name{author}{1}{}{%
+      {{hash=yEHJD}{%
+         prefix={y},
+         prefixi={y},
+         family={E.\bibnamedelima Hernández},
+         familyi={E\bibinitperiod\bibinitdelim H\bibinitperiod},
+         given={J.\bibnamedelima Dorronsoro},
+         giveni={J\bibinitperiod\bibinitdelim D\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Addison-Wesley}%
+    }
+    \strng{namehash}{EHJDy1}
+    \strng{fullhash}{EHJDy1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{E}
+    \field{sortinithash}{E}
+    \field{title}{Números, grupos y anillos}
+    \field{year}{1996}
+  \endentry
+
+  \entry{dummit}{book}{}
+    \name{author}{1}{}{%
+      {{hash=yFD}{%
+         prefix={y},
+         prefixi={y},
+         family={Foote},
+         familyi={F\bibinitperiod},
+         given={Dummit},
+         giveni={D\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{2}{%
+      {John Wiley}%
+      {Sons}%
+    }
+    \strng{namehash}{FDy1}
+    \strng{fullhash}{FDy1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{F}
+    \field{sortinithash}{F}
+    \field{title}{Abstract algebra}
+    \field{year}{2004}
+  \endentry
+
+  \entry{fraileigh}{book}{}
+    \name{author}{1}{}{%
+      {{hash=FJB}{%
+         family={Fraileigh},
+         familyi={F\bibinitperiod},
+         given={J.\bibnamedelima B.},
+         giveni={J\bibinitperiod\bibinitdelim B\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Pearson}%
+    }
+    \strng{namehash}{FJB1}
+    \strng{fullhash}{FJB1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{F}
+    \field{sortinithash}{F}
+    \field{title}{A first course in Abstract Algebra}
+    \field{year}{2013}
+  \endentry
+
+  \entry{jacobson}{book}{}
+    \name{author}{1}{}{%
+      {{hash=JN}{%
+         family={Jacobson},
+         familyi={J\bibinitperiod},
+         given={N.},
+         giveni={N\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{2}{%
+      {W. H. Freeman}%
+      {Company}%
+    }
+    \strng{namehash}{JN1}
+    \strng{fullhash}{JN1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{J}
+    \field{sortinithash}{J}
+    \field{title}{Basic Algebra I}
+    \field{year}{1985}
+  \endentry
+
+  \entry{teoria-basica-de-conjuntos}{book}{}
+    \name{author}{1}{}{%
+      {{hash=LVF}{%
+         family={Laguna},
+         familyi={L\bibinitperiod},
+         given={Víctor\bibnamedelima Fernández},
+         giveni={V\bibinitperiod\bibinitdelim F\bibinitperiod},
+      }}%
+    }
+    \list{publisher}{1}{%
+      {Anaya}%
+    }
+    \strng{namehash}{LVF1}
+    \strng{fullhash}{LVF1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{L}
+    \field{sortinithash}{L}
+    \field{title}{Teoría Básica de Conjuntos}
+    \field{year}{2003}
+  \endentry
+\endsortlist
+\endinput

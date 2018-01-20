@@ -1,0 +1,132 @@
+\subsection{El cuerpo de fracciones de un anillo}
+
+\begin{definition}[Fracciones sobre un dominio de integridad]
+Dado un dominio de integridad $A$. 
+
+Llamaremos a cada elemento $(a,b) \in A \times (A \setminus \{0\})$ expresión fraccionaria sobre $A$ de numerador $a$ y denominador $b$. 
+
+Diremos que dos expresiones fraccionarias $(a,b),(c,d) \in A \times (A \setminus \{0\})$ son equivalentes $\iff ad = bc$. Lo denotaremos por $(a,b) \sim (c,d)$. 
+\end{definition}
+
+\begin{proposition}[La relación entre expresiones es de equivalencia]
+La relación $\sim$ es de equivalencia. 
+\end{proposition}
+\begin{proof}
+La reflexividad y simetría son evidentes. Veamos la transitividad:
+
+$(a,b) \sim (c,d) \land (c,d) \sim (e,f)$ se tiene que $ad = bc \land cf = de$. Por tanto, $afdc = adfc = bcde = bedc$ donde hemos utilizado que el dominio de integridad proviene de un anillo conmutativo. También por ser dominio de integridad, tomando los extremos de la igualdad, se obtiene, $af = be$ o equivalentemente, $(a,b) \sim (e,f)$.  
+\end{proof}
+
+\begin{definition}[Cuerpo de fracciones]
+Llamaremos fracción de numerador $a$ y denominador $b \neq 0$ a la clase de equivalencia de $(a,b)$ y lo denotaremos por $\frac{a}{b}$. Al conjunto cociente formado por todas estas clases lo llamaremos cuerpo de fracciones y lo denotaremos por $Q(A) = \{\frac{a}{b}:(a,b) \in A \times (A \setminus \{0\})\}$. 
+
+En este conjunto definimos dos operaciones:
+
+\begin{enumerate}
+\item Suma de fracciones: $\frac{a}{b} + \frac{c}{d} = \frac{ad+bc}{bd}$.
+\item Producto de fracciones: $\frac{a}{b} \cdot \frac{c}{d} = \frac{ac}{bd}$.
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}[Buena definición de las operaciones sobre el cuerpo de fracciones]
+	La suma y el producto de fracciones están bien definidos.
+\end{proposition}
+\begin{proof}
+	Comprobamos que la definición no depende del representante de la clase de equivalencia elegido. En efecto, si $\frac{a_1}{b_1} = \frac{c_1}{d_1} \land \frac{a_2}{b_2} = \frac{c_2}{d_2}$ entonces $\frac{a_1}{b_1}+\frac{a_2}{b_2} = \frac{a_1b_2+a_2b_1}{b_1b_2}$ y $\frac{c_1}{d_1} + \frac{c_2}{d_2} = \frac{c_1d_2+d_1c_2}{d_1d_2}$ luego para comprobar la igualdad bastaría comprobar si $(a_1b_2+a_2b_1)d_1d_2 = (c_1d_2+d_1c_2)b_1b_2$. Esta igualdad se comprueba operando y teniendo en cuenta la igualdad de fracciones: $a_1b_2d_1d_2 + a_2b_1d_1d_2 = c_1d_2b_1b_2 + d_1c_2b_1b_2$ donde se ha usado también la conmutativa del producto. 
+	
+	Análogamente se comprueba el resto. 
+\end{proof}
+
+\begin{proposition}[Caracterización del cuerpo de fracciones]
+$(Q(A),+,\cdot)$ es el menor cuerpo que contiene un subanillo isomorfo a $A$.  
+\end{proposition}
+\begin{proof}
+El neutro para la suma es $\frac{0}{1}$ y el opuesto de un $\frac{a}{b}$ es $\frac{-a}{b}$. El elemento neutro del producto es $\frac{1}{1}$ y el elemento inverso de $\frac{a}{b}$ es $\frac{b}{a}$. 
+
+Consideremos el monomorfismo de inmersión canónica $ \lambda: A \to Q(A)$ tal que $\lambda(a) = \frac{a}{1}$. Claramente, $Img(\lambda) = \{\frac{a}{1}:a \in A\}$ y por el primer teorema de isomorfía, $A \cong Img(\lambda)$. Usualmente, se identifica $A$ como subanillo de $Q(A)$ con este isomorfismo. 
+
+Supongamos que $K$ es otro cuerpo que contiene un subanillo isomorfo a $A$. Demostraremos que existe un subcuerpo de $K$ isomorfo a $Q(A)$  y por tanto se tendrá que $Q(A)$ es el menor cuerpo con dicha propiedad. 
+
+Para ello considérese la aplicación $\eta:Q(A) \to K$ tal que $\eta(\frac{a}{b}) = ab^{-1}$. Esta aplicación está bien definida ya que si $\frac{a}{b} = \frac{c}{d}$ entonces $ad = bc$ y por tanto $\eta(\frac{a}{b}) = ab^{-1} = cd^{-1} = \eta(\frac{c}{d})$.  
+
+Además, $\eta$ es un monomorfismo de cuerpos. En efecto, $$\eta\Big(\frac{a}{b} + \frac{c}{d}\Big) = \eta\Big(\frac{ad+bc}{bd}\Big) = (ad+bc)(bd)^{-1} = ab^{-1} + cd^{-1} = \eta\Big(\frac{a}{b}\Big) + \eta\Big(\frac{c}{d}\Big)$$ $$\eta\Big(\frac{a}{b} \cdot \frac{c}{d}\Big) = (ac)(bd)^{-1} = \eta\Big(\frac{a}{b}\Big) \cdot \eta\Big(\frac{c}{d}\Big)$$ $$\eta\Big(\frac{1}{1}\Big) = 1 \cdot 1^{-1} = 1$$ y si $\eta\Big(\frac{a}{b}\Big) = \eta\Big(\frac{c}{d}\Big)$ entonces $(ab^{-1}) = (cd^{-1})$, de donde $ad = bc$ o equivalentemente $\frac{a}{b} = \frac{c}{d}$ (también podía haberse utilizado que todo homomorfismo que sale de un cuerpo es inyectivo). El primer teorema de isomorfía nos dice que $Q(A)$ es isomorfo con $\eta(Q(A))$, que es un subcuerpo de $K$ ya que por ser $\eta$ homomorfismo, es un subanillo y por ser $Q(A)$ un cuerpo, el subanillo es cuerpo. 
+\end{proof}
+
+El siguiente resultado reescribe la proposición anterior afirmando que el homomorfismo $\overline{f}$ es universal respecto de todos los monomorfismos que van a cuerpos desde el dominio de integridad de partida, esto es, todos esos monomorfismos factorizan por el cuerpo de fracciones. 
+
+\begin{corollary}[Propiedad universal del cuerpo de fracciones]
+	Sea $A$ un dominio de integridad y $K$ un cuerpo, sea $\lambda$ el monomorfismo de inmersión canónica en $Q(A)$. Para todo monomorfismo $f: A \to K$ existe un único homomorfismo $\overline{f}:Q(A) \to K$ tal que $\overline{f} \circ \lambda = f$. Además $Img(\overline{f}) \cong Q(A)$.
+	
+	\begin{tikzcd}
+		A \arrow{r}{f} \arrow{d}{\lambda} &
+		K  \\
+		Q(A) \arrow[dashed]{ur}[swap]{\overline{f}}
+	\end{tikzcd}	
+
+	La aplicación es $\overline{f}(\frac{a}{b}) = f(ab^{-1})$
+\end{corollary}
+\begin{proof}
+	Claramente, $\overline{f} = f \circ \eta$ y por tanto es un homomorfismo y además es fácil que $\overline{f} \circ \lambda = f$. Por tanto, sólo hay que demostrar que es única. 
+	
+	Si $g$ es otra, entonces $g(\frac{a}{b}) = g(\frac{a}{1} \frac{1}{b}) = (g \circ \lambda)(a) \cdot (g \circ \lambda)^{-1}(b) = f(a)f(b)^{-1} = f(ab^{-1}) = (f \circ \eta)(\frac{a}{b})$ y por tanto, ambas son iguales. 
+\end{proof}
+
+\begin{example}
+	\begin{enumerate}
+		\item Si $K$ es un cuerpo entonces $Q(K) \cong K$
+		\item $Q(Q(A)) \cong Q(A)$
+		\item El anillo $A$ determina unívocamente el cuerpo de fracciones $Q(A)$ salvo isomorfismo pero puede ocurrir que $Q(A) = Q(B)$ aunque $A,B$ no sean isomorfos. Por ejemplo, $$Q\Big(\{\frac{a}{b}:a,b \in \mathbb{Z} \land \text{ b es impar}\}\Big) = Q(\mathbb{Z}) = \mathbb{Q}$$
+	\end{enumerate}
+\end{example}
+
+\begin{proposition}[Caracterización alternativa del cuerpo de fracciones]
+Dado $A$ un dominio de integridad y $K$ un cuerpo que contiene un subanillo $R$ isomorfo a $A$.
+
+$K \cong Q(A) \iff \forall \alpha \in K. \exists a \in R \setminus \{0\}:a \cdot \alpha \in R$. 
+\end{proposition}
+\begin{proof}
+$\Rightarrow)$ Si $K \cong Q(A) = \{\frac{a}{b}:(a,b) \in A \times (A \setminus \{0\})\}$ entonces dado $\alpha \in K$ sabemos que se corresponde con una fracción $\frac{a}{b} \in Q(A)$ y claramente $\frac{a}{b} \cdot \frac{b}{1} = \frac{a}{1} \in A' \setminus \{0\}$ donde $A' \cong A$ como hemos mostrado en la proposición anterior. Asímismo $A \cong R$ y los elementos distintos de cero se conservan por isomorfismo. Llamemos al elemento imagen de $b$ por isomorfismo $r$. 
+
+Entonces, basta tomar $b \in A \setminus \{0\}$ y se tiene que $\alpha b = \frac{a}{1} \in A'$. Donde hemos utilizado la definición de $A'$ dada en el isomorfismo anterior.  
+
+$\Leftarrow)$ Siempre se verifica que $Q(A)$ es isomorfo a un subcuerpo de $K$, llamémoslo $K'$. Demostraremos que con esta propiedad $K = K'$ y por tanto $K$ es esencialmente el mismo anillo que $Q(A)$ aunque los elementos tengan otros nombres. 
+
+Dado $\alpha \in K$, sabemos que $\exists b \in A \setminus \{0\}$ tal que $b \alpha = \frac{a}{1} \in A'$. Por tanto, $\alpha = ab^{-1} \in K'$. Donde hemos utilizado la definición de $\eta$ de la proposición anterior. 
+\end{proof}
+
+\subsection{Cuerpo de racionales cuadráticos}
+
+\begin{definition}[Cuerpo de los racionales cuadráticos]
+Para cada $n \in \mathbb{Z}$ que no sea un cuadrado perfecto, se define el conjunto de los racionales cuadráticos de radicando n como $\mathbb{Q}[\sqrt{n}] = \{a+b\sqrt{n}:a,b \in \mathbb{Q}\}$.
+
+A este conjunto se le dota de estructura de anillo mediante las operaciones:
+
+\begin{itemize}
+\item Suma: $(a+b\sqrt{n})+(c+d\sqrt{n}) = (a+c) + (b+d)\sqrt{n}$
+\item Producto: $(a+b\sqrt{n}) \cdot (c+d\sqrt{n}) = (ac+bdn)+(ad+bc)\sqrt{n}$
+\end{itemize}
+
+Dado un racional cuadrático $x = a + b \sqrt{n} \in \mathbb{Q}[\sqrt{n}]$ definimos su conjugado $\overline{x} = a - b \sqrt{n}$ y su norma como $N(x) = x \overline{x} = a^2-nb^2$. Es claro que si $\alpha \in \mathbb{Q}[\sqrt{n}]$ entonces $\alpha^{-1} = \frac{\overline{\alpha}}{N(\alpha)}$.
+\end{definition}
+
+Obsérvese que se suele definir $\mathbb{Q}[\sqrt{n}]$ para $n$ libre de cuadrados, esto es, $n$ no es divisible por el cuadrado de ningún entero positivo. Esta condición no es restrictiva ya que $\mathbb{Q}[\sqrt{a^2n}] = \mathbb{Q}[a\sqrt{n}] = \mathbb{Q}[\sqrt{n}]$. (Pregunta: ¿esta condición es relevante en el caso de los $\mathbb{Z}[\sqrt{n}]$?)
+
+\begin{proposition}
+Se verifican las siguientes propiedades: 
+\begin{enumerate}
+\item $\mathbb{Q}$ es un subcuerpo de $\mathbb{Q}[\sqrt{n}] \land \mathbb{Q} = \mathbb{Q}[\sqrt{n}] \iff \text{ n es cuadrado perfecto }$
+\item  $\mathbb{Q}[\sqrt{n}]$ es un subanillo de $\mathbb{C}$ y si $n > 0$ entonces $\mathbb{Q}[\sqrt{n}]$ es un subanillo de $\mathbb{R}$. 
+\item $-:\mathbb{Q}[\sqrt{n}] \to \mathbb{Q}[\sqrt{n}]$ es un homomorfismo de anillos idempotente.
+\item $N:\mathbb{Q}[\sqrt{n}] \to \mathbb{Q}$ es un homomorfismo de grupos multiplicativos.
+\item $\mathbb{Q}[\sqrt{n}]$ es el cuerpo de fracciones de $\mathbb{Z}(\sqrt{n})$. En particular, $\mathbb{Z}(\sqrt{n})$ es un subanillo de $\mathbb{Q}[\sqrt{n}]$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item Trivial. 
+\item Trivial.
+\item La demostración es la misma que en el caso de los enteros cuadráticos. Nótese sin embargo la diferencia entre los codominios de las aplicaciones norma y conjugado.
+\item Ídem
+\item Basta ver que todo elemento no nulo admite un inverso. Para ello consideremos que $N(x) = x \overline{x}$ no es nulo salvo que $x$ sea nulo ya que en otro $n$ sería un cuadrado perfecto. Podemos por tanto definir $x^{-1} = \frac{\overline{x}}{N(x)}$ y se tiene que los racionales cuadráticos forman un cuerpo. 
+\end{enumerate}
+\end{proof}

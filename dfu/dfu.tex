@@ -1,0 +1,198 @@
+\subsection{Definición y expresión de los elementos del dominio}
+
+\begin{definition}[Dominio de factorización única]
+Sea $A$ un dominio de integridad tal que:
+
+1. Para todo el elemento $a \in A$ no nulo ni unidad, existe una factorización $a = \prod_{i = 1}^{r} p_i$ irreducibles. \\
+2. La factorización es única salvo el orden y la relación de asociados, esto es, si $a = \prod_{i = 1}^r p_i = \prod_{i = 1}^s q_i$ con $p_i,q_i$ irreducibles entonces $r = s$ y $\exists \sigma \in S_r$ tal que $\forall i \in \{1,\cdots,r\}.p_i \sim q_{\sigma(i)}$ 
+\end{definition}
+
+\begin{example}[Primeros ejemplos de DFU]
+Los siguientes son ejemplos sencillos de DFU:
+
+\begin{enumerate}
+\item $\mathbb{Z}$ es un DFU por el teorema fundamental de la aritmética. 
+\item Cualquier cuerpo es un DFU ya que todo elemento es nulo o unidad y por tanto, la definición de DFU es vacía en este caso. 
+\item $\mathbb{Z}[\sqrt{-5}]$ no es un DFU ya que $6 = 23 = (1+\sqrt{-5})(1+\sqrt{-5})$ serían dos factorizaciones en irreducibles no asociados entre sí. 
+\end{enumerate}
+\end{example}
+
+Recordemos que la irreducibilidad se mantiene por la relación de asociados. En particular, las clases de equivalencia para esta relación estarán formadas en su totalidad por elementos irreducibles o por el contrario no contendrán ningún elemento irreducible. Entonces, seleccionamos las clases formadas sólo por irreducibles y tomamos un representante de cada clase. Formamos entonces un conjunto $\mathcal{P}$ tal que todo elemento de $\mathcal{P}$ es irreducible, todo irreducible de $A$ está asociado con uno de $\mathcal{P}$ y donde es claro que en $\mathcal{P}$ no hay asociados. 
+
+\begin{example}
+\begin{itemize}
+\item En $\mathbb{Z}$ la clase $\mathcal{P}$ podría ser la de los números primos positivos.
+\item En $K[X]$ con $K$ un cuerpo puedo tomar los polinomios con coeficiente líder uno ya que la relación ser asociado se traduce en este dominio euclídeo por la relación diferenciarse en una constante. 
+\end{itemize}
+\end{example}
+
+El siguiente teorema da la unicidad salvo el orden de la descomposición. 
+
+\begin{theorem}[Teorema fundamental de la aritmética para DFU]
+Sea $A$ un DFU y $a \in A$ no nulo ni unidad y  $\mathcal{P}$ una colección de representantes de los irreducibles por la relación de asociados.  
+
+$\exists u \in U(A),p_i \in \mathcal{P}$ con $p_i \neq p_j$ y $e_i \ge 1$ tales que $a = u \prod_{i = 1}^n p_i^{e_i}$ (existencia de la descomposición)
+
+Además si, $a = v \prod_{i = 1}^m q_i^{f_i}$ con $v \in U(A)$, $q_i \in \mathcal{P}$ con $q_i \neq q_j$ y $f_i \ge 1$ entonces $u = v, n = m$ y $\exists \sigma \in S_n. p_i = q_{\sigma(i)} \land e_i = f_{\sigma(i)}$ (unicidad salvo el orden de los factores)  
+\end{theorem}
+\begin{proof}
+Veamos la existencia de la descomposición:
+
+Por ser $A$ un DFU tenemos que $a = \prod_{i = 1}^r p_i$ con $p_i$ irreducibles. Estos $p_i$ estarán asociados con los correspondientes representantes de su clase de equivalencia en $\mathcal{P}$, esto es, $p_i = u_i p_i'$ con $p_i' \in \mathcal{P}$ y por tanto $a = \prod_{i = 1}^r u_i \prod_{i = 1}^r p_i'$ y podemos asumir que los $p_i'$ son todos distintos ya que en caso contrario los agrupamos en potencias. Como $u = \prod_{i = 1}^r u_i \in U(A)$ obtenemos finalmente una factorización $a = u \prod_{i = 1}^n p_i'^{e_i}$ con $e_i \ge 1$, $p_i' \neq p_j'$ y $p_i' \in \mathcal{P}$. 
+
+Veamos ahora que la factorización es única salvo permutación de factores. Por inducción:
+
+Escribimos $a = u \prod_{i = 1}^n p_i'^{e_i} = v \prod_{i = 1}^m q_i^{f_m}$. 
+
+Si $n = 0$ entonces $a = u = v \prod_{i = 1}^m q_i^{f_m}$ claramente por la conmutatividad se tiene que los $q_i^{f_i} \in U(A)$ luego como $f_i \ge 1$ se tendrá necesariamente que $q_i \in U(A)$ en contradicción con que $q_i$ es un elemento irreducible. Por tanto, debe ser $m = 0$ y resulta $u = v$. 
+
+Si $n > 0$ entonces $a = u \prod_{i = 1}^n p_i'^{e_i} = v \prod_{i = 1}^m q_i^{f_m}$. Ahora, $p_1$ debe estar asociado con algún $q_i$ por definición de DFU y como en $\mathcal{P}$ no hay asociados, se deduce que $p_1 = q_i$. Tras una reordenación de los factores podemos garantizar que $p_1 = q_1$. 
+
+Discutamos ahora qué ocurre si $e_1 < f_1$. Nos queda entonces que $p_1^{e_1}(u \prod_{i = 2}^n p_i^{e_i}) = p_1^{e_1}(vp_1^{f_1-e_1}  \prod_{i = 2}^n q_i^{f_i})$ y como estamos en un dominio de integridad se obtiene $u \prod_{i = 2}^n p_i^{e_i} = v p_1^{f_1-e_1} \prod_{i = 2}^n q_i^{f_i}$. Como cada $q_i$ está asociado a un $p_i$ salvo el $p_1$ que por la elección de $\mathcal{P}$ no puede estar asociado con ninguno, esta ecuación se puede ver como $a = p_1^{t_1} (au)$ de modo que si $t_1 > 0$ deduciríamos que $p_1$ sería una unidad, en contradicción con que es un irreducible. Por tanto, $e_1 = f_1$ y nos queda que $u \prod_{i = 2}^n p_i^{e_i} = v \prod_{i = 2}^m q_i^{f_i}$. 
+
+Finalmente, por hipótesis de inducción, $n = m$ y $\exists \sigma \in S_{n-1}$ tal que $p_i = q_{\sigma(i)} \land e_i = f_{\sigma(i)}$. La composición de las dos permutaciones obtenidas nos da la composición necesaria para la demostración del teorema. 
+\end{proof}
+
+\begin{definition}[Expresión canónica de un elemento en un DFU]
+Dado $p \in \mathcal{P},a \in A \setminus \{0\}$. Si $a = u\prod_{i = 1}^r p_i^{r_i}$ entonces denotamos $u(a) = u$ y $e(p_i,a) = e_i$ para los irreducibles de la factorización y $e(p,a) = 0$ para los irreducibles que no aparecen en la factorización. De modo que para cualquier $a \in A \setminus \{0\}$ podemos escribir: $$a = u(a) \prod_{p \in \mathcal{P}} p^{e(p,a)}$$ aunque $\mathcal{P}$ puede ser infinito, este producto está reducido a un conjunto finito de ellos y esta expresión tiene la ventaja de ser única y sugiere cómo con los irreducibles se pueden generar todos los elementos como si fueran los ladrillos de construcción de los elementos del dominio. 
+\end{definition}
+
+\subsection{Relación de divisibilidad en un DFU}
+
+\begin{proposition}[Divisibilidad en un DFU]
+Dado un DFU $A$ y $\mathcal{P}$ una colección de representantes de los irreducibles por la relación de asociados.
+
+\begin{enumerate}
+\item $a|c \iff \forall p \in \mathcal{P}. e(p,a) \le e(p,c)$
+\item $\forall a,b \in A. (a,b) = \prod_{p \in \mathcal{P}} p^{min(e(p,a),e(p,b))}$
+\item $\forall a,b \in A. [a,b] = \prod_{p \in \mathcal{P}} p^{max(e(p,a),e(p,b))}$
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item Como $a|c$, $\exists b.c = ab$ y por tanto $$c = u(c) \prod_{p \in \mathcal{P}} p^{e(p,c)} = u(a) \prod_{p \in \mathcal{P}} p^{e(p,a)} u(b) \prod_{p \in \mathcal{P}} p^{e(p,b)} = u(a)u(b) \prod_{p \in \mathcal{P}} p^{e(p,a)+e(p,b)}$$ De aquí, tenemos que $u(c) = u(a) \cdot u(b)$ y $\forall p \in \mathcal{P}.e(p,c) = e(p,a) + e(p,b) \le e(p,a)$. 
+
+Recíprocamente, basta tomar $$b = u(c)u(a)^{-1} \prod_{p \in \mathcal{P}} p^{e(p,c)-e(p,a)}$$ donde observamos que por hipótesis $e(p,c)-e(p,a) \ge 0$. En este caso: $$ba = \Big[u(c)u(a)^{-1} \prod_{p \in \mathcal{P}} e^{e(p,c)-e(p,a)}\Big] \cdot \Big[u(a) \prod_{p \in \mathcal{P}} p^{e(p,a)}\Big] = u(c)\prod_{p \in \mathcal{P}} p^{e(p,c)} = c$$
+\item Se utiliza la caracterización anterior. 
+\item Se utiliza la caracterización anterior teniendo en cuenta que hemos demostrado que como existe el máximo común divisor de cualesquiera dos elementos también existe el mínimo común múltiplo de cualesquiera dos elementos. 
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}[Relación entre primos e irreducibles en DFU]
+Sea $A$ un DFU y $p \in A$ entonces $p$ es irreducible 
+$ \iff p$ es primo. 
+\end{proposition}
+\begin{proof}
+En cualquier dominio de integridad se verifica que si $p$ es primo entonces es irreducible. Veamos la otra implicación. 
+
+Sea $p$ es un irreducible de $A$ con $A$ un DFU. Supongamos que $p|ab$ entonces por la relación de divisibilidad en DFU sabemos que $$e(p,ab) \ge e(p,p) = 1$$ y claramente $$e(p,ab) = e(p,a) + e(p,b)$$ Entonces necesariamente será $e(p,a) > 0 \lor e(p,b) > 0$ en cuyo caso $p|a \lor p|b$ y por tanto, $p$ es primo. 
+\end{proof}
+
+\subsection{Caracterizaciones alternativas}
+
+\begin{theorem}[Caracterización de los DFU]
+Sea $A$ un dominio de integridad. 
+
+$A$ es DFU sí y sólo si se cumplen alguno de los siguientes pares de condiciones:
+
+\begin{itemize}
+\item Todo elemento no nulo ni unidad es producto de irreducibles. 
+\item Todo irreducible es primo.
+\end{itemize}
+
+O bien:
+
+\begin{itemize}
+\item Todo elemento no nulo ni unidad es producto de irreducibles.
+\item $\forall a,b \in A. \exists (a,b)$. 
+\end{itemize}
+\end{theorem}
+\begin{proof}
+\begin{itemize}
+\item $\Leftarrow)$ Supongamos que $x \in A$ es un elemento no nulo y no unidad. Entonces, por hipótesis, $x = \prod_{i = 1}^r p_i = \prod_{j = 1}^s q_j$ donde $p_i,q_j$ son irreducibles. 
+
+Queremos ver que $r = s \land \exists \sigma \in S_r.p_i \sim q_{\sigma(i)}$. Procedemos por inducción sobre $r$:
+
+\begin{itemize}
+\item Si $r = 1$, entonces si suponemos $s > 1$ tendríamos que $x = p = q_1 \ldots q_s$ de donde por la primera igualdad, $x$ es irreducible. Como $A$ es un DFU tendremos que $x$ es primo. Entonces como $x|q_1 \ldots q_s$ entonces $x |q_i$ y como $q_i|x$ entonces $x \sim q_i$, esto es, $x = uq_i = q_1 \ldots q_s$ con $u \in U(A)$ de donde como $A$ es un dominio de integridad, $\prod_{j \neq i} q_j = u$. Esto implica que $\forall i \neq j.q_j \in U(A)$ en contradicción con que son irreducibles. Por tanto, $r = s$ y $x = p = q_1$.
+
+\item Si $r > 1$ y $x = \prod_i p_i = \prod_j q_j$ entonces dado que $p_1$ sería irreducible y por tanto primo, como antes, vemos que $p_1 \sim q_j$ y salvo una reordenación podemos suponer que $j = 1$. 
+
+En este punto, queda $\prod_i p_i = \prod_j q_j \implies \prod_{i = 2}^r p_i = u \prod_{j = 2}^s q_j$ de modo que podemos aplicar la hipótesis de inducción obteniendo salvo reordenaciones que $p_i \sim q_j$ y que $r = s$. Como queríamos demostrar. 
+\end{itemize}
+
+$\Rightarrow)$ La primera parte se sigue de la definición de DFU. La segunda parte, es consecuencia de la proposición anterior.
+
+\item $\Leftarrow)$ Vamos a ver que todo irreducible es primo. Sea $p$ irreducible y supongamos que $p|bc$. Distinguimos casos:
+
+\begin{itemize}
+\item Si $p|b$ hemos acabado. 
+\item Si $p \nmid b$ entonces como por hipótesis existe $(p,b)$ y como $p$ es irreducible entonces $(p,b) = 1$.
+
+En efecto, como $(b,p)|p$ que es irreducible, entonces $(b,p)$ es una unidad o un asociado a $p$. Si $(b,p)$ es unidad entonces $(b,p) = 1$ y hemos acabado. Si $(b,p) \in A(p)$ entonces $(b,p) = up$ con $u \in U(A)$ y por la unicidad del máximo común divisor salvo asociados, $(b,p) = p$. Por definición $(b,p) = p | b$ pero por hipótesis, $p \nmid b$. Contradicción.  
+
+Finalmente, por el lema de Euclides, $p|c$. 
+\end{itemize}
+
+$\Rightarrow)$ Hemos demostrado anteriormente que en un DFU, $\forall a,b. (a,b) = \prod_{p \in \mathcal{P}} p^{min(e(p,a),e(p,b))}$. 
+
+\end{itemize}
+\end{proof}
+
+\begin{corollary}[Existencia de mcd garantiza que los irreducibles son primos]
+Sea $A$ un dominio de integridad tal que $\forall a,b \in A. \exists (a,b)$. Entonces:
+
+$p$ es primo $\iff p$ es irreducible.
+\end{corollary}
+\begin{proof}
+Siempre se da en un dominio de integridad que todo elemento primo es irreducible. En la prueba anterior, hemos mostrado que bajo la hipótesis de existencia del máximo común divisor, todo irreducible es primo.
+\end{proof}
+
+\subsection{Los DIP son DFU}
+
+Sumamos a nuestros ejemplos de DFU a todos los DIP y DE. 
+
+\begin{definition}[Anillo noetheriano]
+Un anillo $A$ es noetheriano si para toda cadena de ideales $I_1 \subseteq I_2 \subseteq \cdots \subseteq I_n \subseteq \cdots$ se verifica que $\exists m. \forall k \ge 0. I_m = I_{m+k}$. 
+\end{definition}
+
+\begin{lemma}[Los DIP son anillos noetherianos]
+Todo DIP es un anillo noetheriano.
+\end{lemma}
+\begin{proof}
+Si $A$ es un DIP y consideramos una cadena ascendente de ideales $I_k \subseteq A$, podemos considerar su unión $U = \cup_{n \mathbb{N}} I_n$. Esta unión es un ideal. En efecto, si $x,y \in U$ entonces $\exists m,n. x \in I_n \land y \in I_m$. Supongamos sin pérdida de generalidad que $n < m$. Como la cadena es ascendente, $x+y \in I_m \subseteq U$. Si tomamos $x \in U, a \in A$, entonces $\exists n. x \in I_n$ y como $I_n$ es un ideal claramente $xa \in I_n \subseteq U$. 
+
+Utilizando que $A$ es un DIP, $\cup_{n \in \mathbb{N}} I_n = \langle a \rangle$ para $a \in A$. Claramente, habrá un primer ideal $I_m$ que contiene a $a$ y desde $I_m$ la cadena ya no puede crecer, esto es, $I_{m+k} \subseteq I_m$. Matemáticamente, $a \in I_m \implies \langle a \rangle \subseteq I_m \implies \cup_{n \in \mathbb{N}} I_n = I_m \implies \forall k \ge 0. I_{m+k} \subseteq I_m$ y la otra inclusión se tiene por hipótesis. 
+\end{proof}
+
+\begin{theorem}[Los DIP son DFU]
+Todo DIP es un DFU. 
+\end{theorem}
+\begin{proof}
+Sea $A$ un DIP. Sabemos que existe el máximo común divisor de cualesquiera dos elementos y por tanto, tenemos la propiedad 2. de la caracterización alternativa de DFU. Veamos que se verifica que todo elemento $x \neq 0 \land x \notin U(A)$ es producto de irreducibles. Procedemos en dos pasos:
+
+\begin{enumerate}
+\item $a$ tiene un factor irreducibles. 
+
+Si $a_0 = a$ es irreducible hemos acabado. En otro caso, debe admitir una factorización propia $a = a_1c_1$. Como $a_1|a$, $\langle a \rangle \subset \langle a_1 \rangle$ con inclusión estricta ya que si $\langle a \rangle = \langle a_1 \rangle$ entonces $a_1 \sim a$ y la factorización sería impropia. 
+
+Continuando este proceso obtendríamos una cadena de ideales con $\langle a_i \rangle \subset \langle a_{i+1} \rangle$ para todo $i \ge 0$. Como $A$ es noetheriano, esta cadena debe estacionar en un $\langle a_r \rangle$. Este $a_r$ tiene que ser irreducible (su ideal resulta maximal) ya que en otro caso el procedimiento daría ideales mayores. 
+
+Por tanto, $a = \prod_{i = 1}^r a_i$ con $a_r$ irreducible. 
+
+\item $a$ es producto de un número finito de irreducibles. 
+
+Repetimos el razonamiento anterior, si $c_0 = a$ no es irreducible entonces existe una factorización propia $a = p_1c_1$ con $p_1$ irreducible. Repitiendo el proceso en $c_i$ se obtiene una cadena con $\langle c_i \rangle \subset \langle c_{i+1} \rangle$ para todo $i \ge 0$. De nuevo, se observa que la cadena es de inclusiones estrictas, ya que en otro caso $c_i \sim c_{i+1}$ y la factorización sería impropia. 
+
+Esta cadena debe estacionar en un $\langle c_{r} \rangle$ que resultará ser irreducible ya que en otro caso el procedimiento continúa la cadena. En conclusión, $a = p_1 \ldots p_r c_r$ con $p_i,c_r$ irreducibles. 
+\end{enumerate}
+\end{proof}
+
+
+
+
+
+
+
+
+

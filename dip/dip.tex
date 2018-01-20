@@ -1,0 +1,214 @@
+\subsection{Definición y propiedades fundamentales}
+
+Existen caracterizaciones (véase Números, Grupos y Anillos, página 246) que aconsejan definir el siguiente concepto en el ambiente de los dominios de integridad. 
+
+\begin{definition}[Dominio de ideales principales]
+Dado un dominio de integridad $A$. 
+
+$A$ es un dominio de ideales principales si todo ideal de $A$ es principal, esto es, $\forall I < A. \exists x \in A. I = \langle x \rangle$. 
+\end{definition}
+
+\begin{theorem}[Teorema de Bézout]
+Dado un dominio de ideales principales $A$. 
+
+1. $\forall a,b \in A \exists d=(a,b)$.\\
+2. $\exists u,v \in A. d = au+bv$. 
+
+A cualquier pareja $u,v$ que verifique la segunda ecuación se les llama coeficientes de Bézout. 
+\end{theorem}
+\begin{proof}
+Dados $a,b \in A$, consideremos $\langle a,b \rangle = \{ax+by:x,y \in A\}$ este es el ideal generado por $a$ y $b$, esto es, el menor ideal que los contiene. En efecto, como $a,b \in \langle a,b \rangle$ sabemos que $\langle a,b \rangle$ no es vacío. También es claro que $\langle a,b \rangle$ es un ideal ya que $ax+by + ax' +by' = a(x+x')+b(y+y') \in I$ y $c(ax+by) = a(xc)+b(yc) \in I$. 
+
+Utilizamos que $A$ es un dominio de ideales principales y obtenemos que debe existir $d \in A.\langle a,b \rangle = \langle d \rangle$ y por tanto $d = au+bv$ para convenientes $u,v \in A$. Por tanto, hemos deducido la segunda propiedad.
+
+Por lo anterior, $d|a \land d|b$ y si $c \in A$ verifica que $c|a \land c|b$ entonces $c|au+bv$ de donde $c|d$. Esto nos dice que $d = (a,b)$
+\end{proof}
+
+\begin{example}[Un ejemplo de anillo de enteros cuadráticos que no es DIP]
+Por los ejemplos anteriores como en $\mathbb{Z}[\sqrt{-5}]$ no existe el máximo común divisor de cualesquiera dos elementos tampoco puede ser un dominio de ideales principales. 
+\end{example}
+
+\begin{proposition}[Todo DE es un DIP]
+Todo dominio euclídeo es un dominio de ideales principales donde cada ideal está generado por el elemento con valor mínimo de la función euclídea.  
+\end{proposition}
+\begin{proof}
+Si $\phi$ es la función euclídea asociada al dominio y consideremos un ideal cualquiera $I \neq \{0\}$. El conjunto $\phi(I \setminus \{0\})$ es un subconjunto no vacío de números naturales y por tanto tiene mínimo. Sea $b$ este mínimo. Demostraremos que $I = \langle b \rangle$. 
+
+$\subseteq)$ Dado que $b \in I \implies \langle b \rangle \subseteq I$. \\
+$\supseteq)$ Dado $a \in I \setminus \{0\}$ tenemos que $\phi(a) \ge \phi(b)$. Por estar en un dominio euclídeo, $a = bq + r$ con $r = 0 \lor \phi(r) < \phi(b)$. Si $r = 0$ hemos acabado ya que entonces $a = bq \in \langle b \rangle$ y por tanto $I \subseteq \langle b \rangle$. Si $r \neq 0$ entonces necesariamente $\phi(r) < \phi(b)$. Pero esto contradice que $b$ sea el elemento de valor mínimo del conjunto anterior, ya que $r = a - bq \in I$ y $\phi(r) < \phi(b)$. 
+\end{proof}
+
+\begin{example}[Un DIP que no es DE]
+$\mathbb{Z}[\frac{1+\sqrt{-19}}{2}]$ es un DIP pero no es DE.
+\end{example}
+
+\subsection{Retículo de divisibilidad y de ideales.}
+
+\begin{corollary}[Existencia del mínimo común múltiplo en DIP]
+En cualquier dominio de ideales principales (en particular, en los dominios euclídeos), existe el mínimo común múltiplo de cualquiera dos elementos.
+\end{corollary}
+\begin{proof}
+En efecto, en un DIP por el teorema de Bézout existe el máximo común divisor de cualquier par de elementos y como un DIP es un dominio de integridad se tiene por la proposición anterior que existe el mínimo común múltiplo de cualquier par de elementos. 
+
+Cualquier dominio euclídeo es un dominio de ideales principales. 
+\end{proof}
+
+\begin{corollary}[Retículo de divisibilidad]
+Sea $D$ un dominio de ideales principales y sea $(,),[,]$ el máximo común divisor y el mínimo común múltiplo respectivamente. Entonces $(D,(,),[,])$ es un retículo.
+\end{corollary}
+\begin{proof}
+Elijamos $[,]$ como ínfimo y $(,)$ como supremo. 
+
+Por lo anterior, estas operaciones son internas en $D$. 
+
+Claramente, se verifican las propiedades conmutativa, asociativa y la propiedad de idempotencia. Faltaría demostrar la propiedad de absorción que diría $[x,(x,y)] = x$ y $(x,[x,y]) = x$. 
+
+Por otro lado, el máximo del retículo es el $1$ del dominio y el mínimo del retículo es el $0$ del dominio.
+
+En consecuencia, $(a,1) = 1,(a,0) = a$. También el $0$ del dominio es el mínimo del retículo, y en particular, $[a,0] = 0,[x,1] = x$.
+\end{proof}
+
+\begin{tikzcd}
+1    \\
+x \arrow{u}{mcd} \arrow{d}{mcm}  \\   
+0 
+\end{tikzcd}
+
+
+Pregunta: ¿este retículo es distributivo, es complementado? ¿Es el 1 el máximo y el 0 el mínimo o hay maximales (las unidades) y minimales? Aquí solo hace falta que sea distributivo y complementado para ser un álgebra de Boole. Ojo: quien es un retículo es $D/\sim$ donde $\sim$ es la relación de ser asociados. 
+
+\begin{corollary}[Retículo de ideales de un DIP]
+Sea $A$ un dominio de ideales principales consideremos el retículo de ideales ordenado por la inclusión las operaciones supremo e ínfimo y producto están definidas para este en términos del máximo común divisor y del mínimo común múltiplo. Más precisamente, para todo $a,b \in A$:
+
+\begin{enumerate}
+\item $\langle a \rangle + \langle b \rangle = \langle (a,b) \rangle$
+\item $\langle a \rangle \cap \langle b \rangle = \langle [a,b] \rangle$
+\item $\langle a \rangle \cdot \langle b \rangle = \langle ab \rangle$
+\end{enumerate}
+\end{corollary}
+\begin{proof}
+\begin{enumerate}
+\item Es consecuencia del teorema de Bézout. 
+\item Se deriva desde la definición. 
+\item Se deriva desde la definición. 
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}[Ideales principales maximales son los generados por irreducibles]
+Sea $A$ un dominio de ideales principales y $a \in A \setminus \{0\}$:
+
+$\langle a \rangle$ es maximal $\iff a$ es irreducible.
+\end{proposition}
+\begin{proof}
+$\Rightarrow)$ Si $\langle a \rangle$ es maximal y $a = bc$ entonces como todo ideal maximal es primo y $bc \in \langle a \rangle$ se tendría que $b \in \langle a \rangle \lor c \in \langle a \rangle$. Supongamos que $b \in \langle a \rangle$, entonces $b = ad = bcd$ y como $b \neq 0$ se simplifica a $1 = cd$ de modo que $c \in U(A)$ y la factorización es impropia de modo que $a$ es irreducible. 
+
+$\Leftarrow)$ Supongamos que $a$ es irreducible y veamos que $\langle a \rangle$ es maximal. En efecto, como $a$ es irreducible, no es una unidad y por tanto, $\langle a \rangle \neq A$. Por otro lado, si $\langle a \rangle \subseteq \langle b \rangle \neq A$  entonces $b|a$ y $b \notin U(A), b \neq 0$, luego tenemos que $a = bc$ donde $c \neq 0$ y $c$ debe ser una unidad ya que no existen factorizaciones propias de $a$. Por tanto, $\langle a \rangle = \langle b \rangle$.
+\end{proof}
+
+
+\subsection{Solución de ecuaciones diofánticas y algoritmo de Euclides}
+
+\begin{theorem}[Resolución de ecuaciones diofánticas lineales en un DIP]
+Sea $A$ un dominio de ideales principales y $a,b,c \in A$ con $a,b \neq 0$. 
+
+1. La ecuación diofántica lineal $ax+by = c$ tiene solución $\iff d|c$ con $d = (a,b)$. \\
+2. Si $d|c$ y $(x_0,y_0)$ es una solución particular entonces la solución general da para cada $k \in A$ la solución $(x_0+k\frac{b}{d},y_0-k\frac{a}{d})$. 
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+\item La ecuación tiene solución $\iff c \in \langle a,b \rangle = \langle d \rangle \iff d|c$ con $d = (a,b)$. Donde hemos utilizado el corolario al teorema de Bézout.
+\item Supongamos que $x_0,y_0$ es una solución particular. Claramente, para cada $k \in A$ la pareja $(x_0+k\frac{b}{d},y_0-k\frac{a}{d})$ es una solución particular ya que $a(x_0+k\frac{b}{d})+b(y_0-k\frac{a}{d}) = ax_0+by_0 = c$. 
+
+Veamos que no hay más soluciones. Si $(x,y)$ es otra solución. Entonces restando las ecuaciones para $(x,y)$ y $(x_0,y_0)$ obtenemos $a(x-x_0)+b(y-y_0) = 0$, esto es, $a(x-x_0) = -b(y-y_0)$. Esto nos dice que $\frac{b}{d}$ divide a $\frac{a}{d}(x-x_0)$ y por el lema de Euclides como $(\frac{b}{d},\frac{a}{d}) = 1$ se verificará qque $\frac{b}{d}|(x-x_0)$. Por tanto, existe $k \in A$ tal que $x-x_0 = k\frac{b}{d}$ o equivalentemente $x = x_0 + k\frac{b}{d}$ como queríamos. Análogamente, existe un $h \in A$ tal que $y = y_0 - h \frac{a}{d}$. 
+
+Pero resulta que $k = h$. Esto se puede ver sustituyendo en la ecuación $a(x-x_0)+b(y-y_0) = 0$ llegando a que $ab(k-h) = 0$. Dado que $a,b \neq 0$ y que $A$ es un dominio de integridad, $x = h$. 
+\end{enumerate}
+\end{proof}
+
+El teorema anterior no da un método para calcular la solución particular $(x_0,y_0)$. 
+
+Sabemos que $c = d \cdot c'$ por la condición de existencia de solución. Por otro lado, como $d = au+bv$ por la identidad de Bézout, tendríamos que $c = a(uc')+b(vc')$. Entonces elegimos $x_0 = uc' \land y_0 = vc'$. 
+
+Es claro que en el anterior algoritmo necesitamos conocer $d,u,v$. El siguiente algoritmo, nos da los coeficientes de Bézout, el máximo común divisor y el mínimo común múltiplo. 
+
+\begin{theorem}[Algoritmo extendido de Euclides]
+Dado $A$ un dominio euclídeo y $a,b \in A$. 
+
+\begin{enumerate}
+\item Si $b = 0$ hemos acabado ya que $(a,0) = a$, $u = 1,v= 0$. 
+\item Si $a = 0$ hemos acabado ya que $(0,b) = b$, $u = 0,v= 1$. 
+\item Supongamos $a,b \neq 0$ y $\phi(a) \ge \phi(b)$. Si la desigualdad anterior no se da siempre podemos intercambiar $a$ y $b$ ya que $(a,b) = (b,a)$. 
+\begin{itemize}
+\item Dividir $a$ entre $b$ para obtener $a = bq_1+r_1$ con $r_1 = 0 \lor \phi(r_1) < \phi(b)$. 
+\item Si $r_1 = 0 \implies (a,b) = b$.
+\item Si $r_1 \neq 0 \implies (a,b) = (a-qb,b) = (b,r_1)$ . 
+\end{itemize}
+\item Análogamente se continúa obteniendo la lista de ecuaciones $$b = r_1q_2+r_2$$ $$r_1 = r_2q_3+r_3$$ $$\ldots$$ $$r_n = r_{n+1}q_{n+2}+r_{n+2}$$ Donde $r_{n+1} = 0$ y $r_n = (a,b) = (0,r_n)$. Se puede asegurar que llegaremos a este punto mediante el método de descenso infinito aplicado a la función euclídea de los restos. 
+
+\item Para obtener los coeficientes de Bézout en cada paso se realiza el siguiente cálculo. 
+
+Si $\alpha = au+bv$ y $\alpha' = au'+bv'$ entonces: $$\alpha'' = \alpha - \alpha'q = a(u-qu') + b(v-qv') = au'' + bv''$$ Finalmente, los coeficientes que se obtienen para $r_n$ son los coeficientes de Bézout para $a,b$ ya que $r_n = (a,b)$. De forma indirecta, $[a,b] = u_{n+1}a = v_{n+1}b$. 
+\end{enumerate}
+
+El procedimiento puede ser resumido en la siguiente tabla:
+
+\begin{center}
+  \begin{tabular}{ | l | c | r |}
+    \hline
+    $\alpha$ & u & v \\ \hline
+    a & 1 & 0 \\ \hline
+    b & 0 & 1 \\ \hline
+    $r_1$ & $1$ & $-q_1$ \\ \hline
+    $r_2$ & $-q_2$ & $1+q_1q_2$ \\ \hline
+    $r_3$ & $1+q_1q_3$ & $-q_1-q_3-q_1q_2q_3$ \\ \hline
+    $\cdots$ & $\cdots$ & $\cdots$ \\ \hline 
+    $r_n$ & $u_n$ & $v_n$ \\ \hline
+    $r_{n+1} = 0$ & $u_{n+1}$ & $v_{n+1}$ \\ 
+    \hline
+  \end{tabular}
+\end{center}
+
+Es importante darse cuenta como se obtienen los sucesivos coeficientes de Bézout en esta tabla. Se pasa de una fila a otra tomando las dos anteriores y restando a la última de ellas la anterior multiplicada por el cociente obtenido al dividir los correspondientes términos de la columna de la izquierda. 
+
+Hacemos varias observaciones al método general. 
+
+Primeramente es necesario observar que en cada paso, $r_i = a u_i + b v_i$ por construcción. 
+
+La igualdad para el mínimo común múltiplo se deduce observando que la sucesión que hace las diferencias en cruz de productos de la primera fila y la segunda: $$w_i = u_i r_{i+1} - u_{i+1} r_i$$ es una sucesión constante que alterna el signo. En efecto: $$w_i = u_i r_{i+1} - s_{i+1} u_i = u_i (r_{i-1} - q_ir_i) - (u_{i-1} - q_i u_i) r_i = - (u_{i-1} r_i - u_i r_{i-1})$$ Como $w_0 = u_0 r_1 - u_1 r_0 = b$, se tendrá que $w_i = (-1)^i w_0$ y finalmente, para como $r_{n+1} = 0$, se tendría: $$w_{n+1} = (-1)^{n+1} b = - u_{n+1} mcd(a,b)$$ es decir: $$ab = (-1)^n u_{n+1} a (a,b)$$ Como estamos en un dominio de integridad, necesariamente, la ecuación tiene una única solución que es $[a,b] = u_{n+1}a$ donde recordamos que el mínimo común múltiplo es único salvo asociados. 
+\end{theorem}
+
+\begin{example}[Ejemplos de aplicación del algoritmo]
+\begin{enumerate}
+\item Aplicar el algoritmo de Euclides para $a = 30,b = 12$:
+
+\begin{center}
+  \begin{tabular}{ | l | c | r |}
+    \hline
+    $\alpha$ & u & v \\ \hline
+    30 & 1 & 0 \\ \hline
+    12 & 0 & 1 \\ \hline
+    $6$ & $1$ & $-2$ \\ \hline
+    $0$ & $-2$ & $5$ \\ \hline
+  \end{tabular}
+\end{center}
+
+Como consecuencia, $(30,12) = 6$ y $[30,12] = -2 \cdot 30 = -60 \sim 60 = 5 \cdot 12$ y los coeficientes de Bézout son $1,-2$. 
+
+\item Aplicar el algoritmo de Euclides para $a = 3+2i,b = 2-3i$:
+
+Recordando cómo se divide en $\mathbb{Z}[i]$ tendríamos que:
+
+\begin{center}
+  \begin{tabular}{ | l | c | r |}
+    \hline
+    $\alpha$ & u & v \\ \hline
+    $3+2i$ & 1 & 0 \\ \hline
+    $2-3i$ & 0 & 1 \\ \hline
+    $0$ & $1$ & $i$ \\ \hline
+  \end{tabular}
+\end{center}
+
+Como consecuencia, $(3+2i,2-3i) = 2-3i$ y $[3+2i,2-3i] = 3+2i \cdot 1 = 3+2i = i \cdot 2-3i$ y los coeficientes de Bézout son $0,1$. 
+\end{enumerate}
+\end{example}
+

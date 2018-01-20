@@ -1,0 +1,141 @@
+\subsection{Definiciones de dominio de integridad}
+
+\begin{definition}
+Un elemento $a \in A$ es divisor de cero si existe $b$ no nulo tal que $ab = 0$. 
+
+Al conjunto de los divisores de cero lo denotaremos por $0_A$.
+\end{definition}
+
+\begin{proposition}[Propiedades de $0_A$]
+1. En cualquier anillo $A$, $0 \in 0_A$. \\
+2. $0_A$ es invariante por isomorfismo. \\
+3. Las unidades de un anillo $A$ no pueden ser divisores de cero, esto es, $U(A) \cap 0_A = \emptyset$.
+\end{proposition}
+\begin{proof}
+1. Es evidente.\\
+2. Basta observar que un homomorfismo inyectivo lleva unidades de cero en unidades de cero. \\
+3. Sea $a \in U(A) \cap 0_A$. Existe $b \neq 0$ tal que $ab = 0$. Multiplicando por el inverso de $a$ obtenemos que $b = 0$. Contradicción.
+\end{proof}
+
+\begin{definition}[Dominio de integridad]
+Sea $A$ un anillo conmutativo no trivial.
+
+$A$ es un dominio de integridad si y sólo si verifica la propiedad cancelativa, esto es:
+
+$\forall a \in A \setminus \{0\},x,y \in A. ax = ay \implies x = y$. 
+
+o equivalentemente, 
+
+si el único divisor de cero es cero, esto es, $0_A = \{0\}$. 
+\end{definition}
+
+La siguiente definición justifica la equivalencia entre ambos criterios:
+
+\begin{proposition}[Equivalencia de las definiciones]
+Son equivalentes las siguientes condiciones:
+
+1. $\forall a \in A \setminus \{0\},x,y \in A. ax = ay \implies x = y$. \\
+2. $\forall a,b \in A \setminus \{0\}. ab \in A \setminus \{0\}$.
+\end{proposition}
+\begin{proof}
+$\Rightarrow)$ Sean $a,b \in A \setminus \{0\}$ y razonemos por reducción al absurdo que $ab \neq 0$. Si suponemos que $ab = 0$ entonces la ecuación $ax = 0$ tiene dos soluciones $ab = 0$ y $a0 = 0$ en cuyo caso $b = 0$ en contradicción con nuestras hipótesis. 
+
+$\Leftarrow)$ Sean $a \in A \setminus \{0\},x,y \in A$. Supongamos que $ax = ay$. Entonces se verifica que $a(x-y) = 0$. Si $x-y = 0$ hemos terminado ya que entonces $x = y$. En otro caso, $x-y \neq 0$ y tomando $b = x-y$ en 2. tendríamos que $ab \neq 0$ en contradicción con las hipótesis. 
+\end{proof}
+
+\begin{proposition}[Propiedades elementales]
+1. Todo subanillo de un dominio de integridad es un dominio de integridad.\\
+2. La solución de $ax = b$ con $a \neq 0$ en un dominio de integridad, si existe es única.
+\end{proposition}
+\begin{proof}
+	1. Claramente, la propiedad de dominio de integridad se translada a sus subconjuntos y como cualquier subanillo es un anillo se tiene que es un dominio de integridad. \\
+	2. En efecto, si $ax_0 = ay_0 \implies x_0 = y_0$. \\
+\end{proof}
+
+\begin{example}
+	\begin{itemize}
+		\item  Por ejemplo los anillos de enteros cuadráticos son dominios de integridad ya que son subanillos del cuerpo de los complejos. 
+		
+		\item $\mathbb{Z}_6$ no es dominio de integridad ya que la ecuación $2 \cdot x = 0$ tiene más de dos soluciones. Por ejemplo, $x = 3$ y $x = 2$ son solución. 
+	\end{itemize}
+\end{example}
+
+\begin{proposition}[Propiedades polinómicas]
+Sea $A$ un dominio de integridad y consideremos $A[X]$, el anillo de polinomios sobre $A$. 
+	
+\begin{enumerate}
+\item $\forall f,g \in A[X]. grado(fg) = grado(f) + grado(g)$.
+\item $A[X]$ es un dominio de integridad.
+\item $U(A[X]) = U(A)$
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item $f = \sum_{i \ge 0} a_ix^i,g = \sum_{j \ge 0} b_jx^j$ con $grado(f) = n \land grado(g) = m$. Está claro que $grado(fg) \le m + n$ ya que en otro caso, si $grado(fg) > m + n$ entonces $fg = \sum_{k \ge 0} (\sum_{i+j = k} a_ib_j) x^k$ y para $i+j = grado(fg)$ se tiene necesariamente que $i > n \lor j > m \iff a_i = 0 \lor b_j = 0 \implies a_ib_j = 0$.
+	
+Veamos que el grado es exactamente, $n+m$. El correspondiente coeficiente es $\sum_{i+j = n+m} a_ib_j = a_nb_m$ y ya que $a_n \neq 0 \land b_m \neq 0$ y $A$ es un dominio de integridad, se tiene que $a_nb_m \neq 0$ y por tanto el grado es $n+m$. 
+
+\item Dados $f,g \in A[X] \setminus \{0\}$ con $grado(f) = n \land grado(g) = m$. Por lo anterio, $grado(fg) = n+m$ y dado que ninguno de ellos es nulo claramente, $n,m \ge 0$. Si $n \neq 0 \lor m \neq 0$ entonces $n+m \neq 0$ y por tanto, $fg \neq 0$. Si $n = m = 0$. Dado que $A$ se identifica con un subanillo de $A[X]$ y es un dominio de integridad se tiene también que $fg \neq 0$.
+
+\item $f \in U(A[X]) \iff \exists g \in A[X].fg = 1 \implies gr(fg) = gr(f) + gr(g) = gr(1) = 0 \implies gr(f) = gr(g) = 0 \implies f,g \in U(A)$. Claramente, si $f,g \in U(A)$ entonces también $f,g \in U(A[X])$.
+\end{enumerate}
+\end{proof}
+
+
+\subsection{Definición de cuerpo}
+
+\begin{definition}[Cuerpo]
+Sea $A$ un anillo conmutativo no trivial. 
+
+$A$ es un cuerpo si $U(A) = A \setminus \{0\}$, es decir, $\forall a \in A \setminus \{0\}.\exists a^{-1}$.
+\end{definition}
+
+\begin{definition}[Subcuerpo]
+Sea $A$ un cuerpo y $B \subseteq A$. Se dice que B es un subcuerpo de A si $B$ es un subanillo que es un cuerpo. 
+\end{definition}
+
+\begin{proposition}[Criterios de subcuerpo]
+Sea $A$ un cuerpo y $B \subseteq A$. $B$ es un subcuerpo de $A$ si y sólo si se verifica algunas de las siguientes propiedades:
+
+1. La inclusión $i:B \to A$ es un homomorfismo. \\
+2. $B$ es un subgrupo para la suma y el producto. 
+\end{proposition}
+
+\begin{proposition}[Caracterización de cuerpo]
+Sea $A$ un anillo conmutativo no trivial. Los siguientes son equivalentes:
+
+1. $A$ es un cuerpo. \\
+2. $A$ no tiene ideales propios.\\ 
+3. Todo homomorfismo no nulo que nace en $A$ es un monomorfismo. 
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item Si $A$ es cuerpo e $I$ es un ideal entonces si $I = \langle 0 \rangle$ hemos acabado supongamos existe $x \in I \setminus \{0\}$ entonces como es un cuerpo existe $x^{-1}$ y como es cerrado para productos $xx^{-1} = 1$ y por tanto, el ideal es el total. 
+
+\item Si $A$ no tiene ideales propios entonces dado un homomorfismo $f:A \to B$ su núcleo $Ker(f)$ es un ideal. Como $A$ es no trivial, $1 \notin Ker(f)$ de donde $Ker(f) \neq A$. Por tanto, necesariamente $Ker(f) = \{0\}$, esto es, $f$ es monomorfismo. 
+
+\item Si $A$ no es un cuerpo hemos visto que tendrá ideales propios. Sea $I$ un ideal propio entonces la proyección $p:A \to \frac{A}{I}$ es un homomorfismo no trivial pues existen elementos fuera de $I$ y como $I$ tendrá al menos dos elementos $0 \neq i$ entonces no es inyectiva pues $p(0) = p(i) = 0+I$. 
+\end{enumerate}
+\end{proof}
+
+\begin{example}[Primeros ejemplos de cuerpos]
+1. $\mathbb{Z}_3$ es cuerpo y $\mathbb{R}[X]$,$\mathbb{Z}$ no son cuerpos.\\
+2. $\mathbb{Z}$ es un subanillo de $\mathbb{Q}$.\\
+3. $\mathbb{Q} \subseteq \mathbb{R} \subseteq \mathbb{C} \subseteq \mathbb{R}[X]$ son subcuerpos.\\
+\end{example}
+
+\subsection{Relación entre dominios de integridad y cuerpos}
+
+\begin{proposition}
+1. Todo cuerpo es un dominio de integridad.\\
+2. Todo dominio de integridad finito es un cuerpo. \\
+\end{proposition}
+\begin{proof}
+1. Si $ax_0 = ax_y0$ con $a \neq 0$ entonces $a^{-1}ax_0 = a^{-1}ay_0$ y por tanto $x_0 = y_0$. \\
+2. En efecto, si el dominio $A$ es trivial, se tiene un cuerpo. En otro caso, elijo $a \in A - \{0\}$ y consideramos $\{a^n:n > 1\}$. Claramente, este conjunto se queda en $A$ y por tanto debe ser finito. En particular, deben existir $i > 1$ y $j > 0$ tales que $a^i = a^{i+j}$. Entonces la ecuación $a^ix = a^{i+j}$ tiene al menos dos soluciones $x = 1$ y $x = a^j$, de donde $a^j = 1$ y por tanto $a^{-1} = a^{j-1}$. 
+\end{proof}
+
+
+
+
+

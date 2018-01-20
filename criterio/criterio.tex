@@ -1,0 +1,319 @@
+\subsection{Criterios de irreducibilidad y métodos de factorización de polinomios}
+
+Sea $A$ un DFU y $K = Q(A)$ el cuerpo de fracciones de $A$. Por el lema de Gauss sabemos que $A[X]$ es un DFU y tendremos presente la inclusión como subanillo $A[X] \subseteq K[X]$. 
+
+Recordemos que los polinomios irreducibles en $A[X]$ son:
+
+\begin{itemize}
+\item Polinomios constantes definidos por irreducibles de $A$.
+
+\item Polinomios primitivos no constantes que se estudian sobre $K[X]$:
+
+\begin{itemize}
+\item Los de grado 1 son todos irreducibles en $K[X]$ y por tanto, tendríamos que los polinomios primitivos de grado 1 serían irreducibles en $A[X]$. 
+\item Los de grado mayor o igual a 2 necesitan de criterios especiales para idenficarlos. 
+\end{itemize}
+\end{itemize}
+
+\subsection{Regla de Ruffini o criterio de la raíz}
+
+Sea $A$ un dominio de integridad y $K = Q(A)$ su cuerpo de fracciones.
+
+\begin{proposition}[Regla de Ruffini]
+Si $f \in A[X]$ es polinomio con $gr(f) \ge 2$ y tiene una raíz en $K$ entonces $f$ no es irreducible en $A[X]$. 
+
+Con más precisión, si $\frac{a}{b} \in K$ con $(a,b) = 1$ y $f(\frac{a}{b}) = 0$ entonces $(bx-a)|f(x)$ en $A[X]$. 
+
+Además, si $f = \sum_{i = 0}^n a_iX^i$ con $a_n \neq 0$ entonces $a|a_0$ y $b|a_n$. 
+\end{proposition}
+\begin{proof}
+Consideramos $f$ como un elemento de $K[X]$. Como $K[X]$ es un dominio euclídeo disponemos de un algoritmo de división y podemos dividir $f$ entre $(x - \frac{a}{b})$ obteniendo $f = (x - \frac{a}{b})\phi + r$ donde $r \in K$. Como $\frac{a}{b}$ es raíz del polinomio entonces evaluando ambos miembros tendremos que $0 = f(\frac{a}{b}) = 0 + r = r$ y por tanto podemos escribir $f = (x - \frac{a}{b})\phi$. 
+
+Usando los lemas previos al lema de Gauss, podemos escribir $\phi = \frac{c}{d}g$ con $g \in A[X]$ primitivo. Por tanto: $$f = \Big(x - \frac{a}{b}\Big) \frac{c}{d}g = \frac{c}{d} \frac{1}{b} (bx - a)g \implies dbf = c(bx-a)g \implies dbc(f) = c(a,b)c(g) \implies dbc(f) = c$$ Como $A[X]$ es un dominio de integridad tenemos que $f = c(f)(bx-a)g$ de donde claramente $(bx-a)|f$ y como $(b,a) = 1$ el polinomio $bx-a$ es irreducible y tenemos que $f$ no es irreducible en $A[x]$. 
+
+Además, $$f(x) = (bx-a)(c(f)g) = (bx-a)(\sum_{i = 0}^{n-1} c_iX^i)$$ Igualando coeficientes del producto, con los de $f$ se tendrá que: $$a_0 = -ac_0 \implies a|a_0 \land a_n = bc_n \implies b|a_n$$ 
+\end{proof}
+
+\begin{example}
+Veamos dos ejemplos de aplicación de la regla:
+
+\begin{enumerate}
+\item Si $f = X^4 + 4 \in \mathbb{Z}[X]$ cualquier raíz racional suya es $\frac{a}{b}$ con $a|4 \land b |1$. Por tanto, las posibles raíces racionales son $1,-1,2,-2,4,-4$. Se comprueba que ninguna de ellas es raíz y por tanot $f$ no tiene raíces en $\mathbb{Q}$. En particular, no puede tener factores de grado 1 y por tanto, tampoco factores de grado 3. 
+\item Si $f = X^4+4 \in \mathbb{Z}[i][X]$ los divisores de 4, son $1,1+i,2,2+i,4$ y sus asociados. Tenemos que $f(1+i) = f(1-i) = f(-1+i) = f(-1-i) = 0$ y por tanto $f = (X-(1+i))(X-(1-i))(X-(-1+i))(X-(-1-i))$. 
+\end{enumerate}
+\end{example}
+
+Para polinomios de grado menor o igual que 3, el criterio de la raíz es también suficiente, es decir en general hemos probado:
+
+\begin{corollary}[Criterio de la raíz para polinomios de grado 2 y 3]
+Si $f \in A[X]$ es un polinomio de grado $gr(f) = 2,3$ entonces: 
+
+$f$ es irreducible en $A[X] \iff$ es primitivo y no tiene raíces en $K$. 
+\end{corollary}
+\begin{proof}
+$\Rightarrow)$ Ya habíamos visto que para ser irreducible, necesariamente $f$ tenía que ser primitivo y si tuviera raíces en $K$ como $gr(f) \ge 2$, por el teorema de Ruffini, $f$ no sería irreducible. 
+
+$\Leftarrow)$ Supongamos que $f$ es primitivo. Estudiar su irreducibilidad, equivale a estudiar su irreducibilidad sobre $K[X]$. 
+
+Si $gr(f) = 2$, podemos suponer que $f(X) = X^2+bX+c$, esto es, que es mónico. Si fuera reducible factorizaría como producto de polinomios de grado $1$ que también podemos tomar mónicos salvo producto por una unidad. Es decir, $f(X) = (X+a_1)(X+a_2)$. Pero entonces, $-a_1$ sería una raíz del polinomio $f$, en contradicción con las hipótesis. 
+
+Si $gr(f) = 3$, podemos suponer que $f(X) = X^3+bX^2+cX+d$, esto es, que es mónico. Si fuera reducible factorizaría como:
+
+\begin{itemize}
+\item Producto de polinomios de grado $1$, en cuyo caso, admitiría una raíz en $K$, en contradicicón con las hipótesis. 
+\item Producto de polinomios de grado $1$ y $2$, en cuyo caso, admitiría una raíz en $K$ (por el factor lineal), en contradicción con las hipótesis. 
+\end{itemize}  
+\end{proof}
+
+\begin{example}
+Estudiar la irreducibilidad de $f(X) = X^3 - \frac{1}{2}X+2 \in \mathbb{Q}[X]$. 
+
+Vamos a utilizar los teoremas anteriores en sentido inverso. Partimos de $f(X) \in \mathbb{Q}[X]$ y tomamos $2f(X) = 2X^3 - X + 4 \in \mathbb{Q}[X]$. Como las clases de asociación preservan la irreducibilidad, $f(X)$ será irreducible si y sólo si $2f(X)$ lo es. 
+
+Claramente, $2f(X)$ es primitivo, y bastará estudiarlo sobre $\mathbb{Z}[X]$. Como $gr(2f(X)) = 3$, bastará estudiar si tiene raíces en $K$. Por el teorema de Ruffini, las posibles raíces $a/b$ deberían verificar $a|4 \implies a \in \{1,2,4,-1,-2,-4\}$ y $b|2 \implies b \in \{1,2,-1,-2\}$. En consecuencia, $a/b \in \{1,-1,2,-2,4,-4,1/2,-1/2\}$. Pero ninguno de estos valores es una raíz del polinomio.
+
+En consecuencia, $f$ es irreducible sobre $\mathbb{Q}[X]$. Obsérvese, sin embargo, que $f$ sería reducible sobre $\mathbb{R}[X]$, ya que es una función continua tal que $f(0) = 2,f(-2) = -5$, de modo que por el teorema de los ceros de Bolzano-Weierstrass, admite al menos una raíz en dicho intervalo. 
+\end{example}
+
+\subsection{Criterio de reducción módulo un primo}
+
+Sean $A,D$ dominios de integridad. Sea $R:D \to A$ un homomorfismo de anillos y $\overline{R}:D[X] \to A[X]$ el único homomorfismo que resulta al considerar en la propiedad universal del anillo de polinomios para el homorfismo $i \circ R$ con $i$ la inclusión de $A$ en $A[X]$ tal que $X \mapsto X$. Es claro que, $\overline{R}(\sum_{i \ge 0} a_iX^i) = \sum_{i \ge 0} R(a_i)X^i$. Observemos que este homomorfismo es decreciente en grado ya que en el peor de los casos, $R(a_{gr(f)}) = 0$. Por tanto, se tiene en general que $gr(\overline{R}(f)) \le gr(f)$. 
+
+\begin{theorem}[Criterio de reducción]
+En la situación anterior, sea $f \in D[X]$ que mantiene su grado mediante la reducción $gr(f) = gr(\overline{R}(f)) \ge 2$ entonces:
+
+\begin{enumerate}
+\item Para cada $r \ge 1$, si $\overline{R}(f)$ no tiene divisores de grado $r$ en $A[X]$ entonces $f$ no tiene divisores de grado $r$ en $D[X]$.
+\item En particular, si $f$ es primitivo y $\overline{R}(f)$ es irreducible entonces $f$ es irreducible. 
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+\begin{enumerate}
+\item Supongamos que $g$ es un factor de $f$ de grado $r$ con $f = gh$.  Como $\overline{R}$ es un homomorfismo tendremos que $\overline{R}(f) = \overline{R}(g) \cdot \overline{R}(h)$ y como por hipótesis el grado de $f$ se mantiene por $\overline{R}$ entonces $gr(f) = gr(\overline{R}(f)) = gr(\overline{R}(g)) + gr(\overline{R}(h))$ donde por la observación $gr(\overline{R}(g)) \le gr(g) \land gr(\overline{R}(h)) \le gr(h)$. Concluimos entonces que $gr(\overline{R}(g)) = gr(g) = r$. 
+
+En consecuencia, si $\overline{R}(f)$ no tiene factores de grado $r$ con $r \ge 1$ entonces $f$ no puede tener factores de grado $r$.
+
+\item En particular, si $f$ es primitivo entonces no puede tener factores propios de grado $0$, por otra parte, si asumimos que $\overline{R}(f)$ es irreducible entonces no tiene factores propios de grado $r \ge 1$ y por tanto, necesariamente $f$ es irreducible en $D[X]$. 
+\end{enumerate}
+\end{proof}
+
+Un ejemplo clásico de aplicación del criterio anterior se da para el llamado homomorfismo de reducción módulo $p$ dado en el siguiente diagrama:
+
+\begin{tikzcd}
+\mathbb{Z} \arrow{r}{i} \arrow{d}[swap]{R_p} &
+\mathbb{Z}[X] \arrow{d}{\overline{R_p}} \\   
+\mathbb{Z}_p \arrow[swap]{r}{i} & 
+\mathbb{Z}_p[X]
+\end{tikzcd}
+
+El criterio requiere que $\mathbb{Z}_n$ tenga $n$ primo ya que en otro caso, recordemos que existían divisores de cero no nulos, y por tanto, no eran dominios de integridad. En consecuencia, tampoco $\mathbb{Z}_n[X] \supseteq \mathbb{Z}_n$ puede ser un dominio de integridad y los cálculos se vuelven complicados pues no tenemos que $gr(fg) = gr(f)+gr(g)$. 
+
+
+\begin{example}[Determinación de la irreducibilidad mediante reducción]
+Sea $f = x^4+15x^3+7$. Lo reducimos módulo 2 para obtener $f_2 = x^4 + x^3 + 7$ y observamos que el grado no ha disminuido.
+
+Observemos que $f_2$ no tiene raíces y por tanto no tiene factores de grado $1,3$.  (que no tiene factores de grado 3 se podría haber comprobado porque $7,-7$ no son raíces). Por tanto debe factorizar como dos polinomios de grado 2. 
+
+Como $\mathbb{Z}_2[x]$, sólo tiene un irreducible de grado $2$ que es $x^2+x+1$ y la división euclídea da resto $x+6$ deducimos que el polinomio es irreducible en $\mathbb{Z}_2[X]$ y por el criterio de reducción también lo es en $\mathbb{Z}[X]$. 
+\end{example}
+
+Podemos dar tablas de irreducibles para agilizar el proceso:
+
+\begin{center}
+  \begin{tabular}{ l | c  | r }
+    \hline
+    $\mathbb{Z}_2[X]$ & $X^2+X+1$ & $X^3+X^2+1,X^3+X+1$  \\ 
+    \hline
+  \end{tabular}
+\end{center}
+
+Sin embargo, la situación anterior no es la única en la que se puede aplicar el criterio. Consideremos el siguiente diagrama:
+
+\begin{tikzcd}
+\mathbb{Q}[Y] \arrow{r}{i} \arrow{d}[swap]{E_\alpha} &
+\mathbb{Q}[Y][X] \arrow{d}{E_{(\cdot,\alpha)}} \\   
+\mathbb{Q} \arrow[swap]{r}{i} & 
+\mathbb{Q}[X]
+\end{tikzcd}
+
+donde $E_{(\cdot,\alpha)}$ es un homomorfismo que evalúa $Y$ en $1$ y deja fija la $X$. Recordemos que la evaluación en $\alpha$, $E_\alpha$ era siempre un homomorfismo. 
+
+\begin{example}[Determinación de la irreducibilidad de un polinomio multivariado]
+Sea $f = (Y^5 - Y^4 - 2Y^3 + Y - 1) + (Y - 2Y^3)X + (Y^4 + Y^3 + 1)X^2 + Y^3X^3 \in \mathbb{Q}[X,Y]$. Determinar si $f$ es irreducible. 
+
+$f(x,1) = -2-X+3X^2+X^3 \in \mathbb{Q}[X]$ donde observamos que el grado no ha descendido y estudiamos si este es irreducible. Para ello, primeramente hay que determinar que $f \in \mathbb{Q}[X,Y]$ es primitivo. Para ello observamos que $(Y^3,Y^4+Y^3+1) = 1$ por el algoritmo de Euclides. 
+
+A partir de aquí podríamos elegir dos posibles métodos:
+
+\begin{itemize}
+\item Criterio de la raíz: tenemos que las posibles raíces en $\mathbb{Q}$ son $\{1,-1,2,-2\}$ y comprobamos que ninguna lo es. Por tanto, el polinomio es irreducible sobre $\mathbb{Q}$. 
+
+\item Reducción módulo un primo: como $f(X,1)$ es primitivo, es equivalente que sea irreducible en $\mathbb{Q}[X]$ a que sea irreducible en $\mathbb{Z}[X]$. Por tanto podemos utilizar la reducción módulo un primo.
+
+Reduciendo módulo 3 encontramos que $\overline{f} = 1 + 2X + X^3$ donde observamos que el grado no se ha reducido. Este polinomio no tiene raíces en $\mathbb{Z}_3$ y por tanto, es irreducible por el criterio de la raíz en $\mathbb{Z}_3$ de donde también es irreducible en $\mathbb{Z}[X]$ y consecuentemente también lo es el polinomio original en $\mathbb{Q}[X,Y]$.
+\end{itemize}
+\end{example}
+
+\subsection{Criterio de Eisenstein}
+
+\begin{theorem}[Criterio de Eisenstein]
+Sea $A$ un DFU y $f \in A[X]$ un polinomio primitivo de la forma:
+
+$f  = a_nx^n + \cdots a_0$ con $a_n \neq 0, n \ge 2$
+
+Supongamos que existe un primo $p \in A$ tal que se verifican alguno de los siguientes pares de condiciones:
+
+\begin{itemize}
+\item $p$ divide a todos los coeficientes menos el líder, esto es, $\forall i. 0 \le i < n, p|a_i$.
+
+\item $p^2$ no divide al coeficiente del término constante, esto es, $p^2 \nmid a_0$
+\end{itemize}
+
+o bien 
+
+\begin{itemize}
+\item $p$ divide a todos los coeficientes menos el coeficiente del término constante, esto es, $\forall i. 1 \le i \le n, p|a_i$. 
+
+\item $p^2$ no divide al coeficiente líder, esto es, $p^2 \nmid a_n$
+\end{itemize}
+
+entonces $f$ es irreducible en $A[X]$.
+\end{theorem}
+\begin{proof}
+Asumamos que se da la primera hipótesis. Supongamos que $f$ no es irreducible y pongamos $f = gh$ con $g = \sum_{i = 0}^m b_iX^i$ con $b_m \neq 0$ y $h = \sum_{i = 0}^r c_iX^i$ con $c_r \neq 0$, de modo que tendremos que $n = gr(f) = r+m$. Veamos que $gr(g) = n$ o $gr(h) = n$. 
+
+En efecto, como $p^2 \nmid a_0 = b_0c_0$ seguro que $p$ no divide al menos a un factor ya que $p$ es primo y por tanto irreducible en el DFU. Supongamos que $p \nmid c_0$. Como $f$ es primitivo, el lema de Gauss me dice que $1 = c(f) = c(g)c(h)$ y entonces si $p | g$ llegaríamos a una contradicción. Por tanto, $p \nmid g$ y el conjunto $\{j:p \nmid b_j\}$ es no vacío y claramente tendrá un mínimo. Sea $i = min  \{j:p \nmid b_j\}$. 
+
+Entonces tendríamos que $p$ no dividiría al coeficiente i-ésimo de $f$, esto es, $p \nmid a_i = (\sum_{j = 0}^{i-1} b_jc_{i-j}) + b_ic_0$. Como por hipótesis $p$ divide a todos los coeficientes menos al n-ésimo, se tendrá que $i = n$ y por tanto $gr(g) = n$ de donde $gr(h) = 0$ y como $f$ es primitivo, se tiene que la irreducibilidad de $f$ en $A[X]$ equivale a la irreducibilidad de $f$ en $K[X]$ pero en $K[X]$ toda constante, es unidad y por tanto, la factorización es impropia, de modo que $f$ es irreducible. 
+
+La opción $p \nmid b_0$ daría análogamente que $gr(h) = n$ y que $f$ sería irreducible. 
+\end{proof}
+
+\begin{corollary}
+El criterio de Eisenstein permite construir polinomios irreducibles de grado arbitrario. 
+\end{corollary}
+
+\begin{example}[Ejemplos de aplicación del criterio de Eisenstein]
+\begin{enumerate}
+\item Sea $f = 2X^5 - 6X^3 + 9X^2 - 15 \in \mathbb{Z}[X]$. Determinar si $f$ es irreducible. 
+
+Observamos que $f$ es primitivo y basta aplicar el criterio de Eisenstein para $p = 3$. 
+
+\item Sea $f = Y^3 + X^2Y^2 + XY + X \in \mathbb{Z}[X,Y]$. Determinar si $f$ es irreducible. 
+
+Observamos que $X$ es irreducible en $\mathbb{Z}[X]$ y como $\mathbb{Z}[X]$ es un DFU, $X$ es primo. Viendo $\mathbb{Z}[X,Y] = \mathbb{Z}[X][Y]$, como $X$ divide todos los coeficientes salvo el de $Y^3$ y $X^2 \nmid X$, se deduce que $f$ es irreducible. El resultado seguiría siendo válido en $\mathbb{Q}[X]$. 
+\end{enumerate}
+\end{example}
+
+\subsection{Criterio de irreducibilidad por traslación}
+
+Sea $A$ un DFU y $a \in A$. Por la propiedad universal de los anillos de polinomios considerando como homomorfismo la inclusión canónica de $A$ en su anillo de polinomios, existe un único homomorfismo $A[X] \to A[X]$ tal que $x \mapsto x+a$:
+
+\begin{tikzcd}
+	A \arrow{r}{\lambda} \arrow{dr}[swap]{i} &
+	A[X] \arrow[dashed]{d}{i_{x+a}} \\
+	& A[X] \ni x+a
+\end{tikzcd}
+
+En general, $i_{x+a}(\sum a_iX^i) = \sum a_i(x+a)^i$. Para ver que es un isomorfismo, basta ver que es homomorfismo \cite{link3} y que tiene inverso (por la caracterización de aplicaciones biyectivas). Su inverso es: $$i_{x+a}^{-1}:A[X] \to A[X] \text{ tal que } x \mapsto x-a$$ Como la irreducibilidad se preserva por isomorfismo tenemos el siguiente:
+
+\begin{theorem}[Irreducibilidad por traslación]
+Un polinomio $f \in A[X]$ es irreducible $\iff i_{x+a}(f)$ es irreducible. 
+\end{theorem}
+
+
+\begin{example}
+La irreducibilidad del polinomio $f = X^4+1 \in \mathbb{Z}[X]$ no se sigue de los criterios tradicionales, sin embargo: $$f(X+1) = (X+1)^4 + 1 = X^4 + 4X^3 + 6X^4 + 4X^4 + 2$$ Este es irreducible usando por ejemplo el criterio de Eisenstein con $p = 2$. 
+\end{example}
+
+\subsection{Método de Kronecker para la factorización de polinomios}
+
+Si buscamos una factorización de un polinomio $f \in \mathbb{Z}[X]$ no tendríamos en principio garantizado que los factores tuvieran los coeficientes en $\mathbb{Z}$ sino que tendríamos que trabajar con el algoritmo de la división en $\mathbb{Q}[X]$ y obtendríamos factores con coeficientes racionales. Sin embargo, sabemos que si un polinomio es irreducible en los enteros también lo es en los racionales y viceversa. Esto nos garantiza que alguna de las factorizaciones tiene coeficientes enteros. El método de Kronecker permite encontrar una tal factorización o probar que el polinomio es irreducible. 
+
+En una factorización $f = gh$ con $gr(f) = n \ge 1$, el grado de uno de los factores es como mucho $m = E(n/2)$ donde denota la parte entera. Por tanto, el valor de $g$ queda determinado conociendo su valor en $m+1$ puntos distintos. Sean $x_0,\ldots,x_m$ enteros distintos. Tenemos que $f(x_i) = g(x_i)h(x_i)$ de modo que los posibles valores de $g(x_i)$ se encuentran entre los divisores del entero $f(x_i)$.
+
+Procedemos del siguiente modo:
+
+\begin{enumerate}
+\item Para cada $i$, evaluar $f(x_i)$ y encontrar los divisores de $f(x_i)$.
+
+\item Para cada m-tupla de divisores $(d_0,\ldots,d_{m})$ con $d_i$ divisor de $f(x_i)$, hacemos $g(x_i) = d_i$ de modo que se tienen los valores de $g$ en $m+1$ puntos. Como $f(x_i)$ es un entero, tiene un número finito de divisores y por tanto, hay un número finito de polinomios que construir. 
+
+\item Se construye el polinomio $g = \sum d_i l_i(x)$ donde $l_i(x)$ son los polinomios de la base de Lagrange para los nodos $x_i$. Si los coeficientes de este polinomio no son enteros o son enteros pero el polinomio no divide a $f$, se rechaza y se prueba con otra $(m+1)$-tupla de divisores. 
+
+\item Si no se encuentra ningún $g$ que divida a $f$ con coeficientes enteros, entonces $f$ es irreducible sobre los enteros y por tanto, por el lema de Gauss también sobre $\mathbb{Q}$.
+\end{enumerate} 
+
+Podemos justificar formalmente los pasos formulados anteriormente:
+
+Sea $K$ un cuerpo y $n \in \mathbb{N}$. Sea $\mathbb{P}_n(K) = \{f \in K[X]: deg \; f \le n \}$ la familia de polinomios de grado menor o igual que $n$. Se tiene que $\mathbb{P}_n(K)$ es un $K$-espacio vectorial y $\{1,X,\ldots,X^n\}$ es una base. En particular, $dim \; \mathbb{P}_n(K) = n+1$. 
+
+\begin{proposition}[Propiedad fundamental de las bases de Lagrange]
+Supongamos que $x_0,\ldots,x_n \in K$ con $x_i$ distintos dos a dos. La aplicación $T:\mathbb{P}_n(K) \to K^{n+1}$ definida por $T(f) = (f(x_0),\ldots,f(x_n))$ es un isomorfismo de espacios vectoriales. En otras palabras, para cada $n+1$-tupla existe un polinomio de grado menor o igual que $n+1$ que en los nodos toma el valor de la tupla. 
+\end{proposition}
+\begin{proof}
+Fácilmente, se prueba que $T$ es lineal. 
+
+Como ambos espacios vectoriales tienen la misma dimensión, bastaría probar que es sobreyectiva para tener un isomorfismo (por la fórmula de las dimensiones y la caracterización de inyectividad en términos de la dimensión del núcleo). 
+
+Fijado $(y_0,\ldots,y_n) \in K^{n+1}$, queremos hallar $f \in \mathbb{P}_n$ tal que $f(x_i) = y_i$. Podemos hacer esto fácilmente, haciendo uso de las bases de interpolación de Lagrange. Si definimos $\pi_i(x) = \prod_{j = 0,j \neq i}^n \frac{x-x_j}{x_i-x_j}$. Claramente, $\pi_i \in \mathbb{P}_n(K)$ y $\pi_i(x_j) = 1$ si $j = i$ y $\pi_i(x_j) = 0$ si $j \neq i$ y por tanto, bastaría definir $f = \sum y_i \pi_i$. 
+\end{proof}
+
+\begin{example}
+$f = 3X^5 - X^4 - 4X^3 - 2X^2 + 2X + 1 \in \mathbb{Z}[X]$. Determinar si es irreducible. 
+
+Claramente, el polinomio es primitivo y basta estudiar su irreducibilidad sobre $\mathbb{Q}[X]$. 
+
+Los posibles factores lineales corresponden a las raíces en $\mathbb{Q}$ que por la regla de Ruffini son $\{1,-1,1/3,-1/3\}$. Sin embargo, se comprueba que ninguno de estos es raíz del polinomio.
+
+Reduciendo módulo 2, $\overline{f} = X^5+X^4+1 = (X^2+X+1)(X^3+X+1)$ y por tanto, no podemos descartar la existencia de factores de grado 2. Aplicamos el método de Kronecker para determinarlos. Supongamos que la forma del factor es $g(X) = \sum a_i \pi_i(X)$ con los valores especificados en esta tabla: 
+
+$\begin{array}{|c|c|c|c|} \hline 
+x_i & f(x_i) & \pi_i     & a_i  \\ \hline 
+-1  & -3 & x(x-1)/2      & g(-1) \in \{1,-1,3,-3\} \\ \hline 
+0   & 1  & (x+1)(x-1)/-1 & g(0) \in \{1,-1 \} \\ \hline 
+1   & -1 & x(x+1)/2      & g(1) \in \{1,-1 \} \\ \hline 
+\end{array}$
+
+Tratando las 16 posibilidades se llega a que una solución es $a_0 = 3, a_1 = -1, a_2 = 1$ de donde me sale $g(X) = 3X^2-X+1$ y $f(X) = (3X^2-X+1)(X^3-X-1)$.
+\end{example}
+
+\begin{example}
+$f = X^4 + 4X^3 - X^2 - 4X +1 \in \mathbb{Z}[X]$. Determinar si es irreducible. 
+
+Claramente, el polinomio es primitivo y basta estudiar su irreduciblidad sobre $\mathbb{Q}[X]$.
+
+Los posibles factores lineales corresponden a las raíces en $\mathbb{Q}$que por la regla de Ruffini son $\{1,-1\}$. Sin embargo, se comprueba que ninguno de estos es raíz del polinomio.
+
+Reduciendo módulo 2, $\overline{f} = X^4+X^2+1 = (X^2+X+1)^2$, y reduciendo módulo 3, $\overline{f} = X^4+X^3+2X^2+X+1 = (X+2)^2(X^2+1)$ y por tanto, no podemos descartar la existencia de factores de grado $2$. Aplicamos el método de Kronecker para determinarlos. Supongamos que la forma del factor es $g(X) = \sum a_i \pi_i(X)$ con los valores especificados en esta tabla:
+
+$\begin{array}{|c|c|c|c|} \hline 
+x_i & f(x_i) & \pi_i     & a_i  \\ \hline 
+-1  & -7 & (x+1)x/12    & g(-1) \in \{1,-1,7,-7\} \\ \hline 
+0   & 1  & -(x+4)x/3    & g(0)  \in \{1,-1 \} \\ \hline 
+-4  & 1  & (x+4)(x+1)/4 & g(-4) \in \{1,-1 \} \\ \hline 
+\end{array}$
+
+Un truco para ahorrar cuentas sería observar:
+
+$g(X)= \frac{(a_0-4a_1+3a_2)X^2 + \ldots}{12}$
+
+y entonces como el coeficiente líder del factor tendría que ser una unidad en $\mathbb{Z}$, se tendría que $a_0-4a_1+3a_2 = 12 \lor -12$ y podemos reducir esta ecuación para hacerla más sencilla a $a_0+2a_1 \equiv 0 \; mod(3)$. Teniendo en cuenta el rango de valores que pueden tomar los $a_i$:
+
+$a_0 = 1 \implies a_1 = 1,7 \implies a_0-4a_1+3a_2 = 5 + 3a_2 \lor -27 + 3a_2 \neq 12 \lor -12$
+
+$a_0 = -1 \implies a_1 = -1,-7 \implies a_0-4a_1+3a_2 = 5 + 3a_2 \lor -27 + 3a_2 \neq 12 \lor -12$
+
+En consecuencia, $f$ debe ser irreducible. 
+\end{example}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,224 @@
+\subsection{Determinante}
+
+\begin{definition}
+Una función $f: M_n(R) \rightarrow R$ se dice que es lineal en columnas si verifica que $$f((aA_1+bA_1',A_2,\cdots,A_n)) = af((A_1,A_2,\cdots,A_n)) + bf((A_1',A_2,\cdots,A_n))$$ y lo mismo para las demás columnas.
+
+Una función se dice que es alternada si es lineal en columnas y $$f((A_1,\cdots,A_n)) = 0$$ si $A_i = A_j$ para algún $i \neq j$.
+
+Una función $d: M_n(R) \rightarrow R$ es una función determinante si es alternada y $f(I_n) = 1$.
+\end{definition}
+
+Veamos que existe una única función determinante y su relación con las funciones alternadas.
+
+Dada $A = (a_{ij})_{i,j \in I_n}$ definimos $d(A) = \sum_{[i_1,\cdots,i_n] \in S_n} s[i_1,\cdots,i_n] a_{i_11} \cdots a_{i_nn}$
+
+\begin{lemma}[Función es determinante]
+La función $d$ es una función determinante.
+\end{lemma}
+
+\begin{lemma}[Invariancia salvo signatura frente a permutaciones en columnas]
+Si $f: M_n(R) \rightarrow R$ es alternada entonces $\forall \sigma \in S_n.f(A_{\sigma(1)},\cdots,A_{\sigma(n)}) = s(\sigma)f(A_1,\cdots,A_n)$.
+\end{lemma}
+\begin{proof}
+Bastará demostrarlo para una trasposición ya que toda permutación se escribe como producto de transposición y la signatura de una permutación es un homomorfismo de grupos.
+
+Por tanto fijemos $\sigma = (i \; j)$ con i < j. Escribamos $$f((U,V)) = f((A_1,\cdots,A_{i-1},U,A_{i+1},\cdots,A_{j-1},V,\cdots,A_n))$$
+
+Por un lado, $$f(U+V,V+U) = 0$$ ya que $f$ es alternada. Por otro lado, $$f(U+V,U+V) = f(U,U+V) + f(U,U+V) = f(U,U) + f(U,V) + f(V,U) + f(V,V) = f(U,V) + f(V,U)$$ donde hemos usado de nuevo que $f$ es alternada y lineal en columnas.
+
+En consecuencia $f(U,V) = -f(V,U)$ y aplicando esto a nuestro problema $f(A_i,A_j) = - f(A_j,A_i)$.
+\end{proof}
+
+\begin{proposition}
+Si $f: M_n(R) \rightarrow R$ es alternada entonces $\forall A. f(A) = f(I_n)d(A)$. En consecuencia, la función determinante es única.
+\end{proposition}
+\begin{proof}
+Notemos por $e_i$ al vector cuya i-esima componente es uno y el resto de sus componentes son cero. 
+
+Escribamos, $f(A) = f((A_1,\cdots,A_n)) = f((\sum_{i_1 = 1}^{n} a_{i_11}e_{i_1},\cdots,\sum_{i_n = 1}^{n} a_{i_nn}e_{i_n}))$
+
+Considerando el efecto de la linealidad por columnas tenemos $$\sum_{i_1,\cdots,i_n = 1}^n a_{i_11}\cdots a_{i_nn} f(e_{i_1},e_{i_2},\cdots,e_{i_n})$$
+
+Consideremos ahora que podemos prescindir de los términos donde $e_{i_i} = e_{i_j}$ ya que en este caso el valor del término es cero por ser $f$ una función alternada. Luego, podemos considerar los índices del sumatorio todos distintos. Como estos índices son índices de la matriz, lo que tenemos es un sumatorio sobre las posibles permutaciones $$\sum_{[i_1,\cdots,i_n] \in S_n} a_{i_11}\cdots a_{i_nn} f(e_{i_1},e_{i_2},\cdots,e_{i_n})$$
+
+A continuación utilizamos el lema anterior por el que sabemos que $$f(e_{i_1},e_{i_2},\cdots, e_{i_n}) = s([i_1,\cdots,i_n])f(e_1,\cdots,e_n)$$ y por tanto la sumatoria se simplifica a $f(I_n) = d(A)$.
+
+Una función determinante distinta de $d$ verificaría entonces $f(A) = f(I_n) d(A) = d(A)$ y por tanto $d$ es la única función determinante. 
+\end{proof}
+
+Denotaremos a la función $d$ como $|\cdot|$.
+
+\begin{corollary}
+1. $|AB| = |A||B|$ \\
+2. $|A| = |A^t|$ \\
+3. $|(A_{\sigma(1)},\cdots,A_{\sigma(n)})| = s(\sigma) |(A_1,\cdots,A_n)|$ \\
+4. $|(A_1,\cdots,aA_1,\cdots,A_n)| = a|(A_1,\cdots,A_n)|$ con $a \in R$ \\
+5. $|(A_1,\cdots,A_i+A_j,\cdots,A_n)| = |(A_1,\cdots,A_i,\cdots,A_n)|+|(A_1,\cdots,A_j,\cdots,A_n)|$ \\
+6. $|(A_1,\cdots,A_i+aA_j,\cdots,A_n)| = |(A_1,\cdots,A_i,\cdots,A_n)|$ con $a \in R$. \\
+7. Si $A \in U(M_n(R))$ entonces $|A| \in U(R)$.
+\end{corollary}
+\begin{proof}
+1. Se fija $A \in M_n(R)$ y se considera que $AB = (AB_1,\cdots,AB_n)$. Es claro que la aplicación que asigna a cada $B$ el determinante $|AB|$ es entonces una función alternada ya que si dos columnas de $B$ coincidieran también coincidirían las respectivas columnas de la matriz producto. 
+
+En vista de la proposición anterior se tiene que, $|AB| = |AI_n| |B| = |A||B|$. Esta propiedad afirma que el determinante es un homomorfismo del monoide $M_n(R)$ en $R$.
+
+2. Esta propiedad se deduce observando que el proceso hasta aquí construido es análogo si se cambian las filas por las columnas.
+
+3. Esta propiedad es consecuencia de que $|\cdot|$ es alternada y usando la invariancia salvo signatura ante permutaciones en columnas.
+
+4. Se deduce de la propia definición del determinante. En efecto, $\sum_{[i_1,\cdots,i_n] \in S_n} s[i_1,\cdots,i_n] a_{i_11} \cdots a_{i_ii}\cdots a_{i_nn} = \sum_{[i_1,\cdots,i_n] \in S_n} s[i_1,\cdots,i_n] a_{i_11} \cdots aa_{i_ii}\cdots a_{i_nn} = a\sum_{[i_1,\cdots,i_n] \in S_n} s[i_1,\cdots,i_n] a_{i_11} \cdots a_{i_ii}\cdots a_{i_nn}$.
+
+5. Se deduce de forma similar al anterior punto.
+
+6. Aplíquese los puntos cuarto y quinto y la definición de función alternada. Como consecuencia el determinante de una matriz que tiene una fila o columna de ceros es nulo. 
+
+7. Como  $A \in U(M_n(R))$, existe $A^{-1}$ y por tanto su determinante está definido. Como $|I_n| = |AA^{-1}| = |A||A^{-1}|$. De aquí, $|A| \in U(R)$.
+\end{proof}
+
+\subsection{Cálculo de la inversa}
+
+Vamos a utilizar el método de desarrollo del determinante por columnas. Podremos escribir $|A| = a_{1j}A_{1j} + a_{2j}A_{2j}+ \cdots + a_{nj}A_{nj}$ para $j$ fijo. Para ello vamos a determinar los $A_{ij}$, que son llamados cofactores. Denotemos por $\alpha_{ij}$ al determinante de la matriz que resulta de eliminar en $A$ la fila $i$ y la columna $j$.
+
+Para calcular $A_{nn}$ sumamos los términos del determinante en que $i_n = n$: $$\sum_{[i_1,\cdots,i_{n-1}] \in S_{n-1}} s([i_1,\cdots,i_{n-1}]) a_{i_11} \cdots a_{i_{n-1}n-1}$$ Esto coincide con $\alpha_{nn}$. 
+
+Para calcular $A_{ij}$ llevamos la i-ésima fila en la última y las intermedias se desplazan hacia arriba manteniendo su orden. Este proceso implica realizar $n-i$ transposiciones $(n-1,n) \cdots (i+1,i+2)(i,i+1)$. El proceso se repite para las columnas. Esto es, se lleva la j-ésima a la última columna y se realizan $n-j$ transposiciones $(n-1,n)\cdots(j+1,j+2)(j,j+1)$.
+
+El valor del cofactor $A_{ij}$, coincide con $\alpha'_{nn}$ donde $\alpha'$ se refiere a la matriz transformada. El determinante de la matriz transformada se diferencia en un signo $(-1)^{n-i+n-j} = (-1)^{i+j}$ del de la matriz original. Se obtiene así una fórmula para el cálculo del cofactor: $A_{ij} = (-1)^{i+j}\alpha_{ij}$. 
+
+\begin{definition}[Matriz adjunta]
+La matriz adjunta de $A$ es $adj(A) = (A_{ij})$
+\end{definition}
+
+\begin{lemma}[Relación entre la adjunto y la matriz original]
+Se verifica que $A adj(A)^t = |A| I_n = adj(A)^t A$
+\end{lemma}
+\begin{proof}
+En efecto, multipliquemos la fila $i$ de $A$ por la columna $j$ de $adj(A)^t$ donde suponemos que $i \neq j$. Nos queda $0 = a_{1i}A_{j1}+a_{2i}A_{j2}+\cdots+a_{ni}A_{jn}$. Esta igualdad es cierta observando que la expresión lineal en el miembro derecho contiene los cofactores correspondientes a un desarrollo por la fila $j$ de la matriz $A$. Sin embargo, los coeficientes que acompañan a estos cofactores no son los coeficientes de la matriz en la fila $j$ sino los coeficientes de la matriz en la fila $i$. Esto se puede interpretar como el desarrollo de una matriz idéntica a la matriz $A$ salvo en la fila $j$ donde se sustituyen los coeficientes por los coeficientes de la fila $i$. La repetición de dos filas implica que el determinante es cero. Por tanto, se tiene que la matriz $A adj(A)^t$ tiene ceros fuera de su diagonal.
+
+Por otro lado, si multiplicamos la fila $i$ de $A$ por la columna $i$ de $adj(A)^t$, obtenemos la expresión lineal $|A| = a_{i1}A_{i1}+a_{i2}A_{i2}+\cdots+a_{in}A_{in}$. La expresión lineal a la derecha es precisamente, el determinante de la matriz $A$. Análogamente se procede para demostrar la igualdad izquierda. 
+\end{proof}
+
+\begin{proposition}[Cálculo de la inversa]
+Si $R$ es un anillo conmutativo y $A \in M_n(R)$ entonces $A \in U(M_n(R)) \iff |A| \in U(R)$ en cuyo caso $A^{-1} = \frac{1}{|A|}adj(A)^t$.
+\end{proposition}
+\begin{proof}
+El apartado 7. del corolario anterior nos da la implicación derecha. Para ver la implicación izquierda asumimos que $|A| \in U(R)$ y usamos el lema anterior.
+
+Sabemos que $A adj(A)^t = |A| I_n$. Multiplicando a izquierdas por la matriz inversa y multiplicando por el inverso del determinante, que está permitido ya que es una unidad por hipótesis, se obtiene la expresión requerida. 
+\end{proof}
+
+\begin{corollary}[Inversa en cuerpos]
+Si $F$ es un cuerpo entonces $A \in U(M_n(R)) \iff |A| \neq 0$
+\end{corollary}
+
+\subsection{Forma normal de Smith}
+
+Sea $R$ un anillo conmutativo. Definimos una relación de equivalencia en $M_{m \times n}(R)$.
+
+\begin{definition}
+$A,B \in M_{m \times n}(R)$ son equivalentes si existen matrices $P,Q \in Gl_n(R)$ tales que $B = PAQ$. 
+\end{definition}
+
+Esta relación es una relación de equivalencia. Es conocido de la teoría de conjutnos que una relación de equivalencia determina una partición del conjunto al que se refiere y recíprocamente. Como es usual, clasificar respecto a una relación de equivalencia no es más que establecer criterios que determinen a que clase de equivalencia pertenece cada elemento. Aquí se extiende el criterio del rango conocido del álgebra lineal a anillos cualesquiera.
+
+\begin{theorem}[Forma normal de Smith]
+Sea $R$ un dominio de ideales principales y $A \in M_{m \times n}(R)$, existen únicos salvo asociados $d_1,\cdots,d_r \in R - \{0\}$  con $d_i | d_{i+1}$ para $1 \leq i < r$ y $r \leq min(m,n)$ tales que $A$ es equivalente a la matriz: \[
+\sbox0{$\begin{matrix}d_ 1 & 0 & \cdots & 0 \\ 0 & d_2 & \cdots & 0 \\ 0 & 0 & \cdots & d_r \end{matrix}$}
+%
+C=\left[
+\begin{array}{c|c}
+\usebox{0}&\makebox[\wd0]{\large $0$}\\
+\hline
+  \vphantom{\usebox{0}}\makebox[\wd0]{\large $0$}&\makebox[\wd0]{\large $0$}
+\end{array}
+\right]
+\]
+
+Como consecuencia, $A \sim B \iff d_i(A) = d_i(B)$ salvo asociados. A esta lista $d_i$ se le llama factores invariantes de la matriz. Obsérvese que es una lista ordenada.
+\end{theorem}
+\begin{proof}
+Veamos primero la \textbf{existencia} de esta lista. Denotaremos por $e_{ij}$ a la matriz en $M_{m \times n}(R)$ cuya expresión es 1 en la posición $(i,j)$ y 0 en otro caso. Tomemos dos matrices $e_{ij},e_{kl}$ cuyo producto esté definido. Observemos razonando a partir de la expresión por cada componente del producto de matrices, que $e_{ij}e_{kl} = e_{il}$ si $j = k$ y es la matriz nula en otro caso. Escribamos también convenientemente $A = \sum_{k,l} a_{kl}e_{kl}$. 
+
+Calculemos $e_{ij}A = \sum_{k,l} a_{kl}e_{kl}e_{ij} = \sum_{l} a_{jl}e_{il}$. Esta matriz es una matriz de ceros que en su fila $i$ contiene los elementos de la columna $j$ de la matriz $A$. De forma análoga, se obtiene que la matriz $Ae_{ij}$ es una matriz de ceros qque en la columna $j$, presenta la columna $i$ de la matriz $A$. 
+
+Vamos a definir transformaciones de la matriz $A$ que producen matrices equivalentes.
+
+1. Sumar a una fila un múltiplo de una paralela.
+
+Para $a \in R, i \neq j$, $T_{ij}(a) = I + ae_{ij}$. La matriz $T_{ij}$ es unidad ya que su determinante es $1$. Por tanto, $T_{ij}(a)A$ es una matriz equivalente a $A$ cuyas filas son iguales salvo la i-ésima que es la original más $a$ veces la j-ésima. 
+
+2. Multiplicar una fila o columna por una unidad del anillo.
+
+Para $u \in U(R)$, $D_i(u) = I - e_{ii} +ue_{ii}$. Esta matriz es una matriz diagonal de unos que en el elmento $i$ de la diagonal tiene $u$. Dado que $u$ es unidad, tenemos que $D_i(u)$ es unidad. Por tanto, $D_i(u)A$ es una matriz equivalente a $A$ cuyas columnas son iguales a la original salvo la i-ésima que queda multiplicada por $u$. 
+
+3. Permutar filas o columnas. 
+
+Finalmente, tomo $P_{ij} = I - e_{ij} + e_{ij} + e_{ji}$ que es una matriz identidad con ceros en las posiciones $i$ y $j$ de la diagonal y con unos en las posiciones $(j,i)$ e $(i,j)$. Esta matriz es invertible y su inversa es ella misma. De modo que, $P_{ij}A$ es una matriz equivalente a $A$ cuyas filas son iguales a la original excepto la $i$ y  la $j$ que aparecen permutadas. De forma similar, $AP_{ij}$ es una matriz cuyas columnas son iguales a la original salvo la $i$ y la $j$ que aparecen permutadas. 
+
+Por comodidad, haremos la prueba en dominios euclídeos donde la tercera operación no es estrictamente necesaria. 
+
+Añadamos pues a $R$ la condición de ser dominio euclídeo con función de evaluación $\phi$ y tomemos una matriz $A \in M_{m \times n}(R)$. Si $A$ fuera cero habríamos acabado. En otro caso, procedamos del siguiente modo:
+
+1. Llamemos $\phi(A) = min\{\phi(a_{ij}):a_{ij} \neq 0\} \in \mathbb{N}$ al valor mínimo de la función de evaluación sobre los elementos de la matriz. Usando operaciones elementales puedo situar $\phi(A)$ en la posición $(1,1)$ de la matriz. 
+
+2. Tomemos los elementos de la primera fila de la matriz. Supongamos que $a_{1k}$ no es múltiplo de $a_11$ entonces podemos dividir entre $a_11$ obteniendo $a_{1k} = a_{11}q + r$ donde $0 < r < \phi(a_11)$. Entonces restamos la primera columna multiplicada por $q$ a la k-ésima columna. De este modo $a_{1k} = r$ y para este se verifica que $\phi(a_{1k}) < \phi(a_{11})$. 
+
+3. Repítanse los pasos 1 y 2 del proceso anterior hasta obtener una matriz en que $\phi(a_{11})$ es mínimo y todos los elementos de la primera fila son múltiplos de $a_11$. 
+
+4. Una vez conseguidas las condiciones del apartado 3, es evidente que podemos restar columnas para obtener una matriz cuya primera fila es nula salvo quizás el primer elemento. 
+
+5. Repítanse los pasos 1, 2, 3 y 4 intercambiando el papel de filas y columnas hasta obtener una matriz cuya primera columna es nula salvo quizás el primer elemento. Obsérvese también que en esta forma, se verifica que $a_{11}$ divide a todos los $b_{ij}$ ya que en otro caso, tomaríamos el elemento $b_{kl}$ que no es divisible por $a_11$ y sumaríamos la fila $k$ a la primera fila iterando el proceso en $b_{kl}$. La hipótesis de dominio euclídeo permite afirmar que este proceso tiene un final.
+
+6. Repítanse los pasos 1,2,3,4 y 5 aplicándolos a la submatriz que resulta de eliminar la primera fila y la primera columna de la matriz correspondiente.
+
+Veamos ahora la \textbf{unicidad} y la condición de divisibilidad. 
+
+\begin{definition}[Menor de una matriz]
+Llamaremos menor de orden r de una matriz $A$ al determinante de una submatriz de $A$ resultante de eliminar $n-r$ filas y $m-r$ columnas.
+\end{definition}
+
+\begin{definition}[Rango de una matriz]
+El rango de una matriz es $r$ si hay un menor de orden $r$ no nulo y todos los menores de orden $r+1$ son nulos. 
+\end{definition}
+
+Obsérvese que si una matriz tiene un menor de orden $r$ no nulo también ha de tener un menor de orden $r-1$ no nulo. Para ello, basta observar el desarrollo por una fila o columna del determinante y notar que si todos los menores fueran nulos entonces el determinante original también lo sería.
+
+Fijemos $r = rango(A)$. Denotaremos $\Delta_r(A)$ al máximo común divisor de los r-menores de $A$ no nulos. Por la observación anterior, también podemos definir $\Delta_i(A)$ como el máximo común divisor de los i-menores de $A$ no nulos, donde $1 \leq i \leq r$. Veamos qué relación guardan estas magnitudes entre sí.
+
+1. Dado que $\Delta_i(A)$ es combinación lineal de los i-menores de $A$, se tiene que $\Delta_i(A) | \Delta_{i+1}(A)$.
+
+2. Si $Q \in Gl_n(R)$ entonces $\Delta_i(AQ) = \Delta_i(A)$. 
+
+Para observar $\Delta_i(AQ) | \Delta_i(A)$ observemos que cada columna de $AQ$ es combinación lineal de las columnas de la matriz $A$ y por tanto, los i-menores de $AQ$ son combinación lineal de los i-menores de $A$.
+
+Para observar $\Delta_i(A) | \Delta_i(AQ)$ observemos que como $Q$ es una matriz invertible tenemos $\Delta_i(AQ) | \Delta_i(AQQ^{-1}) = \Delta_i(A)$
+
+Por tanto se tiene que $\Delta_i(AQ) = \Delta_i(A)$ salvo asociados.
+
+3. Análogamente, Si $P \in Gl_n(R)$ entonces $\Delta_i(PA) = \Delta_i(A)$. 
+
+Los puntos 1,2 y 3 anteriores permiten finalmente afirmar que si dos matrices son equivalentes entonces $\Delta_i(A) = \Delta_i(B) \; \forall i$ y en particular tienen el mismo rango. Con esta observación podemos abordar la unicidad. Tomando menores en la forma de Smith del enunciado nos damos cuenta que debe tomarse $d_1 = \Delta_1(A)$ y $d_i = \frac{\Delta_i(A)}{\Delta_{i-1}(A)}$ de modo que se tiene la condición de divisibilidad salvo asociados y existencia nos garantiza que esta es la única forma equivalente. 
+
+Aplicando la transitividad de la relación de equivalencia, tenemos que si dos matrices son equivalentes ello equivale a la igualdad de la lista de factores invariantes. 
+\end{proof}
+
+En este curso trabajaremos sobre $\mathbb{Z}$ donde por convención eligiremos los factores positivos y en $K[X]$ con $K$ un cuerpo donde eligiremos por convención los polinomios mónicos. En ambos casos conseguimos con esta convención unicidad sin asociados. Nótese también que si estuviéramos en un cuerpo como todos los elementos serían unidades, podríamos tomar los factores invariantes como unos. Esta es la definición de rango del álgebra lineal. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,285 @@
+\subsection{Definiciones básicas}
+
+Un módulo es la extensión de la noción de espacio vectorial cuando los esclares se mueven en un anillo en lugar de un cuerpo. 
+
+\begin{definition}[Módulo]
+Sea $R$ un anillo conmutativo. 
+
+Un módulo sobre $R$ es un conjunto $M$ no vacío en el cual se define una operación interna suma $+:M \times M \to M$ y una operación externa producto por escalares $\cdot:R \times M \to M$. Verificando los siguientes axiomas:
+
+\begin{enumerate}
+\item Asociativa: $(x+y)+z = x+(y+z)$
+\item Elemento neutro: $\exists 0 \in M.x+0 = x = 0+x$.
+\item Elemento opuesto: $\forall x \in M.\exists -x.x+(-x) = 0 = (-x)+x$
+\item Conmutativa: $x+y = y+x$
+\end{enumerate}
+
+En resumen, $(M,+)$ es un grupo abeliano. Además:
+
+\begin{enumerate}
+\item Pseudo-distributiva (2 escalares, 1 vector): $(a+b)x = ax+by$
+\item Pseudo-distributiva (1 escalar, 2 vectores): $a(x+y) = ax+ay$
+\item Pseudo-asociativa: $a(bx) = (ab)x$
+\item Unimodular: $1x = x$
+\end{enumerate}
+\end{definition}
+
+Notamos que si $R$ es un cuerpo entonces $(M,+,\cdot)$ es un espacio vectorial sobre $R$. Además, si $M = R$ tenemos las propiedades de anillo para $R$, es decir todo anillo se puede considerar como módulo sobre sí mismo. En otras palabras el segundo conjunto de propiedades son las que faltarían a la segunda operación si fuera interna para constintuir un anillo. 
+
+\begin{corollary}[Propiedades generales]
+\begin{enumerate}
+\item $0x = 0$
+\item $a0 = 0$
+\item $ax = 0 \land a \in U(R) \implies x = 0$
+\item $-(ax) = (-a)x = a(-x) \equiv -ax$
+\item $a(x-y) = ax-ay$
+\item $(a-b)x = ax - bx$
+\item Distributividad generalizada: $\Big(\sum_{i = 1}^n a_i\Big)\Big(\sum_{j = 1}^m x_j\Big) = \sum_{i = 1}^n \sum_{j = 1}^m a_ix_j$
+\end{enumerate}
+\end{corollary}
+
+\begin{example}[Primeros ejemplos de módulos]
+\begin{enumerate}
+\item Si $R = \mathbb{Z}$, obtenemos los grupos abelianos.
+
+En efecto, dado un grupo abeliano adivitivo $M$ habíamos definido para $x \in M,n \in \mathbb{Z}$, el significado de $nx$ como:
+
+$
+nx =
+\begin{cases}
+ n > 0 & 1x = x, (n+1)x = nx+x \\
+ n = 0 & 0x = 0 \\
+ n < 0 & (-n)x = -(nx)
+\end{cases}
+$ 
+
+y habíamos visto que:
+
+\begin{enumerate}
+\item $(n+m)x = nx + mx$
+\item $n(x+y) = nx+ny$
+\item $n(mx) = (nm)x$
+\item $1x = x$
+\end{enumerate}
+
+por tanto, todo grupo abeliano tiene estrutura de $\mathbb{Z}$-módulo con esta operación producto y además esta es la única definición posible, ya que para cualquier otra operación externa, se verifica que:
+
+\begin{enumerate}
+\item $1x = x$ (unimodular)
+\item $(n+1)x = nx + x$ (pseudo-distributiva)
+\item $0x = 0$ (corolario)
+\item $(-n)x = -(nx)$ (pseudo-asociativa)
+\end{enumerate} 
+
+que es la definición inductiva que se dio. Claramente, siempre que $M$ sea un módulo será un grupo abeliano con la suma. 
+
+\item Si $K$ es un cuerpo y $V$ es un $K$-espacio vectorial, el conjunto de endomorfismos de espacios vectoriales con coeficientes en $K$ sería: $$End_K(V) = \{T:V \to V:T(u+v) = T(u) + T(v),T(\lambda v) = \lambda T(v) \}$$ Se verifica que $End_K(V)$ tiene estrucutra de $K$-espacio vectorial con las operaciones $(T+T')(u) = T(u)+T'(u)$ y $(\lambda T)(u) = \lambda T(u)$. Este espacio vectorial es de forma usual isomorfo a las matrices cuadradas de orden la dimensión de $V$. 
+
+Podemos definir también un operación interna producto $(T \cdot T')(u) = T(T'(u))$ correspondiente a la composición de aplicaciones. Se verifica que $(End_K(V),+,\cdot)$ es un anillo que de nuevo será isomorfo a las matrices cuadradas de orden la dimensión de $V$. En este anillo tiene sentido la expresión $\Big(\sum a_iT^i\Big)(u) = \sum a_iT^i(u)$. 
+
+\item Si $R = K[X]$ con $K$ un cuerpo, obtenemos parejas $(M,T)$ donde $M$ es un espacio vectorial sobre $K$ y $T$ es un endomorfismo $T:M \to M$. 
+
+Sea $M$ un $K[X]$-módulo. Como $K \subseteq K[X]$ es un subcuerpo, la multiplicación $K[X] \times M \to M$ se puede restringir a una multiplicación $K \times M \to M$ que dota a $M$ de estructura de espacio vectorial sobre $K$. 
+
+Sea $T:M \to M$ tal que $u \mapsto xu$. Se verifica que $T$ es un endomorfismo en el espacio vectorial $M$. En efecto, 
+
+\begin{enumerate}
+\item $T(u+v) = x(u+v) = xu+xv = T(u)+T(v)$ por la propiedad de pseudo-distributividad.
+
+\item $T(au) = x(au) = a(xu) = aT(u)$ por la propiedad de pseudo-asociatividad y la conmutatividad del producto de polinomios. 
+\end{enumerate}
+
+Veamos que $\forall n \ge 0.x^nu = T^n(u)$. En efecto:
+
+\begin{enumerate}
+\item Si $n = 0$  entonces $x^ou = 1u = uT^0(u)$
+\item Si $n = 1$ entonces tenemos la propia definición. 
+\item Si lo asumimos para $n$, lo comprobamos para $n+1$ con: $$x^{n+1}u = (xx^n)u = x(x^nu) = x(T^n(u)) = T(T^n(u)) = T^{n+1}(u)$$
+\end{enumerate}
+
+También se verifica que $(ax^n)u = (aT^n)(u)$ ya que $(ax^n)u = a(x^nu) = a(T^n(u)) = (aT^n)u$. 
+
+Finalmente, $(\sum a_iX^i)u = (\sum a_iT^i)(u) \equiv (f[T])(u)$. 
+
+Observemos que lo que hemos hecho ha sido para cada polinomio definir cómo debe actuar la operación externa sobre los elementos de $M$ teniendo en cuenta la definición de $K[X]$-módulo. Para ello nos ha sido útil fijar el endomorfismo $u \mapsto xu$. 
+
+Recíprocamente, si $V$ es un $K$-espacio vectorial y $T:V \to V \in End_K(V)$ entonces $V$ es un $K[X]$-módulo con la suma de vectores en $V$ y con la operación externa dada por $\Big(\sum a_iX^i\Big)u = \sum a_i T^i(u) = \Big(\sum a_iT^i \Big)(u)$ que podemos denotar $p(x)v = p(T)(v)$. 
+\end{enumerate}
+\end{example}
+
+\begin{definition}[Submódulo]
+Sea $R$ un anillo conmutativo y $M$ un $R$-módulo. 
+
+Un subconjunto $N \subseteq M$ no vacío es un submódulo si:
+
+\begin{enumerate}
+\item $\forall x,y \in N. x+y \in N$
+\item $\forall x \in N,a \in R. ax \in N$
+\end{enumerate}
+
+equivalentemente,
+
+$\forall n \ge 0.x_i \in N,a_i \in R.\sum a_ix_i \in N$
+
+esto es si es cerrado para combinaciones lineales. 
+\end{definition}
+
+Observemos que el concepto de ieal es un caso particular del de submódulo cuando $M$ es el propio anillo $R$. Obsérvese también que los submódulos de un $R$-módulo son subgrupos de dicho $R$-módulo para la operación es suma. 
+
+\begin{example}
+\begin{enumerate}
+\item Si $R = K$ con $K$ un cuerpo, los submódulos son los subespacios vectoriales. 
+
+\item Si $R = \mathbb{Z}$, los submódulos son los grupos abelianos. 
+
+\item Si $R = K[X]$ un módulo se identifica por un par $(V,T)$ con $V$ espacio vectorial y $T$ un endomorfismo en él. En este ambiente, observamos que si $U$ es un submódulo entonces:
+
+\begin{itemize}
+\item $U$ es un subespacio vectorial.
+\item $T(U) \subseteq U$
+\end{itemize}
+
+la segunda propiedad se expresa diciendo que $U$ es un subepacio vectorial $T$-invariante de modo que $T$ restringe a un endormorfismo de $U$ en $U$, que llamamos $T'$. 
+
+Recíprocamente, cualquier subespacio vectorial $T$-invariante esun submódulo, en particular, un módulo identificado por el par $(U,T')$ con $T' = T|_U$. 
+\end{enumerate}
+\end{example}
+
+\subsection{Bases de módulos}
+
+\begin{definition}[Módulo libre]
+Un módulo que admite una base se dice libre. 
+\end{definition}
+
+\begin{example}
+Cuando $R = K$ es claro por la estructura vectorial que todos los módulos son libres.
+\end{example}
+
+Hay diferencias entre un módulo y un espacio vectorial que evitan que la demostración del siguiente teorema sea la usual. En particular:
+
+\begin{itemize}
+\item No de todo sistema de generadores se puede extraer una base. 
+\item No de todo conjunto de vectores linealmente independientes se puede extender hasta obtener una base. 
+\end{itemize}
+
+\begin{theorem}[Teorema de la dimensión]
+Si $B = \{e_1,\ldots,e_n \}$ y $B' = \{f_1,\ldots,f_m \}$ son bases de un módulo $M$ entonces $m = n$. 
+\end{theorem}
+
+\subsection{Homomorfismos de módulos}
+
+\begin{definition}[Homomorfismos de módulos]
+Un homomorfismo de módulo es aquel que respeta la operación suma y la operación producto por escalares.
+\end{definition}
+
+\begin{proposition}
+Sea $f$ un homomorfismo de módulos. Se verifican las siguientes propiedades:
+
+\begin{enumerate}
+\item $f(0) = 0$
+\item $f(-x) = -f(x)$
+\item $Img(f) = \{f(x):x \in M \} \subseteq M'$ es un submódulo de $M'$
+\item $Ker(f) = \{x \in M:f(x) = 0 \} \subseteq M$ es un submódulo de $M$.
+\item $f$ es monomorfismo $\iff Ker(f) = \{0\}$
+\item $f$ es epimorfismo $\iff Img(f) = M'$
+\end{enumerate}
+\end{proposition}
+
+\begin{example}
+\begin{enumerate}
+\item Si $R = \mathbb{Z}$ los homomorfismos de módulos son los homomorfismos entre grupos abelianos.
+
+\item Si $R = K[X]$ los homomorfismos son los homomorfismos entre espacios vectoriales tales que $ \forall u \in u. f(xu) = xf(u)$ o equivalentemente, $\forall u \in U. f(T(u)) = T'f(u)$ o esquemáticamente, $f \cdot T = T' \cdot f$
+\end{enumerate}
+\end{example}
+
+\subsection{Suma directa}
+
+\begin{definition}[Suma directa]
+Dados $M_1,\ldots,M_r \subseteq M$ submódulos de $M$. 
+
+$M$ es suma directa de estos submódulos si el homomomorfismo $\sum: M_1 \times \ldots M_r \to M$ tal que $(x_1,\ldots,x_r) = \sum_{i = 1}^r x_i$ es un isomorfismo. 
+
+Lo denotaremos por $M = \oplus_{i = 1}^r M_i$
+\end{definition}
+
+Observemos que $Img(\sum) = \{x_1+\ldots+x_r:x_i \in M_i \} = \sum_{i = 1}^r M_i$ que es el menor submódulo que los contiene. 
+
+\begin{proposition}
+Dados $M_1,\ldots,M_r \subseteq M$ submódulos de $M$. Entonces equivalen:
+
+\begin{enumerate}
+\item $M = \oplus_{i = 1}^r M_i$
+\item Cada elemento de $M$ se expresa de forma única como una suma $x_1 + \ldots, x_r$ con $x_i \in M_i$. 
+\end{enumerate}
+\end{proposition}
+
+\begin{definition}[Módulo cociente]
+Sea $R$ un DIP (en la práctica $\mathbb{Z},K[X]$), y supongamos que $N \subseteq M$ es un submódulo de $M$. La construcción del cociente es análoga aunque más general que la que se hizo. 
+
+$x,y \in M$ son congruente cuando $x \equiv v \; mod(N) \iff x-y \in N \iff \exists n \in N. x = y + n$. Se trata de nuevo de una relación de equivalencia. Esta relación induce una partición en clases de equivalencia notadas $[x] = \{x+n: n \in N \} = x + N$ y el conjunto cociente $M/N = \{[x]: x \in M \}$. 
+
+Definimos las operaciones $[x]+[y] = [x+y] \land a[x] = [ax]$y obtenmos que con estas operaciones $M/N$ es un módulo llamado el módulo cociente de $M$ por $N$.  
+\end{definition}
+
+\begin{theorem}[Teoremas de isomorfía]
+Sea $f:M \to M'$ un homomorfismo de módulos.
+
+\begin{enumerate}
+\item $M/Ker(f) \cong Img(f)$ con $[x] \to f(x)$. 
+\item $\frac{N}{N \cap N'} \cong \frac{N+N'}{N}$
+\item $\frac{M/N}{T/N} \cong M/T$
+\end{enumerate}
+\end{theorem}
+
+\subsection{Teoremas de estructura de módulos finitamente generados sobre un DIP}
+
+\begin{definition}[Anulador y torsión de un módulo]
+Sea $R$ un DIP y $M$ un módulo sobre $R$. 
+
+El anulador $Ann(M) = \{a \in R:\forall x \in M.ax = 0 \}$ es un ideal del anillo $R$. Como $R$ es un DIP este ideal será principal o cíclico y existe $\mu(M) \in R. Ann(R) = \langle \mu(M) \rangle = R\mu(M)$ donde a $\mu(M)$ se le llama anulador minimal de $M$ puesto que anula a todos y todos los que anulan a todos son múltiplos suyos. 
+
+El módulo $M$ es de torsión si $Ann(M) \neq \{0\} \iff \mu(M) \neq 0$. En otro caso, se dice que $M$ es libre de torsión. 
+
+Dado $x \in M$, $Ann(x) = \{a \in R:ax = 0\}$ es un ideal de $R$ y como $R$ es un DIP será principal generado por un elemento $\mu(x)$ que se llama anulador minimal de $x$. Claramente, $\langle \mu(M) \rangle \subseteq \langle \mu(x) \rangle$ y por tanto, siempre $\mu(x) | \mu(M)$.
+
+Observemos que en el caso en que $M$ sea cíclico, $M = \langle x \rangle = \{ax:a \in R \} = Rx$ tendremos que $\mu(M)|\mu(x)$ y por lo anterior, $\mu(x) \sim \mu(M)$. 
+\end{definition}
+
+\begin{proposition}[Estructura de los módulos cíclicos]
+Supongamos que $M = Rx$ es cíclico generado por $x$. Entonces la aplicación $\phi:R \to M = Rx$ tal que $a \mapsto ax$ es un epimorfismo con $Ker(\phi) = \langle \mu(x) \rangle$ y por el primer teorema de isomorfía, $R/\langle \mu(x) \rangle \cong Rx = M$. 
+
+\begin{enumerate}
+\item Si $M$ es libre de torsión entonces $\mu(x) = 0$ y por tanto, $R \cong M$.
+\item Si $M$ tiene torsión entonces $R/\langle \mu(x) \rangle \cong Rx = M$. 
+\end{enumerate}
+\end{proposition}
+
+\begin{example}
+En $R = \mathbb{Z}$ si hay torsión $M \cong \mathbb{Z}_n$ y si no hay torsión, $M \cong \mathbb{Z}$.
+\end{example}
+
+\begin{proposition}[Estructura de los módulos libres]
+Sea $F$ un módulo libre con base $\{x_1,\ldots, x_n\}$ entonces la aplicación $\phi:R^n \to F = \oplus_{i = 1}^r  Rx_i$ tal que $(a_1,\ldots,a_n) \mapsto \sum a_ix_i$ es un isomorfismo y por tanto, $F$ es isomorfo a $R^n$. 
+
+En particular, todos los módulos libres del mismo rangos (número de vectores en su base) son isomorfos entre sí. Claramente, si los rangos son distintos, no son isomorfos ya que si $f:F \to M$ es un isomorfismo y $\{x_1,\ldots,x_n \}$ es una base de $F$ entonces $\{\phi(x_1),\ldots,\phi(x_n) \}$ es una base de $M$.
+\end{proposition}
+
+\begin{corollary}[Invarianza del rango]
+Sea $F$ libre de rango $n$, $F'$ libre de rango $n'$. 
+
+Si existe un isomorfismo $\phi:F \cong F'$ entonces $n = n'$. 
+\end{corollary}
+
+\begin{theorem}[Estructura de los módulos finitamente generados]
+content...
+\end{theorem}
+
+
+
+
+
+
+
+
+

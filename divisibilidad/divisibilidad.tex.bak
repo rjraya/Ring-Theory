@@ -1,0 +1,477 @@
+\begin{definition}[Divisores y múltiplos]
+Dado un dominio de integridad $A$ y $a,b \in A$.
+
+$a$ es divisor de $b$ o $b$ es múltiplo de $a$ si $\exists c \in A. b = ac$. Lo notamos por $a|b$.
+
+El conjunto de los divisores de $a \in A$ es $$Div(a) = \{b:b|a\}$$ 
+\end{definition}
+
+\begin{proposition}
+Sea $A$ un dominio de integridad. 
+
+\begin{itemize}
+\item $0 \in Div(a) \iff a = 0$ y $Div(0) = A$.
+\item $\forall a \in A. 1 \in Div(a)$ y $Div(1) = U(A)$. 
+\item $\forall a \in U(A),b \in A.a \in Div(b) \land Div(a) = Div(1)$ 
+\item $\forall a \in A. U(A) \subseteq Div(a)$.
+\end{itemize}
+\end{proposition}
+
+\begin{proposition}
+Dado un dominio de integridad $A$ y $a,b \in A$ con $a \neq 0$. Sea $A' \cong A$ con el monomorfismo de inyección canónica. Entonces, $a|b \iff \frac{b}{a} \in A'$. 
+\end{proposition}
+\begin{proof}
+$\Rightarrow)$ Si $a|b$ entonces $\exists c. b = ac$ y por tanto $\frac{b}{a} = \frac{c}{1} \in A'$. \\
+$\Leftarrow)$ Si $\frac{b}{a} \in A'$ entonces $\exists c \in A. \frac{b}{a} = \frac{c}{1}$ o equivalentemente $b = ac \iff a | b$. 
+\end{proof}
+
+\begin{definition}[Elementos asociados]
+$b$ está asociado con $a$ si $\exists u \in U(A)$ tal que $ua = b$. Lo denotamos por $a \sim b$. 
+
+El conjunto de asociados de un elemento $a \in A$ es $A(a) = \{ua:u \in U(A)\}$.
+\end{definition}
+
+\begin{proposition}[Divisores triviales]
+Sea $A$ un dominio de integridad. 
+
+$\forall a \in A. U(A) \cup A(a) \subseteq Div(a)$. Los divisores en $U(A) \cup A(a)$ se llaman divisores triviales. 
+\end{proposition}
+
+\begin{example}
+\begin{itemize}
+\item En $\mathbb{Z}[i]$, $A(1+i) = \{1+i,-1-i,i-1,1-i\}$.
+\item En $\mathbb{Z}[i]$, todo número tiene al menos ocho divisores. 
+\item Dado $a \in \mathbb{Z}$, $A(a) = \{a,-a\}$.
+\end{itemize}
+\end{example}
+
+\begin{proposition}[Caracterización de la relación de asociados]\label{div-1}
+Dado un dominio de integridad $A$ y $a,b \in A - \{0\}$. 
+
+1. La relación de ser asociados es una relación de equivalencia. \\
+2. $a \sim b \iff a|b \land b|a$.\\
+3. $a \sim b \implies Div(a) = Div(b)$.  
+\end{proposition}
+\begin{proof}
+1. En efecto, tenemos que la relación es de equivalencia:
+
+\begin{itemize}
+\item $a \sim a$ ya que $a = 1a$.
+\item $a \sim b \implies b \sim a$ ya que $b = ua$ entonces $a = u^{-1}b$ y si $u \in U(A)$ entonces también $u^{-1} \in U(A)$. 
+\item $a \sim b \land b \sim c \implies a \sim c$ ya que $b = u_1a \land c = u_2b$ entonces $c = u_2 u_1 a$ y $u_1u_2 \in U(A)$ ya que el conjunto de los unidades forma un grupo.  
+\end{itemize}
+
+2. Por otro lado, la relación puede ser descrita mediante divisibilidad:
+
+$\Rightarrow)$ Si $a \sim b$ entonces $\exists u \in U(A). b = ua \land a = u^{-1}b$ de donde $a | b \land b | a$. \\
+$\Leftarrow)$ Si $a | b$ entonces $\exists c_1 \in A. b = ac_1$ y si $b | a$ entonces $\exists c_2 \in A. a = bc_2$. Entonces $a = a c_1c_2$ y dado que estamos en un dominio de integridad la ecuación $a = ax$ tiene una única solución. Por la anterior $c_1c_2$ es una solución y claramente $1$ es otra solución. Ambas deben ser iguales, es decir, $c_1c_2 = 1$. Esto implica que $c_1 = c_2^{-1}$ y por tanto $a,b$ están asociados.  
+
+3. Está claro que si $a|b \land b|a$ entonces $a$ y $b$ tienen los mismos divisores, ya que si $d|a$ entonces $d|a|b$ y si $d|b$ entonces $d|b|a$. 
+\end{proof}
+
+La siguiente proposición describe cuál es la utilidad de la relación de asociados en dominios de integridad. La idea es que la divisibilidad no es un orden sobre un dominio de integridad pero la divisibilidad natural en el cociente de los asociados sí lo es. Esto es lo que se querrá decir en el texto cuando se hable de divisibilidad salvo asociados. La relación de ser asociados también preserva los irreducibles.
+
+\begin{definition}
+Sea $A$ un dominio de integridad $a \in A$ es irreducible si:
+
+\begin{itemize}
+\item No es cero ni unidad. 
+\item Sus únicos divisores son los triviales, esto es, $Div(a) = U(A) \cup A(a)$. 
+\end{itemize}
+\end{definition}
+
+\begin{example}
+\begin{itemize}
+\item En $\mathbb{Z}$, los irreducibles son los números primos (1 no es primo) y sus opuestos. 
+\end{itemize}
+\end{example}
+
+\begin{proposition}[Caracterización de irreducibles en dominios de integridad]
+Dado un dominio de integridad $A$ y $p \in A$ con $p \neq 0 \land p \notin U(A)$. 
+
+p es irreducible $\iff p = ab \implies (a \in U(A) \land b \sim p) \lor (a \sim p \land b \in U(A))$ 
+
+esto es, si p es producto de dos elementos entonces uno es una unidad y el otro es un asociado a p. 
+\end{proposition}
+\begin{proof}
+$\Rightarrow)$ Supongamos que $p = ab$ y supongamos que $a | p$. Como los únicos divisores de $p$ son los triviales entonces hay dos posibilidades:
+
+\begin{itemize}
+\item Si $a = u \in U(A)$ entonces está claro que $b \sim p$. 
+\item Si $a = up$ con $u \in U(A)$ entonces $p = upb$ y por ser $A$ un dominio de integridad se tiene que $ub = 1$ luego $b = u^{-1} \in U(A)$. 
+\end{itemize}
+
+$\Leftarrow)$ Por contrarrecíproco, si suponemos que $p$ no es irreducible existirá un divisor de $p$ que no es trivial. Esto es, $a|p \land \forall u \in U(A),t \in U(p).a \neq u,t$. Por ser divisor existe $b \in A. p = ab$ y sin embargo $a$ no es trivial. 
+\end{proof}
+
+\begin{example}
+Los ejemplos de anillos $A$ tales que $U(A) = \{1\}$ esto es, el grupo de unidades es trivial no es un clase fácil de dibujar \cite{link1}. Por ejemplo, $\mathbb{Z}$ no está en esta clase ya que $U(\mathbb{Z}) = \{1,-1\}$. Sin embargo, cualquier anillo producto formado con $\mathbb{Z}_2$ o el anillo de polinomios sobre $\mathbb{Z}_2$ verifican que  el grupo de sus unidades es trivial. 
+\end{example}
+
+\begin{proposition}[Utilidad de la relación de asociados]
+1. $(A,|)$ es un preorden. $(A,|)$ es un orden $\iff U(A) = \{1\}$.\\
+2. Sea $\sim$ la relación ser asociados entonces $(\frac{A}{\sim},|)$ es un orden donde $|$ es en este caso la relación $[a]|[b] \iff a|b$.\\
+3. Si $a \sim b$ con $a,b \in A$ entonces $a$ es irreducible $\iff b$ es irreducible. 
+\end{proposition}
+\begin{proof}
+1. Claramente, $\forall a \in A. a | a$ y $\forall a,b,c \in A. a|b \land b|c \implies a|c$. Observemos que para que se de la propiedad antisimétrica debe verificarse que $\forall a,b \in A. a|b \land b|a \implies a = b$. 
+
+Veamos cuándo se da la antisimétrica. La traducción de $a|b \land b|a$ por la proposición \ref{div-1} es $a \sim b$ para elementos no nulos $a$ y $b$. 
+
+$\Rightarrow)$ Si se da la antisimétrica, entonces si tengo al menos dos elementos no nulos tales que $a|b \land b|a$ entonces sabríamos que $a \sim b$. Si $a = ub$ con $u \in U(A)$ podría ser que $u = 1$ en cuyo caso tendríamos $a = b$. En otro caso, tendríamos $u \neq 1$ y por tanto $b \neq a$ pero en ese caso no tendríamos la antisimetría. Por tanto, necesariamente $U(A) = \{1\}$. Si no tengo al menos dos elementos no nulos tengo los anillos $\{0\}$ o $\{0,a\}$. En el primer caso, está claro que las unidades son $\{0\}$. En el segundo caso, $a = 1$ ya que $0a = 0$ y $aa = a$ ya que en otro caso $a$ sería un divisor de $0$ distinto de $0$. En este dominio claramente, $U(A) = \{1\}$.
+
+$\Leftarrow)$ Si $U(A) = \{1\}$ entonces se da la antisimétrica ya que si $a|b \land b|a$ y $a,b$ son no nulos entonces $a \sim b$ lo que implica que $a = b$. Si uno de ellos es cero, claramente el otro debe ser cero y por tanto también $a = b$.   
+
+2. La relación está bien definida. $$[a] = [a'] \land [b] = [b']  \iff a \sim a' \land b \sim b' \iff a|a' \land a'|a \land b|b' \land b'|b$$ Por tanto $[a]|[b] \iff [a']|[b']$ ya que $a'|a|b|b' \land a|a'|b'|b$. 
+
+Que es reflexiva y transitiva se sigue de las propiedades de $|$ sobre $A$. La antisimetría se sigue del apartado 2. de \ref{div-1}.
+
+3. Claramente, $a = 0 \iff b = 0$ y $a \in U(A) \iff b \in U(A)$ ya que $a \sim b$. Supongamos ahora que $a,b$ no son nulos ni unidades.  
+
+Como $a \sim b \implies a \in A(b)$ de donde $A(a) = A(b)$ y si $a$ es irreducible y $a,b$ son no nulos y no unidades, $Div(a) = U(A) \cup A(a) = U(A) \cup A(b) = Div(b)$ de donde los únicos divisores de $b$ son los triviales y por tanto también es irreducible. El recíproco es análogo. 
+\end{proof}
+
+\begin{proposition}[Cálculo con la relación de disivilidad en dominios de integridad]
+Sea $A$ un dominio de integridad. 
+
+1. $a|b \land a|c \implies a|bx+cy$\\
+2. $a|b \implies a|bc$\\
+3. $a|b \land c \neq 0 \iff a|b \iff ac | bc$.\\
+4. $a|b \iff ax = b$ tiene una única solución.
+\end{proposition}
+\begin{proof}
+1. $a|b \implies \exists c_1. b = ac_1 \land b|c \implies \exists c_2. c = bc_2$ ahora, $bx + cy = bx + bc_2y = b(x + c_2y) = ac_1(x+c_2y)$ de donde claramente $a | bx+cy$. 
+
+2. $a|b \implies \exists d. b = ad$, ahora, $bc = adc$ y por tanto $a|bc$. 
+
+3. $\Rightarrow)$ $a|b \implies \exists d. b = ad$, ahora, $bc = adc = acd$ y por tanto $ac|bc$. \\
+$\Leftarrow)$ $ac|bc \implies \exists d. bc = acd$, ahora, $cb = cad$ y como $A$ es un dominio de integridad se verifica que la ecuación $cx = cad$ admite como mucho una solución ya que $c \neq 0$. Pero aquí tenemos que $b$ y $ad$ son solución y por tanto $b = ad$ de donde $a|b$. 
+
+4. $a|b \iff \exists c \in A. ac = b \iff c$ es solución de $ax = b$. Nótese que en un dominio de integridad si la solución existe es única y por tanto $c$ es la única solución de $ax = b$. 
+\end{proof}
+
+\subsection{Dominios euclídeos}
+
+\begin{definition}
+Un dominio de integridad $A$ es un dominio euclídeo si existe una función euclídea $\phi:A-\{0\} \to \mathbb{N}$ tal que:
+
+\begin{itemize}
+\item $\forall a,b \in A - \{0\}. \phi(ab) \ge \phi(b)$
+\item $\forall a,b \in A,b \neq 0. \exists q,r \in A. a = bq + r$ con $r = 0$ o $\phi(r) < \phi(b)$.
+\end{itemize}
+
+En la propiedad anterior, $q$ se llama cociente y $r$ se llama resto. La segunda condición puede restringirse a la comprobación de la siguiente propiedad: 
+
+$\forall a,b \neq 0. \phi(a) \ge \phi(b). \exists q,r \in A. a = bq + r$ con $r = 0$ o $\phi(r) < \phi(b)$
+
+con lo que nos quitamos los casos $a = b0 + a \land 0 = b0 + 0$. Equivalentemente:
+
+$\forall a,b \neq 0. \phi(a) \ge \phi(b). \exists q \in A. a = bq \lor \phi(a-bq) < \phi(b)$
+\end{definition}
+
+\begin{proposition}
+Dado $A$ un dominio euclídeo. 
+
+$b | a \iff \exists q \in A. a = bq$ esto es, un resto de dividir $a$ entre $b$ es cero. 
+\end{proposition}
+\begin{proof}
+$\Rightarrow)$ Como $b|a \implies \exists c \in A. a = bc$ y como $A$ es un dominio euclídeo $\exists q,r. a = bq + r$ con $r = 0 \lor \phi(r) < \phi(b)$. Si $r = 0$ hemos acabado. En otro caso, suponemos $r \neq 0$ y por tanto debe ser $\phi(r) < \phi(b)$. 
+
+Claramente, $bc = bq + r $ y por tanto $r = b(c-q)$. Tomando $\phi$, tenemos que $\phi(r) = \phi(b(c-q)) \ge \phi(b) > \phi(r)$ por hipótesis y llegamos a una contradicción. Por tanto debe ser, $r = 0$. 
+
+$\Leftarrow)$ Trivial. 
+\end{proof}
+
+\begin{corollary}
+Obsérvese que en la implicación $\Rightarrow$ podemos ser más precisos y añadir que todo resto de la forma euclídea ($r = 0 \lor \phi(r) < \phi(b)$) es cero. 
+\end{corollary}
+
+\begin{exercise}
+Comprobar que basta verificar los restos euclídeos en la proposición anterior. 
+\end{exercise}
+
+\subsubsection{Dominio euclídeo de los enteros}
+
+\begin{theorem}[Teorema de Euclides]
+$\mathbb{Z}$ es un dominio euclídeo con el valor absoluto como función euclídea. Además el cociente y el resto de la división son únicos.
+\end{theorem}
+\begin{proof}
+1. Claramente, $\forall a,b \in A. \phi(ab) = |ab| \ge |b| = \phi(b)$.\\
+2. Sea $b > 0$ y consideremos el conjunto de posibles restos positivos que pueden quedar al dividir por $b$, esto es, $R = \{a-bx:x\in \mathbb{Z}\} \cap \mathbb{N}$. Vamos a elegir como $r$ el mínimo de este conjunto. 
+
+Primero vemos que $R \neq \emptyset$. Para ello basta elegir $x = - |a|$ de modo que el correspondiente elemento del conjunto es $a + b|a|$. Distinguimos dos casos:
+
+\begin{itemize}
+\item Si $a > 0 \implies a+b|a| = a+ba = a(1+b) \ge 0$.
+\item Si $a < 0 \implies a+b|a| = a-ba = a(1-b) \ge 0$. 
+\end{itemize}
+
+Por tanto $a+b|a| \in R$ y como $\mathbb{N}$ es bien ordenado tenemos que $R$ tiene un mínimo. Definimos $r = min R$. Como $r \in R$ claramente $r \ge 0$ y $\exists q \in \mathbb{Z}. r = a-bq \implies a = bq + r$. Terminamos la demostración para este caso, garantizando que $r < |b| = b$. Pero esto es fácil ya que si $r \ge b$ entonces $r-b = a-b(q+1) \implies r-b \in R$ y como $r-b < r$ tenemos contradicción con la definición de $r$. Por tanto se verifica que $r < |b|$. 
+
+Si $b < 0$ entonces se transforma al caso $b > 0$. Se resuelve el problema para $-a$ y $-b$ obteniendo una expresión $-a = -bq+r$ con $0 \leq r < |b|$ de donde $a = bq -r = bq - r + b - b = b(q+1) - b - r$ y claramente $0 \le -b-r < |b|$.  
+
+Finalmente, veamos que el cociente y el resto son únicos. Para ello escribamos $a = bq + r = bq'+r'$ con $0 \le r < |b| \land 0 \le r' < |b'|$ entonces $b(q'-q) = r' - r$ y tomando valor absoluto $|b| \le |q' - q||b| = |r'-r|$. Sin embargo, por las condiciones que cumplen $r y r'$ tendríamos que $< \le r' - r < |b|$ de donde $-|b| < r' - r < |b|$ y por tanto $|r'-r| < |b|$. Esto da una contradicción. 
+\end{proof}
+
+El cálculo del conjunto $R = \{a-bx:x \in \mathbb{Z}\} \cap \mathbb{N}$ no es directamente computable. Pero si $a,b > 0$ bastaría con comprobar una lista de números naturales comenzando en cero para hallar el menor elemento del conjunto (no es necesario comprobar los negativos). Entonces conviene defininr el siguiente procedimiento algorítmico para calcular los restantes casos:
+
+\begin{theorem}[Algoritmo de división]
+\begin{itemize}
+\item Si $a,b > 0$ se procede del modo habitual. 
+\item En otro caso los resultados se obtienen al dividir los correspondientes positivos:
+\begin{itemize}
+\item Si $r = 0 \land a = bq$
+
+\begin{itemize}
+\item Si $a,b < 0$ entonces $-a = (-b)q$
+\item Si $a < 0$ entonces $-a = b(-q)$
+\item Si $b < 0$ entonces $a = (-b)(-q)$.
+\end{itemize}
+\item Si $r > 0 \land r < b, a = bq+r$
+
+\begin{itemize}
+\item Si $a,b < 0$ entonces $-a = (-b)(q+1)+(b-r)$.
+\item Si $a < 0$ entonces $-a = b(-q-1)+(b-r)$.
+\item Si $b < 0$ entonces $a = (-b)(-q)+r$. 
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\end{theorem}
+
+\subsubsection{Dominio euclídeo de los poliniomios con coeficientes en un cuerpo.}
+
+\begin{definition}
+Dado un polinomio $q$, llamaremos coeficiente líder al coeficiente del monomio de mayor grado. 
+\end{definition}
+
+\begin{lemma}
+Dado un dominio de integridad. 
+
+$\forall f,g \in A[X]$ donde el coeficiente líder de $g$ es unidad del anillo, $\exists!q,r \in A[X]. f = gq + r$ con $r = 0$ o $grado(r) < grado(g)$. 
+\end{lemma}
+\begin{proof}
+Sean $f = \sum_{i=0}^{n} a_ix^i$ con $a_n \neq 0$ y $g = \sum_{i = 0}^{m} b_jx^j$ con $b_m \in U(A)$. Ahora, 
+
+\begin{itemize}
+\item Si $n < m$ entonces $f(x) = g(x)0 + f(x)$. 
+\item Si $n \ge m$ entonces hacemos inducción fuerte sobre $n$. 
+
+\begin{itemize}
+\item Si $n = 0$ entonces $f = a_0 \land g = b_0 \in U(A)$ y por tanto podemos escribir $f = a_0 = b_0(b_0^{-1}a_0) + 0$. 
+\item Si $n > 0$ podemos considerar $f_1 = f - a_nb_m^{-1}x^{n-m}g$ esto es el polinomio que resulta al restar apropiadamente el divisor $g$ poniendole como coeficiente el coeficiente de grado $n$ del polinomio $f$. Claramente, $grado(f_1(x)) < grado(f(x))$ y por hipótesis de inducción $\exists!q_1,r_1 \in A[X]. f_1 = gq_1+r_1$ con $r_1 = 0$ o $grado(r_1) < grado(g)$. 
+
+Usando la anterior descomposición hallamos la descomposición para $f$ como: $$f = f_1(x) = a_1b_m^{-1}x^{n-m}g = gq_1 + r_1 + a_nb_m^{-1}x^{n-m}g = g(q_1+a_nb_m^{-1}x^{n-m}+r_1$$ Y llamamos $q = q_1+a_nb_m^{-1}x^{n-m} \land r = r_1$ y por tanto $r = 0 \lor grado(r) < grado(g)$.  
+\end{itemize}
+\end{itemize}
+
+Finalmente, mostramos que $q,r$ son únicos. En efecto, si $f = gq+r = gq'+r'$ con $r = 0 \lor grado(r) < grado(g)$ y $r' = 0 \lor grado(r') < grado(g)$ entonces $r'-r = g(q-q')$. Si asumimos que $q = q'$ entonces también $r = r'$ y hemos acabado. Si por otra parte asumimos $q \neq q'$ entonces está claro que $grado(r'-r) < grado(g(q-q'))$ ya que $grado(r),grado(r') < grado(g) \land grado(q-q') > 0$. Por tanto, el miembro derecho tiene grado mayor que $g$ y el miembro izquierdo menor que $g$. Esto es una contradicción. Se deduce que hay unicidad. 
+\end{proof}
+
+\begin{theorem}
+Dado un cuerpo $K$. El anillo de polinomios sobre $K$, $K[X]$, es un dominio euclídeo con función euclídea el grado.
+\end{theorem}
+\begin{proof}
+1. Por ser $K$ un dominio de integridad se tiene que: $$\forall f,g \in K[X] - \{0\}.grado(f \cdot g) = grado(f) + grado(g) \ge grado(g)$$
+
+2. La propiedad se verifica por el lema anterior. Obsérvese que la condición "el coeficiente líder es una unidad del anillo" no es restrictiva en el caso de un cuerpo. 
+\end{proof}
+
+\begin{example}
+\begin{itemize}
+\item $\mathbb{R}[X]$ es un dominio euclídeo. 
+\item No son dominios euclídeos, $\mathbb{Z}[\sqrt{5}],\mathbb{Z}[X],\mathbb{R}[X,Y]$
+\end{itemize}
+
+Para resolver $(2+3x+4x^2)z = 2+3x+4x^3+2x^4$ en $\mathbb{Z}_5[X]$ realizamos el procedimiento de división de la demostración del lema anterior:
+
+$$2x^4+4x^3+3x+2 = (3x^2)(4x^2+3x+2) + (4x^2+3x+2)$$
+$$(4x^2+3x+2) = (4x^2+3x+2)1$$
+
+Y se obtiene $z = 3x^2+1$. 
+\end{example}
+
+\subsubsection{Dominio euclídeo de los enteros cuadráticos}
+
+\begin{theorem}
+Si $n = -2,-1,2,3$ el anillo $\mathbb{Z}_n$ es un dominio euclídeo con función euclídea el valor absoluto de la norma. 
+\end{theorem}
+\begin{proof}
+La expresión de la función euclídea es $\phi(a+b\sqrt{n}) = |N(a+b\sqrt{n})| = |a^2 - nb^2|$.
+
+Veamos que $\forall \alpha,\beta \in \mathbb{Z}[\sqrt{n}] - \{0\}.\phi(\alpha \beta) \ge \phi(\alpha)$. En efecto, como la norma es un homomorfismo de anillos, se tiene que $$\phi(\alpha \beta) = |N(\alpha \beta)| = |N(\alpha) \cdot N(\beta)| = |N(\alpha)||N(\beta)| = \phi(\alpha)\phi(\beta) \ge \phi(\alpha)$$ La última desigualdad se da ya que $\alpha,\beta \neq 0$ por hipótesis.
+
+Veamos ahora que $\forall \alpha,\beta \in A - \{0\}, |N(\alpha)| \ge |N(\beta )|. \exists q,r. \alpha = \beta q+r$ con $r = 0 \lor |N(r)| < |N(b)|$ que era una de las expresiones de la segunda condición. 
+
+Observemos que queremos conseguir $\alpha = \beta q + r$ idealmente tendremos $\alpha = \beta q$ pero en otro caso lo que tendremos será una aproximación del racional cuadrático $\frac{\alpha}{\beta} = a_1 + a_2 \sqrt{n} \in \mathbb{Q}[\sqrt{n}]$ con $a_1,a_2 \in \mathbb{Q}$. Para trabajar con expresiones convenientes de $a_1,a_2$ debemos racionalizar ($\frac{\alpha}{\beta} = \frac{\alpha \overline{\beta}}{N(\beta)}$).
+
+Sean entonces $q_1,q_2 \in \mathbb{Z}$ los enteros que más se aproximan a $a_1,a_2$, esto es, $|a_1-q_1| \le \frac{1}{2} \land |a_2 - q_2| \le \frac{1}{2}$ donde si alguna coordenada está justo en la mitad se elige un entero o el siguiente indistintamente. Formamos el entero cuadrático cociente $q = q_1 + q_2 \sqrt{n} \in \mathbb{Z}[\sqrt{n}]$ y el entero cuadrático resto que será $r = \alpha - \beta q$. 
+
+Si $r = 0$ entonces $\alpha = \beta q$ y hemos acabado. En otro caso, si $r \neq 0$ calculamos: $$|N(r)| = |N(\alpha - \beta q)| = |N(\beta(\frac{\alpha}{\beta}q)| = |N(\beta)||N(\frac{\alpha}{\beta})q| = |N(\beta)||(a_1-q_1)^2-n(a_2-q_2)^2|$$ Llamemos $A = |(a_1-q_1)^2-n(a_2-q_2)^2|$. Si $A < 1$ entonces habríamos acabado ya que $|N(r)| < |N(\beta)|$. 
+
+Estudiamos caso por caso para cada uno de nuestros índices:
+
+\begin{itemize}
+\item Si $n = -2$ entonces $0 \le (a_1-q_1)^2 + 2(a_2-q_2)^2 \le \frac{3}{4} < 1$.
+\item Si $n = -1$ entonces $0 \le (a_1-q_1)^2 + (a_2-q_2)^2 \le \frac{1}{2} < 1$. 
+\item Si $n = 2$ entonces $\frac{-1}{2} \le (a_1-q_1)^2-2(a_2-q_2)^2 \le \frac{1}{4}$. De donde $|(a_1-q_1)^2-2(a_2-q_2)^2 | \le \frac{1}{2} \le 1$. 
+\item Si $n = 3$ entonces $\frac{-3}{4} \le (a_1-q_1)^2 - 3(a_2-q_2)^2 \le \frac{1}{4}$. De donde $|(a_1-q_1)^2 - 3(a_2-q_2)^2| \le \frac{3}{4}$
+\end{itemize}
+\end{proof}
+
+A continuación mostramos el proceso de aproximación en el caso de $\mathbb{Z}[i]$. Nótese que para $m < 0$ se puede representar $\mathbb{Z}[\sqrt{m}]$ mediante el conjunto de baldosas de longitud $1$ y altura $\sqrt{-m}$.
+
+\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{
+\includegraphics[scale=0.5]{./images/approximation.png}
+}
+\end{figure}
+
+\begin{example}
+Resolver la ecuación $2ix = 11i$ en $\mathbb{Z}[i]$ equivale a comprobar si $2i$ divide a $11i$. lo que en un dominio euclídeo implica ver que todo resto euclídeo es cero. Consideramos la fracción $\frac{11+7i}{2i}$ y la racionalizamos multiplicando denominador y numerador mediante $-2i$ obteniendo $\frac{-22i+14}{4} = \frac{-11i+7}{2}$ y por tanto $q = -6i+4$ y $r = (-6i+4)(11+7i) = -i+1$. El resto obtenido aquí es un resto euclídeo que no es cero. Por tanto, la ecuación no tiene solución. 
+
+En cambio, la ecuación $(7+2\sqrt{2})x = 4 + 7 \sqrt{2}$ tiene como única solución $x = \sqrt{2}$.
+\end{example}
+
+\subsection{Máximo común divisor}
+
+\begin{definition}
+Dado un dominio de integridad $A$, $a,b \in A$. $d \in A$ es el máximo común divisor de $a$ y $b$ si:
+1. $d | a \land d|b$\\
+2. $c \in A$ con $c|a \land c|b$ entonces $c|d$\\
+a este $d$ lo denotaremos por $(a,b)$. Se entiende que es único salvo asociados. Nótese que no siempre existe.
+\end{definition}
+
+\begin{proposition}[Propiedades del máximo común divisor]
+En las siguientes propiedades, se entiende que existen los máximos comunes divisores que entran en juego en la igualdad. Las igualdades se dan salvo asociados. 
+
+1. $(a,(b,c)) = ((a,b),c)$\\
+2. $(a,b) = (b,a)$\\
+3. $(a,0) = a \land (a,1) = 1$\\
+4. $(ac,bc) = (a,b)c$\\
+5. $c|a \land c|b \land c \neq 0 \implies (\frac{a}{c},\frac{b}{c}) = \frac{(a,b)}{c}$\\
+6. $(\frac{a}{(a,b)},\frac{b}{(a,b)}) = 1$\\
+7. $b|ac \implies b|(a,b)c$\\
+8. Lema de Euclides: $(a,b) = 1 \land b|ac \implies b|c$\\
+9. $a|c \land b|c \land (a,b) = 1 \implies ab|c$\\
+10. $(a,bc) = 1 \iff (a,b) = 1 = (a,c)$\\
+11. $(a,b) = (a-qb,b)$ $\forall q \in A$\\
+\end{proposition}
+\begin{proof}
+
+\end{proof}
+
+\subsection{Dominio de ideales principales}
+
+
+Existen caracterizaciones (véase Números, Grupos y Anillos, página 246) que aconsejan definir el siguiente concepto en el ambiente de los dominios de integridad. 
+
+\begin{definition}[Dominio de ideales principales]
+Dado un dominio de integridad $A$. 
+
+$A$ es un dominio de ideales principales si todo ideal de $A$ es principal, esto es, $\forall I \subseteq A \text{ ideal } \exists x \in A. I = <x>$. 
+\end{definition}
+
+\begin{theorem}[Teorema de Bézout]
+Dado un dominio de ideales principales $A$. 
+
+1. $\forall a,b \in A \exists d=(a,b)$.\\
+2. $\exists u,v \in A. d = au+bv$. 
+
+A cualquier pareja $u,v$ que verifique la segunda ecuación se les llama coeficientes de Bézout. 
+\end{theorem}
+\begin{proof}
+Dados $a,b \in A$, consideremos $<a,b> = \{ax+by:x,y \in A\}$ este es el ideal generado por $a$ y $b$, esto es, el menor ideal que los contiene. En efecto, como $a,b \in <a,b>$ sabemos que $<a,b>$ no es vacío. También es claro que $<a,b>$ es un ideal ya que $ax+by + ax' +by' = a(x+x')+b(y+y') \in I$ y $c(ax+by) = a(xc)+b(yc) \in I$. 
+
+Utilizamos que $A$ es un dominio de ideales principales y obtenemos que debe existir $d \in A.<a,b> = <d>$ y por tanto $d = au+bv$ para convenientes $u,v \in A$. Por tanto, hemos deducido la segunda propiedad.
+
+Por lo anterior, $d|a \land d|b$ y si $c \in A$ verifica que $c|a \land c|b$ entonces $c|au+bv$ de donde $c|d$. Esto nos dice que $d = (a,b)$
+\end{proof}
+
+\begin{corollary}
+Dado $A$ un dominio de integridad. $\forall a,b \in A. <a,b> = <(a,b)>$. 
+\end{corollary}
+
+\begin{example}
+Por los ejemplos anteriores como en $\mathbb{Z}[\sqrt{-5}]$ no existe el máximo común divisor de cualesquiera dos elementos tampoco puede ser un dominio de ideales principales. 
+\end{example}
+
+\begin{proposition}
+Todo dominio euclídeo es un dominio de ideales principales donde cada ideal está generado por el elemento con valor mínimo de la función euclídea.  
+\end{proposition}
+\begin{proof}
+Si $\phi$ es la función euclídea asociada al dominio y consideremos un ideal cualquiera $I \neq \{0\}$. El conjunto $\phi(I-\{0\})$ es un subconjunto no vacío de números naturales y por tanto tiene mínimo. Sea $b$ este mínimo. Demostraremos que $I = <b>$. 
+
+$\subseteq)$ Dado que $b \in I \implies <b> \subseteq I$. \\
+$\supseteq)$ Dado $a \in I - \{0\}$ tenemos que $\phi(a) \ge \phi(b)$. Por estar en un dominio euclídeo, $a = bq + r$ con $r = 0 \lor \phi(r) < \phi(b)$. Si $r = 0$ hemos acabado ya que entonces $a = bq \in <b>$ y por tanto $I \subseteq <b>$. Si $r \neq 0$ entonces necesariamente $\phi(r) < \phi(b)$. Pero esto contradice que $b$ sea el elemento de valor mínimo del conjunto anterior, ya que $r = a - bq \in I$ y $\phi(r) < \phi(b)$. 
+\end{proof}
+
+\begin{theorem}[Resolución de ecuaciones diofánticas lineales en un DIP]
+Sea $A$ un dominio de ideales principales y $a,b,c \in A$ con $a,b \neq 0$. 
+
+1. La ecuación diofántica linear $ax+by = c$ tiene solución $\iff d|c$ con $d = (a,b)$. \\
+2. Si $d|c$ y $(x_0,y_0)$ es una solución particular entonces la solución general da para cada $k \in A$ la solución $(x_0+k\frac{b}{d},y_0-k\frac{a}{d})$. 
+\end{theorem}
+\begin{proof}
+1. La ecuación tiene solución $\iff c \in <a,b> = <d> \iff d|c$ con $d = (a,b)$. Donde hemos utilizado el corolario al teorema de Bézout.\\
+2. Supongamos que $x_0,y_0$ es una solución particular. Claramente, para cada $k \in A$ la pareja $(x_0+k\frac{b}{d},y_0-k\frac{a}{d})$ es una solución particular ya que $a(x_0+k\frac{b}{d})+b(y_0-k\frac{a}{d}) = ax_0+by_0 = c$. 
+
+Veamos que no hay más soluciones. Si $(x,y)$ es otra solución. Entonces restando las ecuaciones para $(x,y)$ y $(x_0,y_0)$ obtenemos $a(x-x_0)+b(y-y_0) = 0$, esto es, $a(x-x_0) = -b(y-y_0)$. Esto nos dice que $\frac{b}{d}$ divide a $\frac{a}{d}(x-x_0)$ y por el lema de Euclides como $(\frac{b}{d},\frac{a}{d}) = 1$ se verificará qque $\frac{b}{d}|(x-x_0)$. Por tanto, existe $k \in A$ tal que $x-x_0 = k\frac{b}{d}$ o equivalentemente $x = x_0 + k\frac{b}{d}$ como queríamos. Análogamente, existe un $h \in A$ tal que $y = y_0 - h \frac{a}{d}$. 
+
+Pero resulta que $k = h$. Esto se puede ver sustituyendo en la ecuación $a(x-x_0)+b(y-y_0) = 0$ llegando a que $ab(k-h) = 0$. Dado que $a,b \neq 0$ y que $A$ es un dominio de integridad, $x = h$. 
+\end{proof}
+
+El teorema anterior no da un método para calcular la solución particular $(x_0,y_0)$. 
+
+Sabemos que $c = d \cdot c'$ por la condición de existencia de solución. Por otro lado, como $d = au+bv$ por la identidad de Bézout, tendríamos que $c = a(uc')+b(vc')$. Entonces elegimos $x_0 = uc' \land y_0 = vc'$. 
+
+Es claro que en el anterior algoritmo necesitamos conocer $d,u,v$. Esta información la da el siguiente algoritmo. 
+
+\begin{theorem}[Algoritmo extendido de Euclides]
+Dado $A$ un dominio euclídeo y $a,b \in A$. 
+
+\begin{itemize}
+\item Si $b = 0$ hemos acabado ya que $(a,0) = a$, $u = 1,v= 0$. 
+\item Si $a = 0$ hemos acabado ya que $(0,b) = b$, $u = 0,v= 1$. 
+\item Supongamos $a,b \neq 0$ y $\phi(a) \ge \phi(b)$. Si la desigualdad anterior no se da siempre podemos intercambiar $a$ y $b$ ya que $(a,b) = (b,a)$. 
+\begin{itemize}
+\item Dividir $a$ entre $b$ para obtener $a = bq_1+r_1$ con $r_1 = 0 \lor \phi(r_1) \lor \phi(r_1) < \phi(b)$. 
+\item Si $r_1 = 0 \implies (a,b) = b$.
+\item Si $r_1 \neq 0 \implies (a,b) = (a-qb,b) = (b,r_1)$ . 
+\end{itemize}
+\item Análogamente se continua obteniendo la lista de ecuaciones $$b = r_1q_2+r_2$$ $$r_1 = r_2q_3+r_3$$ $$r_n = r_{n+1}q_{n+2}+r_{n+2}$$ Donde $r_{n+1} = 0$ y $r_n = (a,b) = (0,r_n)$. Se puede asegurar que llegaremos a este punto mediante el método de descenso infinito. 
+
+\item Para obtener los coeficientes de Bézout en cada paso se realiza el siguiente cálculo. Si $\alpha = au+bv$ y $\alpha' = au'+bv'$ entonces $\alpha'' = \alpha - \alpha'q = a(u-qu') + b(v-qv')$. Finalmente, los coeficientes que se obtienen para $r_n$ son los coeficientes de Bézout para $a,b$. 
+\end{itemize}
+
+El procedimiento puede ser resumido en la siguiente tabla:
+
+\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{
+\includegraphics[scale=0.5]{./images/euclides.png}
+}
+\end{figure}
+
+Es importante darse cuenta como se obtienen los sucesivos coeficientes de Bézout en esta tabla. Se pasa de una fila a otra tomando las dos anteriores y restando a la última de ellas la anterior multiplicada por el cociente obtenido al dividir los correspondientes términos de la columna de la izquierda. 
+\end{theorem}
+
+\begin{example}
+
+\end{example}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

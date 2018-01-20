@@ -1,0 +1,205 @@
+\subsection{Anillos de polinomios sobre un cuerpo}
+
+Merece la pena comentar el caso en que $K[X]$ con $K$ un cuerpo. Dado que $K[X]$ es un dominio euclídeo también es un DFU. Estudiamos la factorización de polinomios de $K[X]$.
+
+\begin{definition}[Cuerpo algebraicamente cerrado]
+Un cuerpo $K$ es algebraicamente cerrado si todo polinomio no constante de $K[X]$ tiene raíz en $K$.
+\end{definition}
+
+\begin{example}[Los números complejos son algebraicamente cerrados]
+El primer ejemplo lo proporciona el conjunto $\mathbb{C}$ de los números complejos. El teorema fundamental del álgebra garantiza que en $\mathbb{C}[X]$ todo polinomio no constante factoriza como producto de polinomios lineales, lo cual, es una definición equivalente a que $\mathbb{C}$ sea algebraicamente cerrado. 
+\end{example}
+
+\begin{proposition}[Unidades e irreducibles en los anillos de polinomios sobre un cuerpo]
+Se verifican las siguientes propiedades:
+
+\begin{enumerate}
+\item Las unidades de $K[X]$ son los polinomios constantes no nulos.
+\item Los polinomios de grado 1 son irreducibles en $K[X]$. Estos son los únicos irreducibles si y sólo si $K$ es algebraicamente cerrado.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item Si $q \in U(K[X])$ entonces $q$ tiene que ser de grado $0$ ya que por ser un dominio de integradad $0 = gr(1) = gr(qq^{-1}) = gr(q) + gr(q^{-1}) \ge gr(q)$ y si $gr(q) > 0$ se llega a una contradicción. Dado que $q$ es una unidad, no puede ser nulo. 
+
+Recíprocamente, un polinomio constante no nulo, es una unidad, ya que $K$ es un cuerpo.  
+\item Veamos que los polinomios lineales son irreducibles. Como $K$ es un cuerpo, un polinomio lineal sólo puede tener un factor de como mucho grado $1$. Por tanto, toda descomposición es una constante por un factor de grado $1$. Pero las constantes son unidades y por tanto, un factor es una unidad y el otro es asociado al polinomio de partida. Por tanto, el polinomio es irreducible. 
+
+Si $K$ es algebraicamente cerrado todo polinomio descompone en lineales y por tanto no puede haber irreducibles de otro grado. Recíprocamente, si no hay irreducibles de otro grado, los polinomios descomponen y esto se ve como el cuerpo es algebraicamente cerrado. 
+\end{enumerate}
+\end{proof}
+
+\begin{example}[Polinomios irreducibles con coeficientes complejos]
+Los polinomios irreducibles en $\mathbb{C}[X]$ son exactamente los de grado 1. Por ejemplo, el polinomio $X^2+1$ es irreducible sobre $\mathbb{R}$ ya que no tiene raíces en $\mathbb{R}$ y sin embargo en $\mathbb{C}$ es reducible ya que $X^2+1 = (X-i)(X+i)$. 
+\end{example}
+
+
+\subsection{Anillos de polinomios sobre un DFU.}
+
+\begin{definition}[Contenido de un polinomio. Polinomios primitivos.]
+Sea $A$ un DFU.
+
+Dado $f = \sum_{n \ge 0} a_if_i \in A[X]$ con $gr(f) \ge 1$, el contenido de $f$ es $$c(f) = (a_0,\cdots,a_n) \in A$$ el máximo cómun divisor de los coeficientes de $f$. El contenido de un polinomio es único salvo asociados. 
+
+Si $c(f) = 1$ decimos que $f$ es primitivo. 
+\end{definition}
+
+\begin{lemma}[Herramientas auxiliares al lema de Gauss]
+Dado $A$ un DFU y consideremos que los polinomios implicados a tienen grado mayor o igual que $1$. 
+
+Si $f \in A[X]$ entonces:
+
+1. $\forall a \in A. c(af) = ac(f)$. \\
+2. $f = c(f)f'$ con $f'$ primitivo.
+
+Sea $K = Q(A)$ el cuerpo de fracciones de $A$ e identifiquemos $A[X]$ como subanillo de $K[X]$. 
+
+3. Dado $\phi \in K[X]$ podemos escribir $\phi = \frac{a}{b}f$ con $f \in A[X]$ primitivo y $a,b \in A$.\\
+4. Todo polinomio en $K[X]$ es asociado con un polinomio primitivo de $A[X]$. 
+
+Por tanto, el conjunto de representantes de las clases de asociación irreducibles en $K[X]$ puede elegirse en el conjunto de los polinomios primitivos de $A[X]$.
+\end{lemma}
+\begin{proof}
+1. Basta extender por inducción al caso finito, la propiedad de linealidad del máximo común divisor: $$(ac,bc) = (a,b)c$$
+
+2. Basta sacar factor común el contenido del polinomio como $f = c(f)f'$ y aplicando la propiedad anterior nos damos cuenta que $c(f) = c(c(f)f') = c(f)c(f')$. Como $A$ es un dominio de integridad, se tendrá alguna de las siguientes posibilidades:
+
+\begin{itemize}
+\item $c(f) = 0$ en cuyo caso el polinomio es nulo. Pero $gr(f) \ge 1$. Contradicción. 
+\item $c(f') = 1$ por la propiedad de simplificación en dominios de integridad.
+\end{itemize} 
+
+3. Sea $\phi = \sum_{i \ge 0} \frac{a_i}{b_i} X^i$ y $b = \prod b_i$ entonces $b\phi = \sum_{i \ge 0} \frac{b}{b_i}a_iX^i \in A[X]$ y por el apartado anterior, $b\phi = af$ con $f \in A[X]$ primitivo. Por tanto, $\phi = \frac{a}{b}f$ es la expresión buscada. 
+
+4. Dado $\phi \in K[X]$, por lo anterior, podemos expresarlo como $\phi = \frac{a}{b}f$ con $f$ primitivo y ya que $\frac{a}{b} \in U(K)$, deducimos que $\phi \sim f$.  
+\end{proof}
+
+\begin{lemma}[Lema de Gauss]
+Sea $A$ un DFU y sean $f,g \in A[X]$ con $gr(f),gr(g) \ge 1$.
+
+\begin{enumerate}
+\item Si $f,g$ son primitivos entonces $fg$ es primitivo.
+\item Equivalentemente, $c(fg) = c(f)c(g)$. 
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}
+\item Sea $f = \sum_{i \ge 0} a_iX^i$ y $g = \sum_{j \ge 0} b_jX^j$ y notemos $fg = \sum_{k \ge 0} c_k X^k$. Por tanto, la expresión de los $c_k$ es $c_k = \sum_{i+ j = k} a_ib_j$. Queremos probar que $1 = (c_o, \ldots, c_k)$. 
+
+Por reducción al absurdo supongamos que $1 \neq (c_o, \ldots, c_k)$. Como el contenido no es nulo (ya que entonces $fg = 0$ y $f,g$ tienen grado mayor o igual que cero), ni unidad, y $A$ es un DFU, el contenido será un producto de irreducibles. En particular, existe un irreducible $p \in A$ tal que $\forall k. p|c_k$.
+
+Como $f,g$ son primitivos, $p$ no divide a $a_i,b_j$ para todo $i,j$. Por tanto, tomemos $a_{r = i_0},b_{s = j_0}$ los primeros coeficientes no divisibles por $p$. Escribamos el coeficiente $c_{r+s}$ convenientemente: $$c_{r+s} = \sum_{i+j = r+s} a_ib_j = \sum_{i+j = r+s,i < r} a_ib_j + a_rb_s + \sum_{i+j = r+s, i > r} a_ib_j$$ En esta descommposición si $i < r$ entonces $p$ divide al primer término, si $i > r$ entonces $j < s$ y por tanto $p$ divide al último término. Como $p|c_{r+s}$, deducimos que $p|a_r b_s$. 
+
+Finalmente, como $p$ es irreducible y $A$ es un DFU, tiene que ser primo. Como $p|a_r b_s$ entonces $p|a_r \lor p|b_r$. Contradicción. 
+
+\item Como $f = c(f)f',g = c(g)g'$ con $f',g'$ primitivos, se deduce que $fg = c(f)c(g)f'g'$ y por el lema de Gauss $f'g'$ es primitivo. De modo que, $c(fg) = c(f)c(g)c(f'g') = c(f)c(g)$. 
+\end{enumerate}
+\end{proof}
+
+Observemos que como todo polinomio $f \in A[X]$ con $gr(f) \ge 1$ se escribe como $f = cf'$ con $f'$ primitivo y $c$ el contenido de $f$. Tenemos la siguiente disyuntiva:
+
+\begin{itemize}
+\item Si $c \in U(A)$ entonces $c \sim 1$ y por tanto $f$ es primitivo. 
+\item Si $c \notin U(A)$ entonces $f$ no es irreducible. 
+\end{itemize}
+
+Por tanto, los posibles polinomios irreducibles no constantes hay que buscarlos entre los primitivos de $A[X]$. En este sentido, las hipótesis del siguiente teorema, no son restrictivas:
+
+\begin{theorem}[Paso de la irreducibilidad en un DFU a su cuerpo de fracciones]
+Sea $f \in A[X]$ primitivo con $gr(f) \ge 1$. 
+
+$f$ es irreducible en $A[X] \iff f$ es irreducible en $K[X]$
+
+donde observamos que la condición de la derecha es más fuerte. 
+\end{theorem}
+\begin{proof}
+$\implies)$ Procedemos por contrarrecíproco. Si $f$ no es irreducible en $K[X]$ entonces existe una descomposición de la forma $f = \phi_1 \phi_2$ donde ninguno de ellos es unidad, esto es, ninguno de ellos es constante no nulo. En particular, podemos asumir que su grado es mayor o igual que $1$. 
+
+Por el lema de las herramientas previas al de Gauss, tenemos que existen polinomios primitivos $f_1,f_2 \in A[X]$ y constantes $a,b,c,d \in A$ tales que $\phi_1 = \frac{a}{b} f_1$ y $\phi_2 = \frac{c}{d} f_2$. Por tanto, $f = \frac{ac}{bd} f_1 f_2$ o equivalentemente, $bdf = acf_1f_2$. 
+
+Si calculo contenidos en la expresión anterior, tenemos que $c(bdf) = bd c(f) = bd$ y $c(acf_1f_2) = ac c(f_1f_2) = ac c(f_1)c(f_2) = ac$ ya que $f,f_1,f_2$ son primitivos y se ha utilizado el lema de Gauss. En conclusión, tenemos que $f = f_1 f_2$ y $f_1,f_2$ no pueden ser unidades ya que habíamos convenido que su grado era mayor o igual a uno. Por tanto, $f$ no es irreducible en $A[X]$.
+
+$\Leftarrow)$ De nuevo por contrarrecíproco. Si $f$ no fuera irreducible en $A[X]$ entonces se escribiría como $f = gh$ con $g,h \in A[X]$, esta misma factorización es válida en $K[X]$ y por tanto $f$ no sería irreducible en $K[X]$.
+\end{proof}
+
+\begin{corollary}[Polinomios irreducibles en un DFU]
+Sea $A$ un DFU. Los elementos irreducibles de $A[X]$ son:
+
+\begin{enumerate}
+\item Polinomios de grado 0 que sean irreducibles en $A$.
+\item Polinomios primitivos no constantes que son irreducibles en $K[X]$.
+\end{enumerate}
+\end{corollary}
+\begin{proof}
+Procedemos por doble inclusión.
+
+Si $f \in A[X]$ es un elemento irreducible. Entonces:
+
+\begin{itemize}
+\item Si $gr(f) = 0$ entonces cualquier factorización propia en $A$ sería válida en $A[X]$ por tanto, $f$ sería irreducible en $A$.
+\item Si $gr(f) > 0$ entonces por el teorema anterior y el comentario previo, $f$ tiene que ser primitivo y al ser irreducible en $A[X]$ tendrá que ser irreducible en $K[X]$.
+\end{itemize}
+
+Si $f$ es un polinomio verificando, 1 o 2, entonces es irreducible en $A[X]$:
+
+\begin{itemize}
+\item Si $f$ de grado $0$ es irreducible en $A$ esto quiere decir que no admite factorizaciones propia por polinomios de grado $0$, pero como $A$ es un dominio de integridad, $gr(f) = gr(f_1)+gr(f_2)$ con $f = f_1f_2$ de modo que los posibles factores deben tener grado $0$. 
+
+\item Por el teorema anterior, si $f$ es primitivo no constante e irreducible en $K[X]$ entonces es irreducible en $A[X]$. 
+\end{itemize}
+\end{proof}
+
+\begin{theorem}[Teorema de Gauss]
+Sea $A$ un dominio de integridad. 
+
+$A$ es un DFU $\iff A[X]$ es un DFU. 
+\end{theorem}
+\begin{proof}
+$\Rightarrow)$ Claramente, para los polinomios de grado 0, como se identifican con los elementos de $A$ no hay que probar. 
+
+Sea $f \in A[X]$ con $gr(f) \ge 1$. Tenemos que $f = cf'$ con $f'$ un polinomio primitivo. Para hallar la descomposición tratamos cada elemento por separado. 
+
+Para $c$ realizamos la siguiente transformación:
+
+\begin{itemize}
+\item Si $c \in U(A)$ acabamos. 
+\item Si $c \notin U(A)$, como $A$ es un DFU y $c \neq 0$ por ser $gr(f) \ge 0$, escribimos $c = \prod p_i$ con $p_i \in A$ irreducibles. Por el corolario al teorema anterior, los $p_i$ son elementos irreducibles de $A[X]$.
+\end{itemize}
+
+Para $f' \in K[X]$ como $K[X]$ es un DFU tendríamos una factorización $f' = \prod \phi_i$ con $\phi_i$ irreducibles de $K[X]$. Usando las herramientas previas al lema de Gauss, $\phi_i = \frac{a_i}{b_i} f_i$ con $f_i \in A[X]$ primitivos. Por tanto, $f' = \frac{a}{b} \prod f_i \implies A[X] \ni bf' = a \prod f_i$. Por el lema de Gauss, $c(bf') = b = a = c(a \prod f_i)$. Por tanto, $f' = \prod f_i$ con $f_i$ irreducibles por el teorema anterior, ya que $f_i \sim \phi_i$ en $K[X]$ y son primitivos en $A[X]$. 
+
+En resumen, $f = \prod p_i \prod f_i$ sería una factorización en irreducibles. En vez de probar la unicidad, probamos la condición equivalente de que todo irreducible sea primo. 
+
+Sea $f \in A[X]$ irreducibles y $g,h \in A[X]$ con $f|gh$. 
+
+\begin{itemize}
+\item Si $gr(f) = 0$ entonces $f = p$ con $p$ irreducible en $A$ y como $p|gh \implies \exists t \in A[X].pt = gh$. Por el lema de Gauss y sus herramientas previas, $pc(t) = c(g)c(h) \implies p|c(g)c(h)$. Como $A$ es un DFU, $p$ es primo y por tanto, $p|c(g)c(h) \implies p|c(g) \lor p|c(h)$. Dado que, $g = c(g)g' \land h = c(h)h'$, tenemos que $c(g) | g \land c(h) | h$ de donde $p|g \lor p|h$ y hemos acabado. 
+
+\item Si $gr(f) \ge 1$ y $f \in A[X]$ es irreducible entonces es primitivo y por el teorema anterior, $f$ es irreducible en $K[X]$. Como $K[X]$ es un DFU, entonces $f$ es primo en $K[X]$. 
+
+Supongamos que para $g,h \in A[X].f|gh$. Entonces viendo $g,h \in K[X]$ tendríamos que $f|g \lor f|h$. Supongamos por ejemplo que $f|g$. Entonces $\exists \phi \in K[X].f \phi = g$ con $\phi = \frac{a}{b}g'$ con $g' \in A[X]$ primitivo. Por tanto, $f \frac{a}{b} g' = g$, luego $afg' = bg$ y tomando contenidos, $c(afg') = a = b c(g) = c(bg)$. De modo que $b|a$ y por tanto, $c(g) = \frac{a}{b} \in A$. En consecuencia, $\phi \in A[X]$ y por tanto, $f|g$ en $A[X]$.
+
+$\Leftarrow)$ Es evidente. 
+\end{itemize}
+\end{proof}
+
+\begin{corollary}[Aplicación práctica del teorema de Gauss]
+1. Sea $A$ un dominio de integridad. $A$ es DFU $\iff A[X_1,\cdots,X_n]$ es DFU. 
+
+2. Sea $K$ un cuerpo. $K[X_1,\cdots,X_n]$ es un DFU. 
+\end{corollary}
+
+
+\begin{example}
+\begin{itemize}
+\item $\mathbb{Z}[X]$ es un DFU y no un DIP. 
+
+En efecto, si fuera un dominio de ideales principales el ideal $A = \langle 2,x \rangle$ ya que son irreducibles y ninguno divide al otro se deduce que su máximo común divisor es 1 y por el teorema de Bézout tendríamos que $\langle 2,x \rangle = \langle 1 \rangle = \mathbb{Z}[X]$. Esto no puede ser. Por ejemplo, no es posible hallar $f,g$ tales que $1 = 2f+xg$, para ello basta tomar el homomorfismo de evaluación en $0$ y observar que $1 = 2f(0)$ que no tiene solución en los enteros para $f(0)$. 
+\item $\mathbb{Z}[X_1,\cdots,X_n]$ para $n \ge 2$ es un DFU por aplicación sucesiva del teorema de Gauss, recordando que $\mathbb{Z}[X_1,\cdots,X_n] = \mathbb{Z}[X_1,\cdots,X_{n-1}][X_n]$
+\item En general, $K[X_1,\cdots,X_n]$ será un DFU por aplicación del teorema de Gauss. Por otra parte, no es cierto en general que sea un dominio de ideales principales. Veamos un ejemplo.
+
+En $\mathbb{R}[X,Y]$, el ideal $\langle X,Y \rangle$ teniendo en cuenta que son irreducibles y que $X \nmid Y$ se deduce que su máximo común divisor es $1$ y por el teorema de Bézout $\langle X,Y \rangle = \langle 1 \rangle$. En particular, existen $f,g \in \mathbb{R}[X,Y]$ tales que $1 = xf+yg$ y evaluando en $0$ se tiene la igualdad $1 = 0$ en $\mathbb{R}$ lo cual es claramente una contradicción (en este caso incluso se podría ver con grados).
+\end{itemize}
+\end{example}
+
+

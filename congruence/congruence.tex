@@ -1,0 +1,504 @@
+\subsection{Ecuaciones en congruencias}
+
+\begin{definition}[Relación de congruencia en dominios de integridad]
+Sea A un dominio de integridad e $I \subseteq A$ un ideal. Definimos la relación $x,y \in A$ son congruentes modulo $I$ si $x-y \in I$. Lo notaremos $x \equiv_{I} y$.
+\end{definition}
+
+\begin{proposition}[Propiedades de las congruencias]\label{prop-congruencias}
+Dado un dominio de integridad $A$. 
+
+1. $\equiv_{I}$ es una relación de equivalencia sobre $A$. \\
+2. $a \equiv_{I} b \implies ca \equiv_{I} cb$. (producto en ambos miembros) \\
+3. $a \equiv_{I} b \iff a+c \equiv_{I} b+c$ (suma en ambos miembros)\\
+4. $a \equiv_{I} b \land c \equiv_{I} d \implies a+c \equiv_{I} b+d$ (isotonía para la suma)\\
+5. $a \equiv_{I} b \land c \equiv_{I} d \implies ac \equiv_{I} bd$ (isotonía para el producto)\\
+6. $I = \{a \in A:a \equiv_{I} 0\}$ (caracterización del ideal)\\
+\end{proposition}
+\begin{proof}
+1. $a \equiv_{I} a$ ya que $0$ siempre está en el ideal.\\
+$a \equiv_{I} b \iff a-b \in I$ y como $I$ es cerrado para opuestos, $b-a \in I \iff b \equiv_{I} a$. \\
+$a \equiv_{I} b \land b \equiv_{I} c \iff a-b \in I \land b-c \in I$, y como $I$ es cerrado para la suma $a-b+b-c = a-c \in I \iff a \equiv_{I} c$. 
+
+2. $a \equiv_{I} b \iff a-b \in I$ y como $I$ es cerrado para múltiplos, dado $c \in A$, $c(a-b) \in I \iff ca \equiv_{I} cb$
+
+3. $a \equiv_{I} b \iff a-b \in I \iff a+c-c-b \in I \iff a+c \equiv_{I} b+c$.
+
+4. Por 3, $a \equiv_{I} b \implies a+c \equiv_{I} b+c \equiv_{I} b+d$.  
+
+5. Por 2, $a \equiv_{I} b \implies ca \equiv_{I} cb \equiv_{I} bd$. 
+
+6. $a \equiv_{I} 0 \iff a-0 \in I \iff  a \in I$.
+\end{proof}
+
+Para dar el recíproco de 2. tenemos que trabajar en una estructura más rica.  Nosotros vamos a centrarnos en la hipótesis de dominio de ideales principales. Podemos modificar la notación. Ya que todo ideal $I$ es principal, existe $m \in A$ tal que $I = \langle m \rangle$. Y tendremos: $$a \equiv b \; mod(m) \iff a-b \in \langle m \rangle \iff m | a-b \iff \exists q \in A. a = mq+b$$ donde las equivalencias son válidas en cualquier dominio de integridad. 
+
+\begin{proposition}[Simplificación del factor común]
+	Dado A un dominio de ideales principales. 
+	
+	$ca \equiv_{m} cb \land (c,m) = 1 \implies a \equiv_{m} b$.
+\end{proposition}
+\begin{proof}
+	De la congruencia deducimos que $m|c(a-b)$ y como $(c,m) = 1$, por el lema de Euclides, sabemos que $m|a-b$ o equivalentemente $a \equiv_{m} b$. 
+\end{proof}
+
+Los ejemplos prácticos serán dominios euclídeos. 
+
+\begin{proposition}[Caracterización de la relación de congruencia en dominios euclídeos]
+Dado un dominio euclídeo con unicidad de cocientes y restos ($\mathbb{Z}, K[X]$).
+
+$a \equiv b \; mod(m) \iff$ a y b dan el mismo resto al dividirlos por m.
+
+\end{proposition}
+\begin{proof}
+$\Rightarrow)$ Por ser $A$ un dominio euclídeo sabemos que $a = qm+r$ con $r = 0 \lor \phi(r) < \phi(m)$. Tratemos de hallar a partir de esta descomposición, la descomposición euclídea para $b$ apoyándonos en que $a,b$ son congruentes. Por la congruencia sabemos que $b = a + pm$. Podemos entonces escribir $b = a + pm = qm + r + pm = m(p+q)+r$ y esta es la descomposición euclídea de $b$ ya que $r = 0 \lor \phi(r) < \phi(m)$ por hipótesis. 
+
+$\Leftarrow)$ Supongamos que $a = qm+r \land b = q'm+r$ con $r = 0 \lor \phi(r) < \phi(m)$. Para ver que son congruentes restamos estas ecuaciones y obtenemos: $$a-b = (q-q')m \in \langle m \rangle \iff a \equiv b \; mod(m)$$
+\end{proof}
+
+Tratamos ahora el problema de resolver $ax \equiv b \; mod(m)$. Esta es una ecuación lineal entendida en el anillo cociente $\frac{A}{\langle m \rangle}$. En efecto: $$ax \equiv b \; mod(m) \iff ax-b \in \langle m \rangle \iff (a+\langle m \rangle)(x+\langle m \rangle) = (b+\langle m \rangle)$$ Damos a continuación el método general para resolverlas:
+
+\begin{theorem}[Resolución de congruencias lineales]
+Sea $A$ un dominio de ideales principales. \\
+Sean $a,m \neq 0$ (en otro caso la ecuación degenera a una igualdad o a la no ecuación). \\
+Notemos $d=(a,m)$.
+
+1. La ecuación $ax \equiv b \, (mod \, m)$ tiene solución si y sólo si $d | b$.\\
+2. Si la ecuación tiene solución, la ecuación es equivalente a $\frac{a}{d}x \equiv \frac{b}{d} \, (mod \, \frac{m}{d})$.\\
+3. Como $(\frac{a}{d},\frac{m}{d}) = 1$ existe $u,v \in A$ tales que $1 = \frac{a}{d}u+\frac{m}{d}v$ y por tanto $x_0 = u\frac{b}{d}$ es una solución particular de la ecuación $\frac{a}{d}x \equiv \frac{b}{d} \, (mod \, \frac{m}{d})$.\\
+4. Si $x_0$ es una solución particular, la solución general se obtiene como $x = x_0 + k \frac{m}{d}$ donde $k \in A$. Dicho de otro modo la ecuación de partida equivale a la ecuación $x \equiv x_0 \, (mod \, \frac{m}{d})$.\\
+5. Si A es un dominio euclídeo, podemos garantizar que existe una solución particular $x_1$ de $ax \equiv b \; mod(m)$ tal que $x_1 = 0 \lor \phi(x_1) < \phi(\frac{m}{d})$. Dicho de otro modo, la ecuación es equivalente a $x \equiv x_1 mod \; \Big(\frac{m}{d}\Big)$ y $x = x_1 + k\frac{m}{d}$ es la solución general óptima. 
+\end{theorem}
+\begin{proof}
+1. La ecuación $ax \equiv b \; mod(m)$ tiene solución si y sólo si: $$\exists x. m | b-ax \iff \exists x,y. b-ax = my \iff \exists x,y.ax+my = b \iff d = (a,m) | b$$ por la existencia de soluciones para la ecuación diofántica lineal. 
+
+2. Comprobamos que tienen las mismas soluciones. x es solución de $ax \equiv b mod(m)$ si y sólo si: $$m|ax-b \iff d\frac{m}{d}\Big|d\Big(\frac{a}{d}x-\frac{b}{d}\Big) \iff \frac{m}{d} \Big| \frac{a}{d}x-\frac{b}{d}$$ luego x es solución de $\frac{a}{d}x \equiv \frac{b}{d} mod(\frac{m}{d})$. Obsérvese que en la simplificación hemos utilizado que $d \neq 0$ ya que $a \neq 0 \land d|a$.
+
+3. Dado que $(\frac{a}{d},\frac{m}{d})$ y que $A$ es un dominio de ideales principales, por el teorema de Bézout se tiene que $\exists u,v \in A. 1 = \frac{a}{d}u+\frac{m}{d}v$. Podemos multiplicar esta expresión obteniendo $\frac{b}{d} = \frac{b}{d}\frac{a}{d}u + \frac{b}{d}\frac{m}{d}v$. Claramente entonces $x_0 = \frac{b}{d}u$ es una solución particular de $\frac{a}{d}x \equiv \frac{b}{d} mod(\frac{m}{d})$. 
+
+4. Dada una solución particular de la ecuación original, también lo será de la ecuación $\frac{a}{d}x \equiv \frac{b}{d} mod(\frac{m}{d})$. Podemos utilizar entonces la regla de simplificación del factor común ya que $A$ es un dominio de ideales principales de modo que si $x$ es otra solución de la ecuación se tendría $\frac{a}{d}x \equiv \frac{a}{d}x_0 mod(\frac{m}{d})$ y como $(\frac{a}{d},\frac{m}{d}) = 1$ podemos simplificarlo a $x \equiv x_0 mod(\frac{m}{d})$.
+
+Recíprocamente, toda solución de esta forma verificará $\frac{a}{d}x_0 \equiv \frac{b}{d} mod(\frac{m}{d}) \land x \equiv x_0 mod(\frac{m}{d})$ y por tanto $\frac{a}{d}x \equiv \frac{a}{d}x_0 \equiv \frac{b}{d} mod(\frac{m}{d})$ y sabemos que esta ecuación es equivalente a la original.
+
+5. Una vez llegados a la ecuación $x \equiv x_0 \; mod(\frac{m}{d})$ podemos dividir $x_0$ entre $\frac{m}{d}$ obteniendo $x_0 = \frac{m}{d}q + x_1$ con $x_1 = 0 \lor \phi(x_1) < \phi(\frac{m}{d})$.  Está claro que $x_0 \equiv x_1 \; mod(\frac{m}{d})$ de modo que la ecuación $x \equiv x_1 \; mod(\frac{m}{d})$ es equivalente a $x \equiv x_0 \; mod(\frac{m}{d})$ y hemos obtenido una solución general óptima. 
+\end{proof}
+
+Podemos realizar la siguiente observación al método general que permite simplificar las operaciones:
+
+\begin{proposition}[Simplificación del factor común en la forma reducida]
+Sea $A$ un dominio de ideales principales.
+
+Dada la ecuación $ax \equiv b \; mod(m)$ la transformamos en su equivalente $\frac{a}{d}x \equiv \frac{b}{d} \; mod(\frac{m}{d})$ con $d = (a,b)$. Supongamos que $c$ es un divisor común de $\frac{a}{d}$ y $\frac{b}{d}$. Entonces la ecuación es equivalente a $\frac{\frac{a}{d}}{c}x \equiv \frac{\frac{b}{d}}{c} \; mod(\frac{m}{d})$. 
+\end{proposition}
+\begin{proof}
+La demostración es evidente por la propiedad de simplificación del factor en dominios de ideales principales. En efecto, como $(\frac{a}{d}, \frac{m}{d}) = 1$, si $c|\frac{a}{d} \land c| \frac{b}{d}$ entonces $d' = (c,\frac{m}{d}) = 1$. Supóngase que $d' \nsim 1$ (el máximo común divisor es único salvo asociados) entonces $d'|c|\frac{a}{d} \implies d'|\frac{a}{d} \land d'|\frac{m}{d}$ y por tanto $d'|d = 1 \implies d' \sim 1$.   
+\end{proof}
+
+\begin{example}
+\begin{itemize}
+\item En $\mathbb{Z}$ consideramos la ecuación $60x \equiv 90 \; mod(105)$. 
+
+Calculamos $d = (60,105) = 15(4,7) = 15$. Como $15|90$ la ecuación tiene solución y es equivalente a $4x \equiv 6 \; mod(7)$. La observación permite simplificar aún más hasta $2x \cong 3 \; mod(7)$. 
+
+Para resolver la ecuación calculamos mediante el algoritmo extendido de Euclides, los coeficientes de Bézout y la descomposición $(2,7) = 1 = 2 \cdot 4 + 7 \cdot (-1)$. Tomamos módulo 7 en ambos miembros y obtenemos $2 \cdot 4 \equiv 1 \; mod(7)$. Finalmente, multiplicamos la expresión por el término independiente de la ecuación obteniendo $2 \cdot 12 \equiv 3 \; mod(7)$. La solución particular obtenida es $x_0 = 12$. La solución general sería $x = 12 + k \cdot 7$ con $k \in \mathbb{Z}$.
+
+Dado que $\mathbb{Z}$ es un dominio euclídeo podemos obtener una solución óptima dividiendo $x_0$ entre 7. El resultado es $12 = 7 \cdot 1 + 5$. La solución general óptima sería $x = 5 + 7 \cdot k$ con $k \in \mathbb{Z}$.
+
+\item También se puede simplificar antes de transformar el sistema. Por ejemplo si tenemos la ecuación $1100x \equiv 660 \; mod(140)$ podemos dividir por $140$, obteniendo el sistema $120x \equiv 100 \; mod(140)$. 
+
+Calculamos $d = (120,140) = 20(6,7) = 20$ y obtenemos el sistema equivalente $6x \equiv 5 \; mod(7)$ que podemos resolver directamente multiplicando por $6$ ya que $6^{-1} = 6$, obteniendo $x \equiv 2 \; mod(7)$ que ya está en su forma general óptima. 
+\end{itemize}
+\end{example}
+
+\subsection{Sistemas de congruencias}
+
+Dado un dominio de ideales principales $A$ nos planteamos la solución general del sistema de congruencias lineales dado por:
+
+\[   
+\begin{cases}
+a_1x \equiv b_1 \; mod(m_1) \\
+a_2x \equiv b_2 \; mod(m_2) 
+\end{cases}
+\]
+
+Una solución de este sistema es una solución de cada una individualmente. Por tanto, podemos simplificar a estudiar el sistema en forma resuelta:
+
+\[   
+\begin{cases}
+x \equiv a \; mod(m) \\
+x \equiv b \; mod(n) 
+\end{cases}
+\]
+
+\begin{theorem}[Resolución de un sistema de congruencias lineales en forma resuelta]
+Consideremos un dominio de ideales principales $A$. Considérese el sistema: 
+
+\[   
+\begin{cases}
+x \equiv a \; mod(m) \\
+x \equiv b \; mod(n) 
+\end{cases}
+\]
+
+1. El sistema tiene solución $\iff a \equiv b \; mod((m,n))$ (teorema chino de los restos). \\
+2. Si $x_0$ es una solución particular entonces la solución general es $x = x_0 +k[m,n]$ donde $k \in A$.\\
+3. Si $A$ es un dominio euclídeo, podemos garantizar que existe una solución particular $x_1$ tal que $x_1 = 0 \lor \phi(x_1) < \phi([m,n])$. Dicho de otro modo, la ecuación es equivalente a $x \equiv x_1 \; mod([m,n])$ y $x = x_1 + k [m,n]$ es la solución general óptima. 
+\end{theorem}
+\begin{proof}
+Obsérvese que como $A$ es un dominio de ideales principales siempre existen el máximo común divisor y el mínimo común múltiplo de cualesquiera dos elementos. 
+
+1. Claramente, las soluciones de la primera ecuación son de la forma $x = a +km$ con $k \in A$. Veamos qué forma, tienen que tener estas soluciones para satisfacer la segunda ecuación. Tendría que verificar $a+km \equiv b \; mod(n) \iff mk \equiv b-a \; mod(n)$. Esta ecuación tiene solución si y sólo si: $$(m,n)|b-a \iff \exists p \in A. b-a = p(m,n) \iff a \equiv b \; mod((m,n))$$
+
+2. Supongamos que $k_0$ es una solución particular de la ecuación $mk \equiv b-a \; mod(n)$, entonces la solución general daría para cada $t \in A$, la solución $k = k_0 + t \frac{n}{(m,n)}$ y la solución general al sistema original sería $x = a + (k_0 + t \frac{n}{(m,n)})m = (a+k_0m)+ t \frac{nm}{(n,m)} = (a+k_0m)+t[m,n]$. Entonces identificamos $x_0 = a+k_0m$ como solución particular y por tanto la solución general es como la dada en el enunciado. 
+
+3. En el caso en que $A$ sea un dominio euclídeo la solución general $x \equiv x_0 \; mod([m,n])$ se puede convertir en óptima dividiendo $x_0$ por $[m,n]$ de donde se obtiene $x \equiv x_1 \; mod([m,n])$ y $x_1$ reúne las condiciones del enunciado. 
+\end{proof}
+
+Podemos realizar la siguiente observación al método general que permite simplificar las operaciones:
+
+\begin{proposition}[Solución con módulos primos relativos]
+Supongamos el siguiente sistema:
+
+\[   
+\begin{cases}
+x \equiv a \; mod(m) \\
+x \equiv b \; mod(n) 
+\end{cases}
+\]
+
+donde $(m,n) = 1$. Si la descomposición de Bézout es de la forma $1 = mu + nv$ entonces $x_0 = bmu + anv$ es una solución particular y $x \equiv x_0 \; mod(mn)$ es la solución general del sistema. 
+\end{proposition}
+\begin{proof}
+En efecto, claramente $x_0 \equiv_{m} anv$ y tomando módulos en la expresión de Bézout se tiene que $x_0 \equiv a \; mod(m)$. Por tanto, $x_0 \equiv_{m} a$. Análogamente, se tiene que $x_0 \equiv_{n} b$. Por tanto, $x_0$ es una solución particular del sistema. 
+
+La solución general es de la forma $x = x_0 + k[m,n]$ con $k \in A$ y como $(m,n) = 1$, se tiene que $mn = [m,n]$ y por tanto la solución general es de la forma $x = x_0 + kmn$. 
+\end{proof}
+
+\begin{example}
+Supongamos que tenemos que resolver el sistema:
+
+\[   
+\begin{cases}
+6x \equiv 8 \; mod(11) \\
+5x \equiv 15 \; mod(23) 
+\end{cases}
+\]
+
+lo primero ponerlas en forma resuelta mediante el procedimiento indicado en la solución de una ecuación lineal. Sin embargo, en vez de utilizar Bézout podemos observar que en la primera ecuación el inverso de 6 es 2 y en la segunda ecuación que dado que $(5,23) = 1$ podemos dividir el factor y el término independiente por 5 resultando el siguiente sistema:
+
+\[   
+\begin{cases}
+x \equiv 5 \; mod(11) \\
+x \equiv 3 \; mod(23) 
+\end{cases}
+\]
+
+El procedimiento para hallar una solución particular del sistema consiste en sustituir la solución general de la primera ecuación en la segunda ecuación y resolver para esta. Así, la solución general de la primera es $x = 5+11t$ y al sustituir queda: $$5+11t \equiv 3 \; mod(23)$$ $$11t \equiv -2 \; mod(23)$$ En esta última  ecuación observamos que podemos multiplica por $2$ obteniendo $$-t \equiv -4 \; mod(23)$$ $$t \equiv 4 \; mod(23)$$ Por tanto $t_0 = 4$ es una solución particular de esta ecuación y la solución particular del sistema será $x_0 = 5+11 \cdot 4 = 49$ de modo que la solución general es $x \equiv 49 \; mod(253)$. 
+
+\end{example}
+
+Una generalización de la proposición nos proporciona el siguiente algoritmo:
+
+\begin{proposition}[Algoritmo de Lagrange]
+Dado un sistema de congruencias lineales en forma resuelta de la forma $x \equiv a_i \; mod(m_i)$ supongamos que $\forall j \neq k. (m_j,m_k) = 1$. 
+
+Sea $c_k = \frac{\prod m_i}{m_k}$ entonces se verifica que $(m_k,c_k) = 1$ y por el teorema de Bézout existen $u_k,v_k$ tales que $u_kc_k+v_km_k = 1$ y observamos que $x_k = u_kc_k \equiv 1 \; mod(m_k)$. 
+
+Observamos que $a = \sum a_ix_i$ es una solución particular del sistema de modo que la solución general del sistema viene dada por $x \equiv a \; mod(\prod m_i)$. 
+\end{proposition}
+
+\subsection{Anillo de restos de un dominio euclídeo con unicidad de cocientes y restos}
+
+\begin{definition}[Módulo válido]
+Sea $A$ un dominio euclídeo con unicidad de cocientes y restos.
+
+Diremos que $m \in A \setminus \{0\}$ es un módulo válido si $m \notin U(A)$ y además $\phi(1) < \phi(m)$ donde $\phi$ es la función euclídea considerada. 
+\end{definition}
+
+En los ejemplos usuales, $\mathbb{Z},K[X]$ la condición anterior no es restrictiva ya que $\phi(1) < \phi(m)$ para todo elemento no nulo, no unidad. En particular, considerar módulos válidos garantiza que el resto de la división de $1$ por el módulo $m$ es precisamente $1$, lo cual será importante para relacionar el conjunto de restos con el anillo cociente. 
+
+\begin{definition}[Anillo de restos]
+Dado $A$ un dominio euclídeo con unicidad de cocientes y restos y $m \in A$ un módulo válido. 
+
+Denotamos por $A_m$ el conjunto de todos los restos que se obtienen al dividir los elementos del anillo entre $m$. Si $R_m(a)$ es el resto de dividir $a$ entre $m$ entonces tenemos que: $$A_m = \{R_m(a):a \in A\} \subseteq A$$ Este conjunto puede dotarse con estructura de anillo con las operaciones $$a+b = R_m(a+b) \text{ y } ab = R_m(ab)$$ Se le llama el anillo de restos módulo $m$.  
+\end{definition}
+
+\begin{proposition}[Estructura cociente del anillo de restos]
+Se $A$ un dominio euclídeo con unicidad de cocientes y restos y $m \in A$ un módulo válido. 
+
+\begin{enumerate}
+\item $(A_m,+,\cdot)$ es un anillo.
+\item $(A_m,+,\cdot)$ no es, en general, un subanillo en de $A$.
+\item $A_m \cong A/mA$
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item Las propiedades de anillo se derivan de las de $A$. Observemos que al haber asegurado que $\phi(1) < \phi(m)$ tenemos que $0 \neq 1$ son dos elementos del anillo y distintos, ya que, $0 = m0+0$ y $1 = m0 + 1$. 
+
+\item $A_m$ no es en general un subanillo. Por ejemplo, $\mathbb{Z}_n$ es un anillo que no es subanillo de $\mathbb{Z}$ ya que no contiene a $-1$. 
+
+\item La aplicación $R_m:A \to A_m$ tal que $a \mapsto R_m(a)$ es un epimorfismo de anillos. En este punto, es crucial utilizar la unicidad de cocientes y restos. Por ejemplo, para demostrar que $R_m(a+b) = R_m(R_m(a)+R_m(b))$ (nótese que la operación de la derecha es la de $A_m$), expresaríamos: $$a+b = mq_1 + r_1, a = mq_2+r_2, b = mq_3 +r_3$$ de donde: $$a+b = m(q_2+q_3) + mq_4 + r_4 = m(q_1+q_2+q_3)+r_4$$ donde $r_4$ se ha elegido para que verifique las condiciones de la división euclídea. Análogamente, se procede para la multiplicación. Además, $R_m(1) = 1$ se garantiza, ya que $1 = m0+1$ con $\phi(1) < \phi(m)$ de modo que $1$ es un resto válido (en el caso de los enteros, al ser positivo también tiene que ser el único). El núcleo es $\langle m \rangle$ y por el primer teorema de isomorfía tenemos que $\frac{A}{\langle m \rangle} \cong A_m$. 
+\end{enumerate}
+\end{proof}
+
+\begin{example}[Dos formas de mirar al anillo de restos]
+El anillo $\mathbb{Q}[X]_{X^2+X+1} = \{aX+b:a,b \in \mathbb{Q}\}$ es isomorfo al anillo $\mathbb{Q}[X]/\langle X^2+X+1 \rangle$ donde trabajaríamos con clases de congruencias. 
+\end{example}
+
+Vamos a estudiar cuales de entre estos anillos de restos son cuerpos y como se resuelven las ecuaciones en congruencias en este caso particular. 
+
+\begin{proposition}[Resolución de ecuaciones en congruencias en anillos de restos]
+Sea $A$ un dominio euclídeo con unicidad de cocientes y restos y $n$ un módulo válido.
+
+1. Dados $a,b \in A_n$ con $a \neq 0$, $ax = b$ en $A_n$ tiene solución $\iff d = (a,n)|b$.\\
+2. En el caso de $\mathbb{Z}_n$ la ecuación tiene exactamente $d$ soluciones que partiendo de la solución inicial $x_0$ con $x_0 = 0 \lor \phi(x_0) < \phi(\frac{n}{d})$ son $\{x_0+k\frac{n}{d}:k = 0,\cdots,d-1\}$. 
+\end{proposition}
+\begin{proof}
+1. Dados $a,b \in A_n \setminus \{0\}$ queremos resolver la ecuación $ax = b$, esta ecuación tiene una solución $x$ cuando: $$ax = b \iff [ax] = [b] \iff ax \equiv b \; mod(n) \iff (a,n)|b$$ 
+
+2. En tal caso sabemos por el teorema de resolución de una congruencia lineal que existe una solución particular en $\mathbb{Z}$ con $x_0 = 0 \lor \phi(x_0) < \phi(\frac{n}{d})$ y que las soluciones son de la forma $x = x_0 + k\frac{n}{d}$ con $k \in \mathbb{Z}$. 
+
+Dado que $\mathbb{Z}_n \equiv \frac{\mathbb{Z}}{<n>}$ el problema es equivalente a resolver la ecuación $[a][x] = [b]$ con incógnita $[x]$. La solución general es $\{[x_0+k\frac{n}{d}]: k \in \mathbb{Z}\}$. 
+
+Las clases $[x_0 + k \frac{n}{d}]$ con $k = 0,\cdots,d-1$ son todas distintas. En efecto, si $0 \le k' < k < d$ entonces: $$0 < \Big(x_0 + k\frac{n}{d}\Big) - \Big(x_0+k'\frac{n}{d}\Big) = (k-k')\frac{n}{d} < d \frac{n}{d} = n$$ de donde $x_0 + k \frac{n}{d} < x_0 + k \frac{n}{d}$ y por tanto todos estos elementos son distintos lo que implica que sus clases también los son. 
+
+Veamos que no hay más clases distintas. Dado $k \in \mathbb{Z}$ tomamos la división euclídea de $k$ entre $d$, esto es, $k = qd+r$ con $r = 0 \lor \phi(r) < \phi(d)$. Entonces $$x = x_0 + k \frac{n}{d} = x_0 + \Big(qd \frac{n}{d}\Big) + r \frac{n}{d} \equiv_{\frac{n}{d}} x_0 + r\frac{n}{d}$$ donde $r = 0 \lor \phi(r) < \phi(d)$ y por tanto el elemento estaría entre las anteriores. 
+
+Volviendo al anillo de restos $\mathbb{Z}_n$ tenemos que los representantes anteriores coinciden con sus restos ya que $x_0 + k \frac{n}{d} < \frac{n}{d} + (d-1) \frac{n}{d} = n$. 
+\end{proof}
+
+\begin{example}[Ecuación lineal en los enteros módulo 105]
+Resolver la ecuación $60x = 90$ en $\mathbb{Z}_{105}$.
+
+Pasamos la ecuación al anillo cociente como $60x \equiv 90 \; mod(105)$. Como $(60,105)=15(4,7) = 15$ y $\frac{90}{15} = 6$, la ecuación tiene soluciones. Resolvemos la congruencia por el método habitual obteniendo la ecuación equivalente $4x \equiv 6 \; mod(7)$ en la que podemos utilizar la propiedad de simplificación en dominios de ideales principales para obtener la ecuación $2x \equiv 3 \; mod(7)$. Aquí es fácil ver que una solución particular es $x_0 = 5$ de modo que el conjunto de soluciones será $\{5+k7:k=0,\cdots,14\}$. 
+\end{example}
+
+Habíamos visto que en cualquier anillo se tenían tres familias bien diferenciadas, las unidades, los divisores de cero y el resto de elementos. En un anillo de restos estas familias quedan reducidas a dos:
+
+\begin{proposition}[Partición por unidades y divisores de cero del anillo de restos]
+Sea $A$ un dominio euclídeo con unicidad de cocientes y restos y $m$ un módulo válido. Denotamos por $(,)$ al máximo común divisor en $A$. Entonces:
+
+1. $U(A_m) = \{a \in A_m \setminus \{0\}:(a,m) = 1\}$.\\
+2. Las unidades y los divisores de cero forman una partición de $A_m$. Esto es, $A_m = U(A_m) \dot\cup 0_{A_m}$.  
+\end{proposition}
+\begin{proof}
+1. $a \in U(A_m) \iff \exists x. ax = 1 \iff (a,m)|1 \iff (a,m) = 1$.
+
+2. Ya vimos en las propiedades de los divisores de cero que $U(A) \cap 0_A = \emptyset$. 
+
+Veamos que $A_m = U(A_m) \cup 0_{A_m}$. 
+
+Tomemos $a \in A_m \setminus U(A_m)$ y veamos que $a \in 0_{A_m}$.  Como $a$ no es unidad, $d = (a,m) \neq 1$.
+
+Veamos que $[\frac{m}{d}] \neq [0]$ razonado por reducción al absurdo: $$\Big[\frac{m}{d}\Big] = [0] \implies \exists x. \frac{m}{d} = xm \implies m = xmd \implies 1 = xd \implies d \in U(A)$$ donde la ecuación se resuelve en el dominio de integridad $A$ y llegamos a una contradicción con la elección de $a$. 
+
+En consecuencia, $[a][\frac{m}{d}] = [a \cdot \frac{m}{d}] = [\frac{a}{d}m] = [0]$ y como los divisores de cero son invariantes por isomorfismo y $A_m \cong \frac{A}{\langle m \rangle}$ se tiene que también $a \in A_m$ es un divisor de cero.
+\end{proof}
+
+\begin{example}[Unidades en anillos de restos]
+1. $U(\mathbb{Z}_n) = \{0 \le a < n:(a,n) = 1\}$. \\
+2. Claramente, si $[a] \in \frac{A}{mA} \setminus \{0\}$ entonces $[a] \in U(\frac{A}{mA}) \iff (a,m) = 1$.  
+\end{example}
+
+El siguiente teorema puede deducirse de la teoría de dominios de ideales principales y de la de ideales maximales y primos. Aquí lo hacemos con las herramientas desarrolladas hasta ahora:
+
+\begin{theorem}[Caracterización de los anillos de restos de módulo irreducible]
+Dado un anillo de restos $A_m$. 
+
+$m$ es irreducible $\iff A_m$ es un dominio de integridad $\iff A_m$ es un cuerpo.
+\end{theorem}
+\begin{proof}
+$3 \implies 2)$ Trivial. 
+
+$2 \implies 3)$ Como $A_m$ es un dominio de integridad, tenemos que $0_{A_m} = \{0\}$. Por lo anterior, $A_m = U(A_m) \dot\cup 0_{A_m} = U(A_m) \dot\cup \{0\}$. Por tanto, $A_m$ ha de ser un cuerpo. 
+
+$1 \implies 3)$ Sea $[a] \in \frac{A}{\langle m \rangle} \setminus \{[0]\}$ entonces $m \nmid a$ y como $m$ es irreducible se tiene que $(a,m) = 1$, esto nos dice que $a \in U(A_m)$ pero como las unidades son invariantes por isomorfismo también $[a] \in U(\frac{A}{\langle m \rangle})$. De modo que $\frac{A}{\langle m \rangle}$ es un cuerpo. 
+
+$2 \implies 1)$ Lo hacemos por contrarrecíproco. Si $m$ no es irreducible entonces $m$ se puede descomponer como $m = ab$ con $a,b \notin U(A_m) \cup A(m)$. 
+
+Teniendo en cuenta que $a,b$ son los únicos restos de una división euclídea entre $m$, no pueden ser múltiplos de $m$ ya que en otro caso aumentaríamos el cociente de la división y tomaríamos resto $0$. Pero $a,b$ no pueden ser $0$ ya que en este caso $m = 0$ no sería irreducible. En consecuencia, $[a],[b] \neq [0]$ en $\frac{A}{\langle m \rangle}$. 
+
+Sin embargo, $[a][b] = [ab] = [m] = [0]$, esto es, $[a],[b]$ son divisores de cero en $\frac{A}{\langle m \rangle}$ y como los divisores de cero son invariantes por isomorfismo, se tiene que $a,b$ serían divisores de cero y por tanto $A_m$ no sería un dominio de integridad. 
+\end{proof}
+
+\begin{corollary}[Anillos de restos que son cuerpos]
+1. $\mathbb{Z}_n$ es un cuerpo $\iff$ $n$ es irreducible. \\
+2. $K[X]_{f(x)}$ es un cuerpo $\iff f(x)$ es irreducible en $K[X]$.\\
+2. Si $n,f(x)$ no son irreducibles entonces $\mathbb{Z}_n,K[X]_{f(x)}$ no son dominios de integridad. 
+\end{corollary}
+
+\begin{example}[Cuerpos finitos]
+Por lo anterior, $\mathbb{Z}_p[X]$ con $p$ primo es un dominio euclídeo y $\mathbb{Z}_p[X]_{q(x)}$ con $q$ irreducible es un cuerpo. Este cuerpo, tiene un número finito de elementos de la forma: $$p(x) = a_{n-1}x^{n-1}+ \cdots + a_0$$ esto da un total de $p^n$ elementos. Se puede demostrar que estos son los únicos cuerpos finitos que hay. 
+\end{example}
+
+
+\begin{theorem}[Teorema chino de los restos revisitado]
+Dado un dominio euclídeo $A$ con unicidad de cocientes y restos y $m,n \in A \setminus \{0\}$. 
+
+$(m,n) = 1 \iff A_{mn} \cong A_m \times A_n$. 
+
+La aplicación que los hace isomorfismo es $a \mapsto (R_n(a),R_m(a))$ y su inversa se computa como en la proposición sobre la solución de un sistema de congruencias con módulos que son primos relativos.
+\end{theorem}
+\begin{proof}
+$\Rightarrow)$ Consideremos el esquema siguiente:
+
+\begin{tikzcd}
+A \arrow{r}{p} \arrow{d}[swap]{p'} &
+\frac{A}{<n>} \times \frac{A}{<m>}  \\   
+\frac{A}{<mn>} \arrow[swap]{r}{\cong} & 
+Img(p) \arrow{u}{i}
+\end{tikzcd}
+
+La aplicación proyección $p(a) = ([a]_n,[a]_m)$ es un homomorfismo de anillos cuyo núcleo está formado por aquellos elementos que son múltiplos de $m$ y de $n$, esto es $Ker(p) = \langle [m,n] \rangle$ y ya que $(m,n) = 1$ se tiene que $Ker(p) = \langle mn \rangle$. 
+
+Veamos que es epimorfismo, esto es, dadas dos clases $[b]_n,[c]_m$ existe $x \in A$ tal que $[x] = [b] = [c]$. Esto es equivalente a resolver el siguiente sistema de ecuaciones:
+
+\[   
+\begin{cases}
+x \equiv b \; mod(n) \\
+x \equiv c \; mod(m) 
+\end{cases}
+\]
+
+Por el teorema chino de los restos, el sistema solución sólo cuando $b \equiv c \; mod((m,n))$ y como en este caso, $(m,n) = 1$ es claro, que el sistema tiene solución.
+
+Entonces, por el primer teorema de isomorfía se tiene que $\frac{A}{<mn>} \cong \frac{A}{<n>} \times \frac{A}{<m>}$ con el isomorfismo dado por $[a]_{mn} = ([a]_n,[a]_m)$. 
+
+En conclusión se tiene el isomorfismo deseado: $$A_{mn} \cong A_n \times A_m$$ dado por $a \mapsto (R_n(a),R_m(a))$. 
+
+$\Leftarrow)$ Si asumimos un isomorfismo $A_{mn} \cong A_m \times A_n$ entonces cualquier sistema de ecuaciones de la forma:
+
+\[   
+\begin{cases}
+x \equiv a \; mod(n) \\
+x \equiv b \; mod(m) 
+\end{cases}
+\]
+
+tiene solución. Si elegimos $a = 1$ y $b = 0$ la condición de que el sistema tenga compatibilidad implica que $1 \equiv 0 \; mod((m,n))$ pero entonces $1 \in \langle (m,n) \rangle$  y en consecuencia, $(m,n)$ es una unidad. Pero el máximo común divisor es único salvo asociado luego podemos considerar que $(m,n) = 1$.
+\end{proof}
+
+\begin{example}[Un ejemplo en el que no es válido el teorema chino]
+Observemos que $\mathbb{Z}_4 \ncong \mathbb{Z}_2 \times \mathbb{Z}_2$ pues $(2,2) = 2$. Además $\mathbb{Z}_4$ tiene 2 unidades mientras que $\mathbb{Z}_2 \times \mathbb{Z}_2$ tiene solo una. 
+\end{example}
+
+\subsection{Consecuencias en el anillo $\mathbb{Z}_n$}
+
+\begin{definition}[Función $\phi$ de Euler]
+La función $\phi$ de Euler es la función $\phi:\mathbb{N}-\{0,1\}$ tal que $\phi(n) = |U(\mathbb{Z}_n)|$, esto es, para cada $n$ da la cantidad de números menores que $n$ y primos con $n$. 
+\end{definition}
+
+\begin{proposition}[Propiedades para el cálculo de la función de Euler]
+	Se verifican las siguientes propiedades:
+\begin{enumerate}
+	\item Si $p \in \mathbb{N}$ es primo y $e \ge 1$ entonces $\phi(p^e) = p^{e} - p^{e-1} = p^{e}(1- \frac{1}{p})$
+	\item Si $m,n \in \mathbb{N}$ y $(m,n) = 1$ entonces $\phi(mn) = \phi(m)\phi(n)$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+	\item Tenemos que $\phi(p) = U(\mathbb{Z}_{p^e}) = \{a:(a,m) = 1\}$ y por tanto, del conjunto $\{1,2,3,\cdots,p^e\}$ tenemos que quitar los múltiplos de $p$ que son $\{1p,2p,\cdots,p^{e-1}p\}$, es decir, $p^{e-1}$ elementos.
+	\item Por el teorema de los restos, como $(m,n)$ tenemos que $\mathbb{Z}_{mn} \cong \mathbb{Z}_m \times \mathbb{Z}_n$ y como las unidades se preservan por isomorfismo y las unidades del producto son exactamente el producto de unidades de cada factor se tiene que: $$\mathbb{Z}_{mn} \cong \mathbb{Z}_m \times \mathbb{Z}_n$$ $$U(\mathbb{Z}_{mn}) \cong U(\mathbb{Z}_m) \times U(\mathbb{Z}_n)$$ Por tanto, se tendrá: $$\phi(mn) = |U(\mathbb{Z}_{mn})| = |U(\mathbb{Z}_n)||U(\mathbb{Z}_m)| = \phi(n)\phi(m)$$ 
+\end{enumerate}
+
+\end{proof}
+
+\begin{theorem}[Teorema de Euler para el cálculo de $\phi$]
+Sea $n = \prod_{i = 1}^r p_i^{e_r}$ con $p_i$ irreducibles distintos de $\mathbb{Z}$. Entonces:
+
+$\phi(n) = n(1 - \frac{1}{p_1}) \cdots (1-\frac{1}{p_r})$
+\end{theorem}
+\begin{proof}
+Dado $n \in \mathbb{N}$ de la forma del enunciado usando el segundo apartado de la proposición anterior tenemos que $$\phi(n) = \prod \phi(p_i^{e_i}) = \prod p_i^{e_i}\Big(1- \frac{1}{p_i}\Big) = n \prod \Big(1- \frac{1}{p_i}\Big)$$ Obsérvese que $\phi$ no depende de los eponentes de la descomposición en irreducibles. 	
+\end{proof}
+
+\begin{example}
+	$\phi(36) = 36(1-1/3)(1-1/2) = 12$ y por tanto en $\mathbb{Z}_{36}$ hay exactamente 24 divisores de cero y exactamente 12 unidades. 
+\end{example}
+
+Para establecer el siguiente resultado necesitamos el lema siguiente:
+
+\begin{lemma}[Lema de Lagrange]
+Sea $G$ un grupo finito conmutativo con $m$ elementos. Entonces $\forall a \in G. a^m = 1$. 
+\end{lemma}
+\begin{proof}
+Fijado $a \in G$, la aplicación $l:G \to G$ tal que $x \mapsto ax$ es una aplicación biyectiva ya que si $ax = ay \implies a^{-1}ax = a^{-1}ay \implies x = y$ por tanto es inyectiva y es sobreyectiva ya que para $y \in G$ si elijo $x = a^{-1}y \implies y = ax$. Nótese la siguiente igualdad: $$s = \prod_{x \in G} x = \prod_{x \in G} (ax) = a^m \prod_{x \in G} x = a^ms \implies a^m = 1$$
+\end{proof}
+
+\begin{theorem}[Teorema de Euler]
+	Sea $n \ge 2$. 
+	
+	\begin{enumerate}
+		\item Si $a \in \mathbb{Z} \land (a,n) = 1$ entonces $a^{\phi(n)} \equiv 1 \; mod(n)$ 
+		\item Si $a \in \mathbb{Z}_n \land (a,n) = 1$ entonces $a^{\phi(n)} = 1$ en $\mathbb{Z}_n$ en particular $a^{-1} = a^{\phi(n) - 1}$
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+Aplicamos el lema anterior al grupo de las unidades de $\mathbb{Z}_n$ que tiene $\phi(n)$. 
+
+Si $(a,n) = 1 \implies a \in U(\mathbb{Z}_n) \implies a^{\phi(n)} = 1$ en $\mathbb{Z}_n$. 
+
+Tomando clases de equivalencia, se tendrá que $[a]^{\phi(n)} = [1]$ o equivalentemente $a^{\phi(n)} \equiv 1 \; mod(n)$. 
+\end{proof}
+
+\begin{corollary}[Teorema pequeño de Fermat]
+	Sea $p \ge 0$ un irreducible de $\mathbb{Z}$.
+	
+	\begin{itemize}
+		\item Si $a \in \mathbb{Z} \land p \nmid a$ entonces $a^{p-1} \equiv 1 \; mod(p)$ 
+		\item Si $a \in \mathbb{Z}_p \land a \neq 0$ entonces $a^{p-1} = 1$ en $\mathbb{Z}_p$ en particular $a^{-1} = a^{p-2}$
+	\end{itemize}
+\end{corollary}
+\begin{proof}
+Basta tener en cuenta que $U(\mathbb{Z}_p) = \mathbb{Z}_p \setminus \{0\}$ y en particular tiene $p-1$ elementos. 
+\end{proof}
+
+\begin{example}
+	Calcular $10^{47^{51}}$ en $\mathbb{Z}_{14}$. 
+	
+	Las herramientas para resolver este tipo de problemas son las propiedades de las congruencias y la función de Euler. 
+	
+	Por un lado, $10^{47^{51}} = 5^{47^{51}} 2^{47^{51}}$. 
+	
+	Centrándonos en el primer factor, como $(5,14) = 1$ podemos aplicar el teorema de Euler, esto es: $$5^{\phi(14)} \equiv 5^6 \equiv 1 \; mod(14) \implies 5^{6q+r} \equiv 5^r \; mod(14)$$ Entonces podemos dedicarnos a resolver $47^{51} \equiv 5^{51} \; mod(6)$. Por el teorema de Euler, observando que $(5,6) = 1$ tenemos que: $$5^{\phi(6)} \equiv 5^2 \equiv 1 \; mod(6) \implies 5^{2q+r} \equiv 5^r \; mod(6)$$  y como $51 \equiv 1 \; mod(2)$ entonces $47^{51} \equiv 5 \; mod(6) \implies 5^{47^{51}} \equiv 5^5 \equiv 3 \; mod(14)$.
+	
+	Centrándonos en el segundo factor, como $(2,14) = 2$ no podemos usar el teorema de Euler y sólo nos quedan las herramientas de congruencias. Observando que $2^4 \equiv 2 \; mod(14)$ tenemos que para todo $k$: $$2^{3k} \equiv 8 \; mod(14)$$ $$2^{3k+1} \equiv 2 \; mod(14)$$ $$2^{3k+2} \equiv 4 \; mod(14)$$ y bastaría estudiar el exponente módulo 3: $$47^{51} \equiv 2^{51}  \equiv 2 \; mod(3)$$ Donde el último paso se debe a observar que $2^3 \equiv 2 \; mod(3)$. Por tanto, $2^{47^{51}} \equiv 4 \; mod(14)$. 
+	
+	Finalmente, $10^{47^{51}} \equiv 3 \cdot 4 \equiv 12 \; mod(14)$.
+\end{example}
+
+\begin{example}
+	Calcular $3^{81}$ en $\mathbb{Z}_{100}$. 
+	
+	Este ejercicio ilustra una tercera herramienta que puede ser útil cuando falla lo anterior. Estamos hablando del teorema chino de los restos. En esta situación los cálculos directos requieren el uso de calculadora y el teorema de Euler nos dice que $3^{90} \equiv 1 \; mod(100)$, lo que no contribuye a resolver la situación. Por tanto, veamos cómo usamos el teorema chino de los restos. 
+	
+	Para estudiar $3^{81}$ en $\mathbb{Z}_{100}$ puedo estudiar $3^{81}$ en $\mathbb{Z}_4$ y $\mathbb{Z}_{25}$. Por el teorema de Euler, en estos casos $3^{81} = 3$ y claramente esto implica que $3^{81} = 3$ en $\mathbb{Z}_{100}$. Si no fuera tan directo bastaría expresar la combinación de Bézout $1 = 4(-1) + 5\cdot 1$ y poner la solución particular $x_0 = 3 \cdot 4 \cdot (-1) + 5 \cdot 3 \cdot 1 = 3$. 
+\end{example}
+
+\begin{lemma}[Raíces cuadradas de la unidad en $\mathbb{Z}_p$]
+Sea $p$ un número primo. 
+
+Las raíces cuadradas de la $1 \in \mathbb{Z}_p$ son exactamente $1$ y $-1$. 
+\end{lemma}
+\begin{proof}
+Claramente, $1,-1$ son raíces. Por otro lado, como $\mathbb{Z}_p$ es un dominio de integridad si $a$ fuera una raíz cuadrada de la unidad entonces: $$0 = (a^2-1) = (a-1)(a+1)$$ Si $a-1$ y $a+1$ fueran no nulos entonces llegamos a una contradicción por tanto $a = -1$ o $a = 1$. 
+\end{proof}
+
+El siguiente teorema se aprovecha de la interpretación de las raíces cuadradas de la unidad como aquellos elementos que coinciden con su inverso. 
+
+\begin{theorem}[Teorema de Wilson]
+Sea $p$ un entero positivo. 
+
+$p$ es primo $\iff (p-1)! \equiv -1 \; mod(p)$.
+\end{theorem}
+\begin{proof}
+$\Rightarrow)$ El hecho de que las raíces cuadradas de la unidad en $\mathbb{Z}_p$ con $p$ primo sean $1,-1$ implica que sólo $1,-1$ son inversos multiplicativos de sí mismos. Todos las demás unidades tendrán como inverso un elemento distinto. Por tanto, $$(p-1)! = \prod_{i = 1}^{p-1} i = 1 \cdot \Big(\prod_{i = 2}^{p-2} i\Big) \cdot (p-1) = -\prod_{j \in \mathbb{Z}_p \setminus \{1,p-1\}} jj^{-1} = -1$$
+
+$\Leftarrow)$ En $\mathbb{Z}_p$ tenemos la ecuación $(p-1)! = -1$ luego en $\mathbb{Z}$ tenemos que $$(p-1)! + 1 = pq \implies pq - (p-1)! = 1 \implies (p,(p-1)!) = 1$$ donde hemos utilizado que $\mathbb{Z}$ es un dominio de ideales principales. Pero entonces no hay ningún número menor que $p$ que divida a $p$. Esto es, $p$ es primo. 
+\end{proof}
+
+
+
+
+
+

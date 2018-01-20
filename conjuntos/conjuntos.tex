@@ -1,0 +1,166 @@
+\begin{definition}[Relación entre dos conjuntos]
+	Sean $X,Y$ dos conjuntos. Una relación de $X$ en $Y$ es un subconjunto $R$ del producto cartesiano $X \times Y$. 
+	
+	Una relación $R$ de $X$ en $Y$ es una aplicación si $\forall x \in X.  \exists_1 y \in Y. (x,y) \in R$. Lo denotamos $R:X \to Y$. A $X$ se le llama dominio de la aplicación, a $Y$ se le llama codominio y para cada $x \in X$ a $R(x)$ se le llama imagen de $x$ por la aplicación $R$. 
+\end{definition}
+
+Dos aplicaciones $f,g:X \to Y$ son iguales si lo son como subconjuntos de $X  \times Y$, esto es, si $\forall x \in X. f(x) = g(x)$. 
+
+\begin{definition}[Aplicación imagen directa e imagen inversa]
+	Dada una aplicación $f:X \to Y$ definimos:
+	
+	 $f_{*}: \mathcal{P}(X) \to \mathcal{P}(Y)$ tal que $f_*(A) = \{f(x):x \in A\}$ y la llamamos aplicación imagen directa de la aplicación $f$. 	
+	
+	$f^{*}:\mathcal{P}(Y) \to \mathcal{P}(X)$ tal que $f^{*}(B) = \{x \in X:f(x) \in B \}$ y la llamamos aplicación imagen inversa de la aplicación $f$. 
+\end{definition}
+
+\begin{lemma}[Propiedades de la imagen directa e inversa]
+	Sea $f:X \to Y$ una aplicación y $A,B \in \mathcal{P}(X)$. Entonces:
+	
+	1.1. $f_*(A \cup B) = f_*(A) \cup f_*(B)$\\
+	1.2. $f_*(A \cap B) \subseteq f_*(A) \cap f_*(B)$\\
+	1.3. $A \subseteq f^*(f_*(A))$ \\
+	1.4. $f_*(\overline{A})$ y $\overline{f_*(A)}$ no están relacionados. \\
+	2.1. $f^*(C \cup D) = f^*(C) \cup f^*(D)$ \\
+	2.2. $f^*(C \cap D) = f^*(C) \cap f^*(D)$ \\
+	2.3. $f_*(f^*(C)) \subseteq C$\\
+	2.4 $f^*(\overline{C}) = \overline{f^*(C)}$
+\end{lemma}
+\begin{proof}
+	1.1. Trivial.\\
+	1.2 $f_*(A \cap B) = \{f(x):x \in A \cap B \} \subseteq \{f(x):x \in A \} \cap \{f(x):x \in B \}$ \\
+	1.3 $f^*(f_*(A)) = f^*(\{f(x):x \in A\}) = \{x:x \in X \land f(x) \in \{f(x):x \in A\} \} \supseteq A$\\
+	2.3 $f_*(f^*(C)) = f_*(\{x:x \in X \land f(x) \in C \}) = \{f(x):x \in X \land f(x) \in C \} \subseteq C $
+\end{proof}
+
+\begin{definition}[Aplicaciones inyectivas, sobreyectivas y biyectivas]
+	Sea $f:X \to Y$ una aplicación. 
+	
+	$f$ es inyectiva $\iff \forall x_1,x_2 \in X. f(x_1) = f(x_2) \implies x_1 = x_2$\\
+	$f$ es sobreyectiva $\iff$ $Y = Img(f)$\\
+	$f$ es biyectiva $\iff$ es inyectiva y sobreyectiva. 
+\end{definition}
+
+\begin{exercise}[Caracterización de la inyectividad y sobreyectividad]
+	Se verifican las siguientes propiedades:
+	
+	1. $f$ es inyectiva $\iff$ $\forall A,B. f_*(A \cap B) = f_*(A) \cap f_*(B)$\\
+	2. $f$ es inyectiva $\iff$ $\forall A. A= f^*(f_*(A))$\\
+	3. $f$ es sobreyectiva $\iff$ $\forall C. C = f_*(f^*(C))$ \\
+	4. $f$ es inyectiva $\iff  \forall A.f_*(\overline{A}) \subseteq \overline{f_*(A)}$ \\
+	5. $f$ es sobreyectiva $\iff \forall A. f_*(\overline{A}) \supseteq \overline{f_*(A)}$ \\
+	6. $f$ es biyectiva $\iff$ $\forall A. f_*(\overline{A}) = \overline{f_*(A)}$
+\end{exercise}
+\begin{proof}
+	1. Siempre $f_*(A \cap B) \subseteq f_*(A) \cap f_*(B)$ y si $f$ es inyectiva entonces tomando un elemento del miembro derecho tengo un $y = f(a) = f(b)$ para $a \in A \land b \in B$. Por inyectividad, $a = b \in A \cap B$. 
+	
+	Recíprocamente, si la igualdad es válida para todo par de conjuntos $A,B$ basta tomar $A = \{x\}$ y $B = \{y\}$ y entonces la ecuación nos dice que si $f(x) = f(y)$ entonces $A \cap B \neq \emptyset$ y en particular $x = y$. \\
+	2. Siempre $A \subseteq f^*(f_*(A))$  y si $f$ es inyectiva, entonces reutilizando la expresión $$\{x:x \in X \land f(x) \in \{f(x):x \in A\} \} \supseteq A$$ Por reducción al absurdo, si $x \notin A$ y está en el miembro izquierdo su imagen coincidiría con algún elemento de $A$ y por inyectividad deberían ser iguales. En conclusión, se da la igualdad. 
+	
+	Recíprocamente, si esto ocurre para todo $A$ entonces sin más que tomar $A = \{x\}$ entonces si $f(x) = f(y)$ tendríamos que ambos pertenecen al miembro izquierdo, y como se da la igualdad de miembros, necesariamente $x = y$. Por tanto, $f$ sería inyectiva.  \\
+	3. Siempre $ C \supseteq f_*(f^*(C))$ y si $f$ es sobreyectiva entonces reutilizando la expresión $$\{f(x):x \in X \land f(x) \in C \} \subseteq C $$ tomo $y \in C$ tendremos que existe $x \in X. f(x) = c$ y por tanto $y$ está en el conjunto izquierdo. 
+	
+	Recíprocamente, si esto ocurre para todo $C$ basta tomar $C = \{y\}$ para tener por la igualdad de conjuntos que debe haber preimagen y por tanto, la aplicación es sobreyectiva. \\
+	4. Ser inyectiva equivale a la igualdad $A = f^*(f_*(A))$. Tomando complementos y teniendo en cuenta que $f^*$ respeta los complementos obtenemos $\overline{A} = f^*(\overline{f_*(A)})$. Finalmente, tomando $f_*$ y teniendo en cuenta que $f_* \circ f^*$ es decreciente, se obtiene que $f_*(\overline{A}) \subseteq \overline{f_*(A)}$.\\
+	5. Ser sobreyectiva equivale a la igualdad $A = f_*(f^*(A))$. Sustituyendo formalmente $A = \overline{f_*(A)}$ obtenemos $$\overline{f_*(A)} = f_*(f^*(\overline{f_*(A)})) = f_*(\overline{f^*C(f_*(A))})$$ Utilizando que $f^* \circ f_*$ es creciente tendríamos que $A \subseteq f^*(f_*(A))$ y como los complementos invierten las inclusiones tenemos que $\overline{f^*(f_*(A))} \subseteq \overline{A}$ y en conclusión $\overline{f_*(A)} \subseteq f_*(\overline{A})$.\\
+	6. Es consecuencia de 4. y 5. 
+\end{proof}
+
+\begin{definition}[Aplicación composición]
+	Sean $f:X \to Y,g:Y \to Z$ dos aplicaciones donde $Img(f) \subseteq Y$, la aplicación compuesta es $g \circ f: X \to Z$ tal que $g \circ f(x) = g(f(x))$
+\end{definition}
+
+\begin{proposition}[Propiedades de la composición de aplicaciones]
+	1. La composición de aplicaciones es asociativa $(f \circ g) \circ h = f \circ (g \circ h)$ siempre que estén bien definidas las anteriores. \\
+	2. Si $f:X \to Y$ es una aplicación entonces $f \circ 1_X = f = 1_Y \circ f$. \\
+	3. Si $f$ y $g$ son dos aplicaciones que se pueden componer y ambas son inyectivas, sobreyectivas o biyectivas entonces $g \circ f$ también es inyectiva, sobreyectiva o biyectiva. \\
+	4. Si $f$ y $g$ son dos aplicaciones que se pueden componer y $g \circ f$ es inyectiva entonces $f$ es inyectiva y si $g \circ f$ es sobreyectiva entonces $g$ es sobreyectiva. \\
+\end{proposition}
+\begin{proof}
+	1. 2. Trivial. \\
+	3. Supongamos el caso de inyectividad. Si $(g \circ f)(x) = (g \circ f)(t)$ entonces como $g$ es inyectiva $f(x) = f(t)$ y como $f$ es inyectiva $x = t$. 
+	
+	Supongamos el caso de sobreyectividad. Sea $z$ en el codominio de $g \circ f$ donde asumimos que $f(x)$ pertenece al dominio de $g$ para cualquier $x$ del dominio de $f$. Como $g$ es sobreyectiva existe $y$ en el dominio de $g$ tal que $z = g(y)$ y como $f$ es sobreyectiva existe $x$ en el dominio de $f$ tal que $y = f(x)$ en conclusión, $z = g(f(x))$. 
+	
+	El caso de la biyectividad se sigue de los dos anteriores. \\
+	4. Supongamos que $g \circ f$ es inyectiva. Supongamos que $f(x) = f(t)$ entonces $g(f(x)) = g(f(t))$ y por la inyectividad de la composición, tenemos que $x = t$. 
+	
+	Supongamos que $g \circ f$ es sobreyectiva y sea $z$ en el codominio de $g$. Como $g \circ f$ es sobreyectivo existe $x$ tal que $g(f(x)) = z$ y como las aplicaciones se pueden componer, $y = f(x)$ pertenece al dominio de $g$ y además $g(y) = z$, luego $g$ es sobreyectiva. 
+\end{proof}
+
+\begin{theorem}[Caracterización de las aplicaciones biyectivas]
+	Sean $X,Y \neq \emptyset$ y $f:X \to Y$ una aplicación. 
+	
+	$f$ es biyectiva $\iff$ $f$ tiene inversas, esto es, $\exists g:Y \to X.g \circ f = 1_X \land f \circ g = 1_Y$. 
+\end{theorem}
+\begin{proof}
+Podemos suponer que $X,Y \neq \emptyset$ ya que $X = \emptyset \iff Y = \emptyset$. 
+
+$\Rightarrow)$ Como $f$ es biyectiva entonces $\forall y \in Y. \exists x \in X. f(x) = y$ por ser sobreyectiva. Entonces definimos $g:Y \to X$ por $g(y) = x$ dados por la propiedad anterior. Es claro que $f \circ g = 1_Y \land g \circ f = 1_X$. Esta es la inversa de $f$. 
+
+$\Leftarrow)$ Supongamos que $f$ tiene una aplicación inversa $g$, esto es, $\exists g:Y \to X. f \circ g = 1_Y \land g \circ f = 1_X$. Como $1_X$ es biyectiva tenemos que $f$ es inyectiva. Y como $1_Y$ es biyectiva tenemos que $f$ es sobreyectiva. Por tanto $f$ es biyectiva. 
+\end{proof}
+
+\subsection{Relaciones de equivalencia y conjunto cociente}
+
+\begin{definition}[Relación binaria]
+	Una relación binaria sobre $X$ es un subconjunto $R$ del producto cartesiano $X \times X$. Si $(x,y) \in R$ lo denotaremos por $xRy$ y diremos que $x$ e $y$ están relacionados. 
+\end{definition}
+
+\begin{definition}[Relación de equivalencia]
+	Una relación binaria $R$ sobre $X$ es de equivalencia si cumple:
+	
+	1. $\forall x \in X. xRx$ (propiedad reflexiva)\\
+	2. $\forall x,y \in X. xRy \implies yRx$ (propiedad simétrica) \\
+	3. $\forall x,y,z. xRy \land yRz \implies xRz$ (propiedad transitiva)
+\end{definition}
+
+\begin{example}[Relación de equivalencia inducida por una aplicación]
+	Sea $f:X \to X$ una aplicación. La relación de equivalencia inducida por $f$ se define para elementos $x_1,x_2 \in X$ como $x_1R_fx_2 \iff f(x_1) = f(x_2)$.
+\end{example}
+
+
+\begin{definition}[Conjunto cociente]
+	Sea $R$ una relación de equivalencia en un conjunto $X$ y $x \in X$. La clase de equivalencia de $x$ es $\overline{x} = [x] = \{y \in X:yRx\} \subseteq X$. El conjunto de las todas las clases de equivalencia se llama conjunto cociente de $X$ sobre la relación $R$ y se denota $\frac{X}{R}$
+\end{definition}
+
+\begin{theorem}[Propiedades del conjunto cociente]
+	Sea $X$ un conjunto y $R$ una relación de equivalencia sobre $X$. Entonces:
+	
+	1. El conjunto cociente $\frac{X}{R}$ es una partición de $X$. \\
+	2. Si $C$ es una partición de $X$ entonces existe una única relación de equivalencia $R$ tal que $\frac{X}{R} = C$. Además, $R$ queda definida en $X$ como $aRb \iff \exists c \in C.a,b \in c$. 
+\end{theorem}
+
+Obsérvese que el número de conjuntos cocientes coincide por tanto con el número de particiones del conjunto. Este número se conoce como número de Bell. \cite{link2}
+
+\begin{definition}[Proyección canónica]
+	Sea $X$ un conjunto y $R$ una relación de equivalencia sobre $X$. La proyección canónica es la aplicación $p: X \to \frac{X}{R}$ tal que $p(x) = [x]$. Esta aplicación es sobreyectiva. 
+\end{definition}
+
+\begin{theorem}[Factorización canónica de aplicaciones]
+	Sea $f:X \to X$ una aplicación y $R_f$ la relación de equivalencia sobre $X$ inducida por $f$. Sea $b:\frac{X}{R_f} \to Img(f)$ donde $b([x]) = f(x)$ e $i:Img(f) \to Y$ la aplicación inclusión dada por $i(y) = y$. Se verifica que:
+	
+	1. $i$ es una aplicación inyectiva.\\
+	2. $b$ es una aplicación biyectiva.\\
+	3. El siguiente diagrama es conmutativo:
+	
+	\begin{tikzcd}
+		X \arrow{r}{f} \arrow{d}[swap]{p} &
+		Y  \\   
+		\frac{X}{R_f} \arrow[swap]{r}{b} & 
+		Img(f) \arrow{u}{i}
+	\end{tikzcd}
+
+	es decir, $f = i \circ b \circ p$. 
+\end{theorem}
+\begin{proof}
+	1. Claramente $i$ es una aplicación inyectiva. Si $i(y_1) = i(y_2)$ entonces $y_1 = y_2$ por definición de $i$. \\
+	2. $b$ es una aplicación bien definida. En efecto, si tomo dos representantes $x,y$ de la clase $[x]$ entonces $b([x]) = f(x) \land b([y]) = f(y)$ pero como $y \in [x]$ ambos deben estar relacionados por $R_f$ y esto nos dice que $f(x) = f(y)$. 
+	
+	$b$ es inyectiva. En efecto, si $b([x]) = b([y]) \implies f(x) = f(y) \implies xR_fy \implies [x] = [y]$. 
+	
+	Finalmente, $b$ es sobreyectiva pues $\forall y \in Img(f) \exists x \in X.y = f(x)$ y por tanto para cada $y \in Img(f)$ tomando el $x$ dado por la expresión anterior tenemos que $b([x]) = y$. 
+	
+	3. Es claro que $\forall x \in X. (i \circ b \circ p)(x) = (i \circ b)([x]) = i(f(x)) = f(x)$. 
+\end{proof}
+

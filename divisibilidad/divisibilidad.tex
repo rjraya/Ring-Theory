@@ -1,0 +1,516 @@
+\subsection{Divisibilidad. Propiedades generales.}
+
+\begin{definition}[Divisores y múltiplos]
+Dado un dominio de integridad $A$ y $a,b \in A$.
+
+$a$ es divisor de $b$ o $b$ es múltiplo de $a$ si $\exists c \in A. b = ac$. Lo notamos por $a|b$.
+
+El conjunto de los divisores de $a \in A$ es: $$Div(a) = \{b:b|a\}$$ 
+\end{definition}
+
+\begin{proposition}[Relación de divisibilidad para el cero, el uno y las unidades]
+Sea $A$ un dominio de integridad. 
+
+\begin{enumerate}
+\item $0 \in Div(a) \iff a = 0$ y $Div(0) = A$.
+\item $\forall a \in A . 1 \in Div(a) \land Div(1) = U(A)$. 
+\item $\forall a \in U(A),b \in A.a \in Div(b) \land Div(a) = Div(1)$ 
+\item $\forall a \in A. U(A) \subseteq Div(a)$.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item Claramente, si $a \in A$ entonces $a0 = 0$ de modo que $a|0$ y por tanto, $Div(0) = A$. Por otro lado, si $0|a$ entonces $a = 0c = 0$ y recíprocamente, si $a = 0$ entonces $0 = 00$ de modo que $0 \in Div(a)$. 
+
+\item Dado $a \in A$, como $a = a1$, $1 | a$. Por otro lado, es claro que si $a \in A$ divide a $1$, entonces existe $c \in a$ tal que $ac = 1$, luego $a \in U(A)$ y recíprocamente toda unidad divide por definición al $1$. 
+
+\item Si $a \in U(A)$ entonces para $b \in A$, $b = a(a^{-1}b)$ de modo que $a|b$. Por otro lado, si $c \in Div(a)$ entonces $1 = aa^{-1} = cda^{-1}$ de modo que $c|1$. Recíprocamente si $c \in Div(1)$ entonces $a = cc^{-1}a$ y por tanto, $c \in Div(a)$. 
+
+\item Es consecuencia del apartado anterior. 
+\end{enumerate}
+\end{proof}
+
+\begin{proposition}[Cálculo con la relación de divisibilidad en dominios de integridad]
+Sea $A$ un dominio de integridad. 
+
+1. $a|b \land a|c \implies a|bx+cy$\\
+2. $a|b \implies a|bc$\\
+3. Si $c \neq 0$ entonces $a|b \iff ac | bc$.\\
+4. $a|b \iff ax = b$ tiene una única solución.
+\end{proposition}
+\begin{proof}
+1. $a|b \implies \exists c_1. b = ac_1 \land b|c \implies \exists c_2. c = bc_2$ ahora, $bx + cy = bx + bc_2y = b(x + c_2y) = ac_1(x+c_2y)$ de donde claramente $a | bx+cy$. 
+
+2. $a|b \implies \exists d. b = ad$, ahora, $bc = adc$ y por tanto $a|bc$. 
+
+3. $\Rightarrow)$ $a|b \implies \exists d. b = ad$, ahora, $bc = adc = acd$ y por tanto $ac|bc$. \\
+$\Leftarrow)$ $ac|bc \implies \exists d. bc = acd$, ahora, $cb = cad$ y como $A$ es un dominio de integridad se verifica que la ecuación $cx = cad$ admite como mucho una solución ya que $c \neq 0$. Pero aquí tenemos que $b$ y $ad$ son solución y por tanto $b = ad$ de donde $a|b$. 
+
+4. $a|b \iff \exists c \in A. ac = b \iff c$ es solución de $ax = b$. Nótese que en un dominio de integridad si la solución existe es única y por tanto $c$ es la única solución de $ax = b$. 
+\end{proof}
+
+\begin{proposition}[Caracterización de la divisibilidad en el cuerpo de fracciones]
+Dado un dominio de integridad $A$ y $a,b \in A$ con $a \neq 0$.
+
+Sea $A' \cong A$ con el monomorfismo de inyección canónica en el cuerpo de fracciones. Entonces: $$a|b \iff \frac{b}{a} \in A'$$ 
+\end{proposition}
+\begin{proof}
+$\Rightarrow)$ Si $a|b$ entonces $\exists c. b = ac$ y por tanto $\frac{b}{a} = \frac{c}{1} \in A'$. \\
+$\Leftarrow)$ Si $\frac{b}{a} \in A'$ entonces $\exists c \in A. \frac{b}{a} = \frac{c}{1}$ o equivalentemente $b = ac \iff a | b$. 
+\end{proof}
+
+\begin{definition}[Elementos asociados]
+$b$ está asociado con $a$ si $\exists u \in U(A)$ tal que $ua = b$. Lo denotamos por $a \sim b$. 
+
+El conjunto de asociados de un elemento $a \in A$ es $A(a) = \{ua:u \in U(A)\}$.
+\end{definition}
+
+\begin{proposition}[Divisores triviales]
+Sea $A$ un dominio de integridad. 
+
+$\forall a \in A. U(A) \cup A(a) \subseteq Div(a)$. 
+
+Los divisores en $U(A) \cup A(a)$ se llaman divisores triviales. 
+\end{proposition}
+\begin{proof}
+Ya vimos que $U(A) \subseteq Div(a)$. Sea $b \in A(a)$, entonces $b = au$ y por tanto, $a = (au)u^{-1}$ de modo que $b = au|a$. 
+\end{proof}
+
+\begin{example}[Asociados en algunos anillos]
+Veamos como se comporta la relación de asociados en algunos anillos conocidos:
+
+\begin{itemize}
+\item En $\mathbb{Z}[i]$, $A(1+i) = \{1+i,-1-i,i-1,1-i\}$.
+\item En $\mathbb{Z}[i]$, todo número tiene al menos ocho divisores. 
+\item Dado $a \in \mathbb{Z}$, $A(a) = \{a,-a\}$.
+\end{itemize}
+\end{example}
+
+\subsection{Irreducibilidad}
+
+\begin{definition}[Elemento irreducible de un dominio de integridad]
+Sea $A$ un dominio de integridad $a \in A$ es irreducible si:
+
+\begin{itemize}
+\item No es cero ni unidad. 
+\item Sus únicos divisores son los triviales, esto es, $Div(a) = U(A) \cup A(a)$. 
+\end{itemize}
+\end{definition}
+
+\begin{proposition}[Caracterización de irreducibles en dominios de integridad]
+Dado un dominio de integridad $A$ y $p \in A$ con $p \neq 0 \land p \notin U(A)$. 
+
+p es irreducible $\iff p = ab \implies (a \in U(A) \land b \sim p) \lor (a \sim p \land b \in U(A))$ 
+
+esto es, si p es producto de dos elementos entonces uno es una unidad y el otro es un asociado a p. A este tipo de factorizaciones las llamaremos impropias. 
+\end{proposition}
+\begin{proof}
+$\Rightarrow)$ Supongamos que $p = ab$ y supongamos que $a | p$. Como los únicos divisores de $p$ son los triviales entonces hay dos posibilidades:
+
+\begin{itemize}
+\item Si $a = u \in U(A)$ entonces está claro que $b \sim p$. 
+\item Si $a = up$ con $u \in U(A)$ entonces $p = upb$ y por ser $A$ un dominio de integridad se tiene que $ub = 1$ luego $b = u^{-1} \in U(A)$. 
+\end{itemize}
+
+$\Leftarrow)$ Por contrarrecíproco, si suponemos que $p$ no es irreducible existirá un divisor de $p$ que no es trivial. Esto es, $a|p \land \forall u \in U(A),t \in U(p).a \neq u,t$. Por ser divisor existe $b \in A. p = ab$ y sin embargo $a$ no es trivial. 
+\end{proof}
+
+\begin{example}[Ejemplos de irreducibles]
+Veamos qué elementos son irreducibles en anillos conocidos:
+
+\begin{itemize}
+\item En $\mathbb{Z}$, los irreducibles son los números primos (1 no es primo) y sus opuestos. 
+
+\item En $\mathbb{Z}[\sqrt{n}]$ tenemos condiciones suficientes para determinar si un elemento es irreducible. 
+
+\begin{proposition}[Condición suficiente de irreducibilidad en los enteros cuadráticos]
+
+Dado $\alpha \in \mathbb{Z}[\sqrt{n}]$, si $N(\alpha) = p$ con $p$ irreducible en $\mathbb{Z}$ entonces $\alpha$ es irreducible en $\mathbb{Z}[\sqrt{n}]$.
+\end{proposition}
+\begin{proof}
+En efecto, si $N(\alpha) = p$ con $p$ irreducible entonces si cualquier factorización $\alpha = \beta \gamma$ verificaría que $p = N(\alpha) = N(\beta) N(\gamma)$ y por la caracterización de irreducible en $\mathbb{Z}$ necesariamente $N(\beta) \lor N(\gamma) = 1,-1$ de modo que $\beta \lor \gamma$ sería una unidad y tendríamos la caracterización de irreducible en $ \mathbb{Z}[\sqrt{n}]$.
+\end{proof}
+
+Por ejemplo, el elemento $2+3i \in \mathbb{Z}[i]$ sería irreducible ya que $N(2+3i) = 13$ que es irreducible en $\mathbb{Z}$.
+
+Podemos ver que esta condición no es necesaria. Por ejemplo en $\mathbb{Z}[\sqrt{-5}]$ el elemento $\alpha = 1+\sqrt{-5}$ tiene norma $N(\alpha) = 1+ 5 \cdot 1^2 = 6$ que no es irreducible en $\mathbb{Z}$. Sin embargo, $\alpha$ es irreducible ya que si $\alpha = \beta \gamma$ entonces $N(\alpha) = N(\beta)N(\gamma) = 6$ de modo que si quisiéramos que la factorización fuera propia, necesariamente $N(\beta) = 2 \land N(\gamma) = 3$ o $N(\beta) = 3 \land N(\gamma) = 2$. Pero no existen elementos de norma 2 o 3 en $\mathbb{Z}[\sqrt{-5}]$.
+\end{itemize}
+\end{example}
+
+\subsection{Primalidad}
+
+\begin{definition}[Elemento primo]
+Dado un dominio de integridad $A$. $p \in A$ es primo si verifica:
+
+\begin{itemize}
+\item No es cero ni unidad.
+\item Si $p|ab$ entonces $p|a \lor p|b$. 
+\end{itemize}
+\end{definition}
+
+\begin{example}[Ejemplos de primos]
+Veamos qué elementos son primos en anillos conocidos.
+
+En $\mathbb{Z}[\sqrt{n}]$ tenemos condiciones necesarias para determinar si un elemento es primo. 
+
+\begin{proposition}[Condición necesaria de primalidad en los enteros cuadráticos]
+Si $\alpha \in \mathbb{Z}[\sqrt{n}]$ es primo entonces $N(\alpha) = p,-p \lor N(\alpha) = p^2,-p^2$ con $p$ un primo de $\mathbb{Z}$. 
+
+además, si $N(\alpha) = p^2,-p^2$ entonces $\alpha \sim p$ en $\mathbb{Z}[\sqrt{n}]$
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item Si $\alpha$ fuera primo en $\mathbb{Z}[\sqrt{n}]$   entonces $N(\alpha) \neq 0,1,-1$ ya que $\alpha$ no es cero ni unidad. Nótese que aquí estamos usando de manera fundamental que $n$ no es un cuadrado perfecto. 
+
+Por tanto, $N(\alpha) = \alpha \overline{\alpha} = \prod p_i$ con $p_i$ primos ya que $\mathbb{Z}$ es un DFU. En particular, $\alpha|p_1 \ldots p_r$ en $\mathbb{Z}[\sqrt{n}]$ y como $\alpha$ es primo, debe dividir a algún factor. 
+
+Si $\alpha|p \implies \exists \beta \in \mathbb{Z}[\sqrt{n}].\alpha \beta = p \implies N(\alpha)N(\beta) = N(p) = p^2 \implies N(\alpha) \in \{p,-p,p^2,-p^2\}$. 
+
+\item Si $N(\alpha) = p^2,-p^2$ entonces claramente, $\alpha \sim p$ ya que entonces $N(\beta) = 1,-1 \implies \beta \in U(\mathbb{Z}[\sqrt{n}])$ y por tanto, $\alpha \sim p$. 
+\end{enumerate}
+\end{proof}
+\end{example}
+
+\begin{proposition}[Relación entre primos e irreducibles en dominios de integridad]
+Sea $A$ un dominio de integridad. 
+
+\begin{enumerate}
+\item Si $p$ es primo entonces  es irreducible.
+\item Si $p$ es irreducible entonces $p$ no es necesariamente primo. 
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item Si $p = ab$ veamos que $a \sim 1 \land b \in A(p)$ o $b \sim 1 \land a \in A(p)$. 
+
+En efecto, como $p|p = ab$ y $p$ es primo, sabemos que $p|a \lor p|b$. Supongamos que $p|a$. Entonces como $a|p$ tendríamos que $a \sim p$ y por tanto, $\exists u \in U(A). a = up = uab$ y como $A$ es un dominio de integridad y $a \neq 0$, se sigue que $ub = 1$ esto nos da $b \in U(A)$ y por tanto, la factorización es impropia.
+
+\item Obsérvese que los $\mathbb{Z}[\sqrt{n}]$ son dominios de integridad por ser subanillos de sus cuerpos de fracciones $\mathbb{Q}[\sqrt{n}]$. Por tanto, el conjunto $D = \mathbb{Z}{\sqrt{-5}}$ es dominio de integridad. 
+
+El elemento $a = 1 + \sqrt{-5}$ tiene norma $N(a) = 6$ donde ya vimos que este era un irreducible aunque su norma no era un irreducible de $\mathbb{Z}$. Veamos ahora que este elemento no es primo. 
+
+Como $6 = 2 \cdot 3 = (1+\sqrt{-5})(1-\sqrt{-5})$ se tiene que $1+\sqrt{-5}| 2 \cdot 3$ y sin embargo, $1+\sqrt{-5} \nmid 2,3$ ya que tomando normas, implicaría que $6|4,9$. Contradicción.
+\end{enumerate}
+\end{proof}
+
+\subsection{Estudio de la relación de asociación}
+
+\begin{proposition}[Caracterización de la relación de asociados]\label{div-1}
+Dado un dominio de integridad $A$ y $a,b \in A \setminus \{0\}$. 
+
+1. La relación de ser asociados es una relación de equivalencia. \\
+2. $a \sim b \iff a|b \land b|a$.\\
+3. $a \sim b \implies Div(a) = Div(b)$.  
+\end{proposition}
+\begin{proof}
+1. En efecto, tenemos que la relación es de equivalencia:
+
+\begin{itemize}
+\item $a \sim a$ ya que $a = 1a$.
+\item $a \sim b \implies b \sim a$ ya que $b = ua$ entonces $a = u^{-1}b$ y si $u \in U(A)$ entonces también $u^{-1} \in U(A)$. 
+\item $a \sim b \land b \sim c \implies a \sim c$ ya que $b = u_1a \land c = u_2b$ entonces $c = u_2 u_1 a$ y $u_1u_2 \in U(A)$ ya que el conjunto de los unidades forma un grupo.  
+\end{itemize}
+
+2. Por otro lado, la relación puede ser descrita mediante divisibilidad:
+
+$\Rightarrow)$ Si $a \sim b$ entonces $\exists u \in U(A). b = ua \land a = u^{-1}b$ de donde $a | b \land b | a$. \\
+$\Leftarrow)$ Si $a | b$ entonces $\exists c_1 \in A. b = ac_1$ y si $b | a$ entonces $\exists c_2 \in A. a = bc_2$. Entonces $a = a c_1c_2$ y dado que estamos en un dominio de integridad la ecuación $a = ax$ tiene una única solución. Por la anterior $c_1c_2$ es una solución y claramente $1$ es otra solución. Ambas deben ser iguales, es decir, $c_1c_2 = 1$. Esto implica que $c_1 = c_2^{-1}$ y por tanto $a,b$ están asociados.  
+
+3. Está claro que si $a|b \land b|a$ entonces $a$ y $b$ tienen los mismos divisores, ya que si $d|a$ entonces $d|a|b$ y si $d|b$ entonces $d|b|a$. 
+\end{proof}
+
+La siguiente proposición describe cuál es la utilidad de la relación de asociados en dominios de integridad. La idea es que la divisibilidad no es un orden sobre un dominio de integridad pero la divisibilidad natural en el cociente de los asociados sí lo es. Esto es lo que se querrá decir en el texto cuando se hable de divisibilidad salvo asociados. La relación de ser asociados también preserva los irreducibles.
+
+\begin{proposition}[Utilidad de la relación de asociados]
+Sea $\sim$ la relación ser asociados. 
+
+1. $(A,|)$ es un preorden. $(A,|)$ es un orden $\iff U(A) = \{1\}$.\\
+2. $(\frac{A}{\sim},|)$ es un orden donde $|$ es en este caso la relación $[a]|[b] \iff a|b$.\\
+3. Si $a \sim b$ con $a,b \in A$ entonces $a$ es irreducible $\iff b$ es irreducible. 
+\end{proposition}
+\begin{proof}
+1. Claramente, $\forall a \in A. a | a$ y $\forall a,b,c \in A. a|b \land b|c \implies a|c$. Observemos que para que se de la propiedad antisimétrica debe verificarse que $\forall a,b \in A. a|b \land b|a \implies a = b$. 
+
+Veamos cuándo se da la antisimétrica. La traducción de $a|b \land b|a$ por la proposición \ref{div-1} es $a \sim b$ para elementos no nulos $a$ y $b$. 
+
+$\Rightarrow)$ Si se da la antisimétrica, entonces si tengo al menos dos elementos no nulos tales que $a|b \land b|a$ entonces sabríamos que $a \sim b$. Si $a = ub$ con $u \in U(A)$ podría ser que $u = 1$ en cuyo caso tendríamos $a = b$. En otro caso, tendríamos $u \neq 1$ y por tanto $b \neq a$ pero en ese caso no tendríamos la antisimetría. Por tanto, necesariamente $U(A) = \{1\}$. Si no tengo al menos dos elementos no nulos tengo los anillos $\{0\}$ o $\{0,a\}$. En el primer caso, está claro que las unidades son $\{0\}$. En el segundo caso, $a = 1$ ya que $0a = 0$ y $aa = a$ ya que en otro caso $a$ sería un divisor de $0$ distinto de $0$. En este dominio claramente, $U(A) = \{1\}$.
+
+$\Leftarrow)$ Si $U(A) = \{1\}$ entonces se da la antisimétrica ya que si $a|b \land b|a$ y $a,b$ son no nulos entonces $a \sim b$ lo que implica que $a = b$. Si uno de ellos es cero, claramente el otro debe ser cero y por tanto también $a = b$.   
+
+2. La relación está bien definida. $$[a] = [a'] \land [b] = [b']  \iff a \sim a' \land b \sim b' \iff a|a' \land a'|a \land b|b' \land b'|b$$ Por tanto $[a]|[b] \iff [a']|[b']$ ya que $a'|a|b|b' \land a|a'|b'|b$. 
+
+Que es reflexiva y transitiva se sigue de las propiedades de $|$ sobre $A$. La antisimetría se sigue del apartado 2. de \ref{div-1}.
+
+3. Claramente, $a = 0 \iff b = 0$ y $a \in U(A) \iff b \in U(A)$ ya que $a \sim b$. Supongamos ahora que $a,b$ no son nulos ni unidades.  
+
+Como $a \sim b \implies a \in A(b)$ de donde $A(a) = A(b)$ y si $a$ es irreducible y $a,b$ son no nulos y no unidades, $Div(a) = U(A) \cup A(a) = U(A) \cup A(b) = Div(b)$ de donde los únicos divisores de $b$ son los triviales y por tanto también es irreducible. El recíproco es análogo. 
+\end{proof}
+
+\begin{example}[Anillos con grupo de unidades trivial]
+Los ejemplos de anillos $A$ tales que $U(A) = \{1\}$ esto es, el grupo de unidades es trivial no es un clase fácil de determinar \cite{link1}. 
+
+\begin{itemize}
+\item $\mathbb{Z}$ no está en esta clase ya que $U(\mathbb{Z}) = \{1,-1\}$.
+\item $\prod_i \mathbb{Z}_2$ o $\mathbb{Z}_2[X]$ tienen grupo de unidades tirvial.
+\end{itemize}  
+\end{example}
+
+\subsection{Máximo común divisor}
+
+\begin{definition}[Máximo común divisor]
+Dado un dominio de integridad $A$, $a,b \in A$. $d \in A$ es un máximo común divisor de $a$ y $b$ si:
+	
+\begin{enumerate}
+\item $d | a \land d|b$
+\item $\forall c \in A.c|a \land c|b \implies c|d$	\end{enumerate}
+
+Naturalmente, si existe el máximo común divisor $d$ de $a,b$ entonces cualquier otro máximo común divisor $d'$ de $a,b$ sería asociado a él. Ya que por ser $d'$ máximo común divisor $d|d'$ y por serlo $d$, $d'|d$ de modo que $d \sim d'$. Entenderemos que el máximo cómun divisor es único salvo asociados y lo denotaremos por $(a,b)$. Nótese que no siempre tiene que existir.  
+\end{definition}
+
+Extendemos la notación Div para conjuntos indicando conjuntos de divisores comunes. Así, $Div(a,b)$ denota los divisores comunes de $a$ y $b$. De ese modo, si $Div(a,b) = Div(a',b')$ entonces trivialmente $(a,b) = (a',b')$.
+
+\begin{proposition}[Propiedades del máximo común divisor]
+	En las siguientes propiedades, se entiende que existen los máximos comunes divisores que entran en juego en la igualdad. Las igualdades se dan salvo asociados. 
+	
+	\begin{enumerate}
+	\item Propiedad asociativa: $$(a,(b,c)) = ((a,b),c)$$
+	\item Propiedad conmutativa: $$(a,b) = (b,a)$$
+	\item Propiedad de supremo: $$(a,0) = a \land (a,1) = 1$$
+	\item Relación de divisibilidad: $$a|b \iff mcd(a,b) = a \land a \sim b \iff mcd(a,b) = a = b$$
+	\item Linealidad: $$(ac,bc) = (a,b)c$$
+	\item Linealidad en el cociente: $$c|a \land c|b \land c \neq 0 \implies \Big(\frac{a}{c},\frac{b}{c}\Big) = \frac{(a,b)}{c}$$
+	\item Normalización: $$ a \neq 0 \lor b \neq 0 \implies \Big(\frac{a}{(a,b)},\frac{b}{(a,b)}\Big) = 1$$
+	\item Simplificación de numeradores: $$b|ac \implies b|(a,b)c$$
+	\item Lema de Euclides: $$(a,b) = 1 \land b|ac \implies b|c$$
+	\item Incremento del denominador: $$a|c \land b|c \land (a,b) = 1 \implies ab|c$$
+	\item Propiedad del algoritmo de Lagrange: $$(a,bc) = 1 \iff (a,b) = 1 = (a,c)$$
+	\item Propiedad del algoritmo de Euclides: $$\forall q \in A.(a,b) = (a-qb,b)$$
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item Sea $d \in Div(a,(b,c))$. Tenemos que $d|a \land d|(b,c)$ y como $d|(b,c)$ tenemos que $d|b,c$ por transitividad de la divisibilidad. Como $d|a,b$ también $d|(a,b)$. Reuniendo la información que nos interesa, $d|(a,b),c$ luego $d \in Div((a,b),c)$. 
+	
+	Un razonamiento análogo da que $Div(a,(b,c)) = Div((a,b),c)$ y por tanto, se tiene la igualdad de los máximo común divisores. 
+	 
+	\item Si $d \in Div(a,b)$ entonces claramente, $d \in Div(b,a)$. Se tiene que $Div(a,b) = Div(b,a)$ y por tanto se da la igualdad de los máximo común divisores. 
+	
+	\item Sea $d = (a,0)$. Como $a|0 \land a|a$ tenemos que $a|d$. Pero por hipótesis, $d|a$ de donde $a \sim d$ y podemos escribir $(a,0) = d$. 
+		
+	Sea  $d = (a,1)$. Como $d|1$ tenemos que $d \in U(A)$ y por tanto, $d \sim 1$ y podemos escribir $(a,1) = 1$.
+	
+	\item $\Rightarrow)$ Si $a|b$ entonces tenemos las condiciones de máximo común divisor:
+	
+	\begin{itemize}
+	\item $a|a \land a|b$ por hipótesis. 
+	\item $d|a \land d|b \implies d|a$ es trivial.
+	\end{itemize}
+	
+	$\Leftarrow)$ Si $mcd(a,b) = a$ entonces por definición de máximo común divisor $a|b$. 
+	
+	La relación con la relación de asociación es trivial ya que $a \sim b \iff a|b \land b|a$. 
+	
+	\item Sea $d = (a,b) \land e = (ac,bc)$. 
+	
+	Si $c = 0$ es trivial.  También, is $d = 0$ entonces $d|a,b \implies a = b = 0$ de modo que la propiedad se sigue. Supongamos que $c,d \neq 0$.
+	
+	Claramente, $d|a,b \implies dc|ac \land dc|bc \implies dc|e$ de modo que $e = dcu$ con $u \in A$. Terminaremos si demostramos que $u \in U(A)$.
+	
+	Usando la propiedad de simplificación de los dominios de integridad $(c,d \neq 0)$:
+	
+	\begin{itemize}
+	\item $e|ac \implies \exists x.ac = ex = dcux \implies a = dux$.
+	\item $e|bc \implies \exists y.bc 0 ey = dcuy \implies b = duy$
+	\end{itemize}
+	
+	Por tanto, $du|a \land du|b \implies du|d \implies \exists v. d = duv \implies uv = 1 \implies u \in U(A)$. 
+	 
+	\item Nótese que $a/c,b/c \in A$. Por el apartado anterior $c(a/c,b/c) = (a,b)1 = (a,b) \iff (a/c,b/c) = (a,b)/c$ ya que $c \neq 0$. 
+	
+	\item Si $(a,b) = 0$ entonces $a = b = 0$ en contradicción con las hipótesis. Entonces tomamos $c = (a,b) \neq 0$ en el apartado anterior y se tiene. 
+	
+	\item Por definición, $b|ac \implies \exists x.ac = bx$ y entonces $(a,b)c = (ac,bc) = (bx,bc) = b(x,c)$, de modo que $b|(a,b)$. 
+	
+	\item  Si $(a,b) = 1$ entonces usando el apartado anterior, $b|ac \implies b| (a,b)c = c$. 
+	
+	\item Como $b|c$, $\exists x. c = bx$. Como $a|c \implies a|bx$ y como $(a,b) = 1$, tenemos que $a|x$. 
+	
+	Como $a|x$, $\exists y.x = ay \implies c = bay \implies ab|c$. 
+	
+	\item $\Rightarrow)$ $1 = (a,bc) = ((a,ac),bc) = (a,(ac,bc)) = (a,(a,b)c) = (a,b)(\frac{a}{(a,b)},c) \implies (a,b) \in U(A) \implies (a,b) = 1$
+	
+	$\Leftarrow)$ $1 = (a,c) = (a,(ac,bc)) = ((a,ac),bc) = (a,bc)$
+	\item $Div(a,b) = Div(a-qb,b)$. 
+	
+	En efecto, si $d \in Div(a,b)$ entonces $d|a,b$ y por tanto, $d$ divide a las combinaciones lineales de $a,b$. En particular, $d|a-qb,b$, esto es, $d \in Div(a-qb,b)$. Recíprocamente, si $d|a-qb,b$ entonces $d$ divide a sus combinaciones lineales y en particular $d|a-qb+qb = a$. Por tanto, $d|a,b$. 
+	
+	En consecuencia, el máximo divisor de ambos, que existe por hipótesis, es el mismo, esto es, $(a-qb,b) = (a,b)$.  
+	\end{enumerate}
+	 	
+\end{proof}
+
+\begin{example}[El máximo común divisor de cualquier pareja no tiene por qué existir]
+Veamos que en $\mathbb{Z}[\sqrt{-5}]$ existe el máximo común divisor para alguna pareja de elementos y no existe para alguna otra pareja de elementos.
+
+\begin{itemize}
+\item $\exists (3,1+\sqrt{-5}) = 1$
+
+Observamos que $3$ es irreducible y por tanto, sus divisores son $Div(3) = \{-1,1,-3,3\}$. 
+
+En efecto, si $3 = pq$ de forma propia entonces $N(3)= N(p)N(q) = 9$. Como $N(p),N(q)$ no pueden ser $1,-1$, necesariamente $N(p) = N(q) = 3,-3$ pero la ecuación $a^2+5b^2 = 3$ no tiene solución. 
+
+Se tiene que, $3 \nmid 1+\sqrt{-5}$, ya que $N(1+\sqrt{-5}) = 6$  y si $1+\sqrt{-5} = 3 \alpha$ entonces $6 = 9N(\alpha)$ que no tiene solución. Por tanto, $(3,1+\sqrt{-5}) = 1$.
+
+\item $\nexists (6,2(1+\sqrt{-5}))$
+
+Si suponemos que existe entonces $(6,2(1+\sqrt{-5})) = 2(3,1+\sqrt{-5}) = 2 \cdot 1 = 2$ tendría que ser $2$. 
+
+Para concluir, vemos que $1+\sqrt{-5}|1+\sqrt{-5},6$ ya que:
+
+\begin{itemize}
+\item  $(1+\sqrt{-5})(1-\sqrt{-5}) = 6$
+\item  $(1+\sqrt{-5})2 = 2(1+\sqrt{-5})$
+\end{itemize}
+
+Sin embargo, $1+\sqrt{-5} \nmid 2$, ya que si $1+\sqrt{-5} = 2 \alpha$ entonces $N(2) = N(1+\sqrt{-5})N(\alpha) \implies 4 = 6  N(\alpha)$ lo cual es imposible. 
+\end{itemize}
+\end{example}
+
+\subsection{Mínimo común múltiplo}
+
+\begin{definition}[Mínimo cómun múltiplo]
+Sea $A$ un dominio de integridad y $a,b \in A$. Decimos que $m$ es su mínimo común múltiplo si se verifican las siguientes condiciones:
+
+\begin{enumerate}
+\item $a|m \land b|m$
+\item $a|c \land b|c \implies m|c$
+\end{enumerate}
+
+Naturalmente, si existe el mínimo común múltiplo $m$ de $a,b$ entonces cualquier otro mínimo común múltiplo $m'$ de $a,b$ sería asociado a él. Ya que por ser $m'$ mínimo común múltiplo $m'|m$ y por serlo $m$, $m|m'$ de modo que $m \sim m'$. Entenderemos que el mínimo común múltiplo es único salvo asociados y lo denotaremos por $[a,b]$. Nótese que no siempre tiene que existir.  
+\end{definition}
+
+Denotamos por $Mul(a,b)$ a los múltiplos comunes de $a$ y $b$. Si $Mul(a,b) = Mul(a',b')$ entonces trivialmente $[a,b] = [a',b']$ siempre que exista el mínimo común múltiplo.
+
+\begin{proposition}[Propiedades del mínimo común múltiplo]
+En las siguientes propiedades, se entiende que existen los mínimos común múltiplos que entran en
+juego en la igualdad. Las igualdades se dan salvo asociados.
+
+\begin{enumerate}
+\item Propiedad asociativa: $$[[a,b],c] = [a,[b,c]]$$
+\item Propiedad conmutativa: $$[a,b] = [b,a]$$
+\item Propiedad de ínfimo: $$[a,0] = 0 \land [a,1] = a$$
+\item Relación de divisibilidad: $$a|b \iff [a,b] = b \land a \sim b \iff [a,b] = a = b$$
+\item Linealidad: $$[ac,bc] = [a,b]c$$
+\item Relación ínfimo-supremo: $\exists [a,b] \implies \exists (a,b) \land [a,b](a,b) = ab$. 
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item Sea $m \in Mul([a,b],c)$.  Entonces claramente, $m$ es múltiplo de $a,b,c$ y por tanto, $m$ es múltiplo de $[b,c]$ y de $a$ de modo que $m \in Mul(a,[b,c])$. 
+
+Razonando de forma análoga se llega a que $Mul([a,b],c) = Mul(a,[b,c])$ de donde se tiene el enunciado.  
+
+\item Claramente, $Mul(a,b) = Mul(b,a)$ y por tanto, se tiene el enunciado. 
+
+\item Observamos que $Mul(a,0) = \{0\}$ y como $0|0$, necesariamente, se tiene que $[a,0] = 0$. 
+
+Por otro lado, $Mul(a,1) = \langle a \rangle$ y es claro que si $c \in \langle a \rangle$ entonces $a|c$. De aquí que $[a,1] = a$. 
+
+\item $a|b \iff \exists c.b = ac \iff \langle b \rangle \subseteq \langle a \rangle \iff Mul(a,b) = \langle b \rangle \iff [a,b] = b$. 
+
+$a \sim b \iff \exists u \in U(A).b = au \land a = u^{-1}b \iff \langle b \rangle = \langle a \rangle \iff Mul(a,b) = \langle a \rangle = \langle b \rangle \iff [a,b] = a = b$.
+
+\item Si $c = 0$, la propiedad es trivial, $[0,0] = 0 = 0 [a,b]$. Supongamos que $c \neq 0$ y veamos que $Mul(ac,bc) = cMul(a,b)$. En efecto, si tomo $m \in Mul(ac,bc)$ entonces $m = acd = bcd'$ y como $c \neq 0$, $ad = bd'$ lo que implica que $m \in cMul(a,b)$. Recíprocamente, si $m \in cMul(a,b)$ entonces $m = cad = cbd'$ de donde claramente, $m \in Mul(ac,bc)$. 
+
+En consecuencia, $ac,bc|c[a,b]$ y si $ac,bc|m$ entonces $m = cad = cbd'$ de donde obviamente, $c[a,b]|m$. 
+
+\item Obsérvese que en el caso $a = 0 \lor b = 0$ las existencias son triviales y la igualdad también. Por tanto, supongamos que $a,b \neq 0$. 
+
+La estrategia es observar que $ab$ es un múltiplo común de $a,b$ y que como existe $m = [a,b]$ podemos escribir $ab = md$. Nuestro objetivo es demostrar que $d = (a,b)$. 
+
+\begin{enumerate}
+\item Como $a,b|[a,b]$, $\exists a_1,b_1.m = a_1a = b_1b$ y entonces $ab = md = a_1ad = b_1bd$ y como estamos en un dominio de integridad, $b = b_1d \land a = a_1d \implies d|a,b$. 
+
+\item Supongamos que $d_1|a,b$. Entonces, $\exists m_1. m_1d_1 = ab$. Además, $a|m_1,b|m_1 \implies m|m_1 \implies \exists c. m_1 = cm$. Por tanto, $md = ab = m_1d_1 = d_1mc$ y simplificando, $d = d_1c \implies d_1|d$. 
+
+Obsérvese que hemos utilizado que $m \neq 0$ para simplificar. Esto se deduce de que si $0 = [a,b]$ entonces como $[a,b]|ab \implies ab = 0$ pero por hipótesis $a,b \neq 0$ y como estamos en un dominio de integridad, $ab \neq 0$. Contradicción.
+\end{enumerate}
+\end{enumerate}
+\end{proof}
+
+Curiosamente, la existencia de máximo común divisor no garantiza la existencia de mínimo común múltiplo. 
+
+\begin{example}[Existencia de mcd no implica existencia de mcm]
+Sea $A = \{a_0+2a_1x+\ldots:a_i \in \mathbb{Z} \} \subseteq \mathbb{Z}[X]$ el conjunto de los polinomios con coeficientes enteros que en grado 1 tienen coeficiente par. Claramente, $A$ es cerrado para sumas y productos y además contiene al uno. Por tanto, al ser subanillo de un dominio de integridad, también será un dominio de integridad. 
+
+Calculemos $(2,2x)$. Los divisores de 2 son $1,-1,2,-2$ ya que $2$ es irreducible. Un divisor común para ambos tiene que estar en esta lista. Sin embargo, $2 \nmid 2x$ en $A$ ya que tendría que verificarse la ecuación: $$2x = 2(a_0+2a_1x+\ldots) = 2a_0+4a_1x+\ldots$$ Claramente, la única posibilidad es que el divisor común sea $1$ o $-1$ y como el máximo común divisor es único salvo asociados, $(2,2x) = 1$. 
+
+Podemos comprobar que $\nexists [2,2x]$. Por reducción al absurdo, si existiese $[2,2x]$ entonces existiría $(2,2x)$ (que de hecho existe) y además $[2,2x](2,2x) = 4x$. Como $(2,2x) = 1$, tendrá que ser $[2,2x] = 4x$. 
+
+Consideremos el elemento $2x^3 = (2)(x^3) = (2x)(x^2)$. Claramente, $2|2x^3$ y $2x|2x^3$. Por definición de mínimo común múltiplo, debería verificarse que $4x|2x^3$ y en particular, $2x^3 = 4x(a_0+2a_1x+a_2x^2+\ldots)$. La ecuación que se obtiene en grado 3 es, $2 = 4a_2$ que no tiene solución entera. 
+\end{example}
+
+\begin{proposition}[Existencia de mcd implica la de mcm]
+Sea $A$ un dominio de integridad. 
+
+Si existe el máximo común divisor de cualquier par de elementos entonces existe el mínimo común múltiplo de cualquier par, esto es, $\forall a,b \in A. \exists (a,b) \implies \forall a,b \in A. \exists [a,b]$.
+\end{proposition}
+\begin{proof}
+Sean $a,b \in A \setminus \{0\}$ y $d = (a,b)$. Como $d|a,b$ también $d|ab$ y como no podía ser de otro modo eligiremos $m = \frac{ab}{d}$ como candidato a ser $[a,b]$.
+
+\begin{enumerate}
+\item Como $m = \frac{ab}{d} = a \frac{b}{d} = ab_1 \land  m = \frac{ab}{d}= \frac{a}{d}b = a_1b$ es claro que $a|m \land b|m$. 
+\item Sea $m_1 \in A$ tal que $a|m_1 \land b|m_1$. Queremos ver que $m|m_1$. Para ello tomo $k = (m,m_1)$ que existe por las hipótesis y elijo $d_1 = \frac{m}{k} \in A$. 
+
+Como $a|m \land a|m_1$ se tiene que $a|k$ y análogamente $b|k$. Sea $k = au = bv$. Tenemos: $$m = a_1b = kd_1 = bvd_1\implies a_1 = vd_1 \implies a = da_1 = vdd_1$$ $$m = b_1a = k d_1 = aud_1 \implies b_1 = ud_1 \implies b = db_1 = ud_1d$$ Por tanto, $$dd_1|a,b \implies dd_1 |d1 \implies d_1|1 \implies d_1 \in U(A)$$ Como $m = kd_1$ tenemos que $m = (m,m_1)$ luego $m|m_1$ como queríamos. 
+\end{enumerate}
+
+\end{proof}
+
+\subsection{Invarianza de la divisibilidad frente a isomorfismos}
+
+Nos ocupamos ahora de hacer explícito una noción que sería evidente. Los isomorfismos de anillos no pueden distinguir los conceptos anteriores. Sin embargo, lo hacemos aquí explícito porque al menos nos hará falta cuando hablemos del criterio de irreducibilidad por traslación. 
+
+\begin{proposition}
+Sea $f:A \to B$ un isomorfismo de anillos. 
+
+\begin{enumerate}
+\item El conjunto de los divisores es invariante por $f$. 
+\item Los elementos asociados son invariantes por $f$. 
+\item La irreducibilidad de un elemento es invariante por $f$. 
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\begin{enumerate}
+\item $d|a \implies a = dc \implies b = f(d)f(c) \implies f(d)|b \implies f(Div(a)) \subseteq Div(b)$
+
+$d'|b \implies b = d'c' \implies a = f^{-1}(b) = f^{-1}(d')f^{-1}(c') \implies f^{-1}(d') | a \implies Div(b) \subseteq f(Div(a))$. 
+
+\item Ya sabemos que las unidades son invariantes por $f$. Entonces: $$f(A(a)) = f(aU(A)) = f(a)f(U(A)) = bU(B) = A(b)$$
+
+\item $f$ preserva unidades y el cero. Por tanto, si $a$ no es cero ni unidad entonces $f(a)$ no es cero ni unidad. Como los divisores y los divisores triviales se preservan, tenemos que los irreducibles se preservan. 
+\end{enumerate}
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
