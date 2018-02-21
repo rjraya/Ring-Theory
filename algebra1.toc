@@ -3,128 +3,130 @@
 \defcounter {refsection}{0}\relax 
 \select@language {spanish}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Teor\IeC {\'\i }a de conjuntos}{3}
+\contentsline {section}{\numberline {1}Pr\IeC {\'o}logo}{4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.1}Relaciones de equivalencia y conjunto cociente}{5}
+\contentsline {section}{\numberline {2}Teor\IeC {\'\i }a de conjuntos}{5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Estructuras algebraicas}{7}
+\contentsline {subsection}{\numberline {2.1}Relaciones de equivalencia y conjunto cociente}{7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1}Monoides}{7}
+\contentsline {section}{\numberline {3}Estructuras algebraicas}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2}Grupos}{8}
+\contentsline {subsection}{\numberline {3.1}Monoides}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3}Anillos}{8}
+\contentsline {subsection}{\numberline {3.2}Grupos}{10}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4}Ideales}{10}
+\contentsline {subsection}{\numberline {3.3}Anillos}{10}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.4.1}Operaciones con ideales}{11}
+\contentsline {subsection}{\numberline {3.4}Ideales}{12}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.4.2}Ideales primos y maximales}{13}
+\contentsline {subsubsection}{\numberline {3.4.1}Operaciones con ideales}{13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5}Homomorfismos de anillos}{14}
+\contentsline {subsubsection}{\numberline {3.4.2}Ideales primos y maximales}{15}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.6}Anillo cociente}{16}
+\contentsline {subsection}{\numberline {3.5}Homomorfismos de anillos}{16}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.7}Anillo producto}{19}
+\contentsline {subsection}{\numberline {3.6}Anillo cociente}{18}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Ejemplos de anillos}{22}
+\contentsline {subsection}{\numberline {3.7}Anillo producto}{21}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}Anillos de polinomios}{22}
+\contentsline {section}{\numberline {4}Ejemplos de anillos}{24}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.1.1}Propiedades generales}{22}
+\contentsline {subsection}{\numberline {4.1}Anillos de polinomios}{24}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.1.2}Ra\IeC {\'\i }ces, derivada y f\IeC {\'o}rmula de Taylor}{25}
+\contentsline {subsubsection}{\numberline {4.1.1}Propiedades generales}{24}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Anillos de enteros cuadr\IeC {\'a}ticos}{27}
+\contentsline {subsubsection}{\numberline {4.1.2}Ra\IeC {\'\i }ces, derivada y f\IeC {\'o}rmula de Taylor}{27}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Dominios de integridad y cuerpos}{29}
+\contentsline {subsection}{\numberline {4.2}Anillos de enteros cuadr\IeC {\'a}ticos}{29}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Definiciones de dominio de integridad}{29}
+\contentsline {section}{\numberline {5}Dominios de integridad y cuerpos}{31}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Definici\IeC {\'o}n de cuerpo}{30}
+\contentsline {subsection}{\numberline {5.1}Definiciones de dominio de integridad}{31}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3}Relaci\IeC {\'o}n entre dominios de integridad y cuerpos}{31}
+\contentsline {subsection}{\numberline {5.2}Definici\IeC {\'o}n de cuerpo}{32}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Ejemplos de cuerpos}{32}
+\contentsline {subsection}{\numberline {5.3}Relaci\IeC {\'o}n entre dominios de integridad y cuerpos}{33}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}El cuerpo de fracciones de un anillo}{32}
+\contentsline {section}{\numberline {6}Ejemplos de cuerpos}{34}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}Cuerpo de racionales cuadr\IeC {\'a}ticos}{34}
+\contentsline {subsection}{\numberline {6.1}El cuerpo de fracciones de un anillo}{34}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Divisibilidad en dominios de integridad}{36}
+\contentsline {subsection}{\numberline {6.2}Cuerpo de racionales cuadr\IeC {\'a}ticos}{36}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1}Divisibilidad. Propiedades generales.}{36}
+\contentsline {section}{\numberline {7}Divisibilidad en dominios de integridad}{38}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2}Irreducibilidad}{37}
+\contentsline {subsection}{\numberline {7.1}Divisibilidad. Propiedades generales.}{38}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.3}Primalidad}{38}
+\contentsline {subsection}{\numberline {7.2}Irreducibilidad}{39}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.4}Estudio de la relaci\IeC {\'o}n de asociaci\IeC {\'o}n}{39}
+\contentsline {subsection}{\numberline {7.3}Primalidad}{40}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.5}M\IeC {\'a}ximo com\IeC {\'u}n divisor}{41}
+\contentsline {subsection}{\numberline {7.4}Estudio de la relaci\IeC {\'o}n de asociaci\IeC {\'o}n}{41}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.6}M\IeC {\'\i }nimo com\IeC {\'u}n m\IeC {\'u}ltiplo}{44}
+\contentsline {subsection}{\numberline {7.5}M\IeC {\'a}ximo com\IeC {\'u}n divisor}{43}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.7}Invarianza de la divisibilidad frente a isomorfismos}{46}
+\contentsline {subsection}{\numberline {7.6}M\IeC {\'\i }nimo com\IeC {\'u}n m\IeC {\'u}ltiplo}{46}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}Dominios eucl\IeC {\'\i }deos}{47}
+\contentsline {subsection}{\numberline {7.7}Invarianza de la divisibilidad frente a isomorfismos}{48}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.1}Definici\IeC {\'o}n y propiedades generales}{47}
+\contentsline {section}{\numberline {8}Dominios eucl\IeC {\'\i }deos}{49}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.2}Dominio eucl\IeC {\'\i }deo de los enteros}{47}
+\contentsline {subsection}{\numberline {8.1}Definici\IeC {\'o}n y propiedades generales}{49}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.3}Dominio eucl\IeC {\'\i }deo de los polinomios con coeficientes en un cuerpo.}{49}
+\contentsline {subsection}{\numberline {8.2}Dominio eucl\IeC {\'\i }deo de los enteros}{49}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {7.3.1}Demostraci\IeC {\'o}n basada en un algoritmo de divisi\IeC {\'o}n sobre dominios de integridad}{49}
+\contentsline {subsection}{\numberline {8.3}Dominio eucl\IeC {\'\i }deo de los polinomios con coeficientes en un cuerpo.}{51}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {7.3.2}Demostraci\IeC {\'o}n basada en un algoritmo de pseudo-divisi\IeC {\'o}n sobre anillos conmutativos}{50}
+\contentsline {subsubsection}{\numberline {8.3.1}Demostraci\IeC {\'o}n basada en un algoritmo de divisi\IeC {\'o}n sobre dominios de integridad}{51}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.4}Dominio eucl\IeC {\'\i }deo de los enteros cuadr\IeC {\'a}ticos}{52}
+\contentsline {subsubsection}{\numberline {8.3.2}Demostraci\IeC {\'o}n basada en un algoritmo de pseudo-divisi\IeC {\'o}n sobre anillos conmutativos}{52}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}Dominios de ideales principales}{54}
+\contentsline {subsection}{\numberline {8.4}Dominio eucl\IeC {\'\i }deo de los enteros cuadr\IeC {\'a}ticos}{54}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.1}Definici\IeC {\'o}n y propiedades fundamentales}{54}
+\contentsline {section}{\numberline {9}Dominios de ideales principales}{56}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.2}Ret\IeC {\'\i }culo de divisibilidad y de ideales.}{55}
+\contentsline {subsection}{\numberline {9.1}Definici\IeC {\'o}n y propiedades fundamentales}{56}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {8.3}Soluci\IeC {\'o}n de ecuaciones diof\IeC {\'a}nticas y algoritmo de Euclides}{56}
+\contentsline {subsection}{\numberline {9.2}Ret\IeC {\'\i }culo de divisibilidad y de ideales.}{57}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}Congruencias}{59}
+\contentsline {subsection}{\numberline {9.3}Soluci\IeC {\'o}n de ecuaciones diof\IeC {\'a}nticas y algoritmo de Euclides}{58}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.1}Ecuaciones en congruencias}{59}
+\contentsline {section}{\numberline {10}Congruencias}{61}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.2}Sistemas de congruencias}{62}
+\contentsline {subsection}{\numberline {10.1}Ecuaciones en congruencias}{61}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.3}Anillo de restos de un dominio eucl\IeC {\'\i }deo con unicidad de cocientes y restos}{64}
+\contentsline {subsection}{\numberline {10.2}Sistemas de congruencias}{64}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.4}Consecuencias en el anillo $\mathbb {Z}_n$}{68}
+\contentsline {subsection}{\numberline {10.3}Anillo de restos de un dominio eucl\IeC {\'\i }deo con unicidad de cocientes y restos}{66}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10}Dominios de factorizaci\IeC {\'o}n \IeC {\'u}nica}{72}
+\contentsline {subsection}{\numberline {10.4}Consecuencias en el anillo $\mathbb {Z}_n$}{70}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {10.1}Definici\IeC {\'o}n y expresi\IeC {\'o}n de los elementos del dominio}{72}
+\contentsline {section}{\numberline {11}Dominios de factorizaci\IeC {\'o}n \IeC {\'u}nica}{74}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {10.2}Relaci\IeC {\'o}n de divisibilidad en un DFU}{73}
+\contentsline {subsection}{\numberline {11.1}Definici\IeC {\'o}n y expresi\IeC {\'o}n de los elementos del dominio}{74}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {10.3}Caracterizaciones alternativas}{74}
+\contentsline {subsection}{\numberline {11.2}Relaci\IeC {\'o}n de divisibilidad en un DFU}{75}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {10.4}Los DIP son DFU}{75}
+\contentsline {subsection}{\numberline {11.3}Caracterizaciones alternativas}{76}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {11}Anillos de polinomios sobre un DFU}{77}
+\contentsline {subsection}{\numberline {11.4}Los DIP son DFU}{77}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {11.1}Anillos de polinomios sobre un cuerpo}{77}
+\contentsline {section}{\numberline {12}Anillos de polinomios sobre un DFU}{79}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {11.2}Anillos de polinomios sobre un DFU.}{77}
+\contentsline {subsection}{\numberline {12.1}Anillos de polinomios sobre un cuerpo}{79}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {12}Criterios de irreducibilidad}{82}
+\contentsline {subsection}{\numberline {12.2}Anillos de polinomios sobre un DFU.}{79}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {12.1}Criterios de irreducibilidad y m\IeC {\'e}todos de factorizaci\IeC {\'o}n de polinomios}{82}
+\contentsline {section}{\numberline {13}Criterios de irreducibilidad}{84}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {12.2}Regla de Ruffini o criterio de la ra\IeC {\'\i }z}{82}
+\contentsline {subsection}{\numberline {13.1}Criterios de irreducibilidad y m\IeC {\'e}todos de factorizaci\IeC {\'o}n de polinomios}{84}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {12.3}Criterio de reducci\IeC {\'o}n m\IeC {\'o}dulo un primo}{84}
+\contentsline {subsection}{\numberline {13.2}Regla de Ruffini o criterio de la ra\IeC {\'\i }z}{84}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {12.4}Criterio de Eisenstein}{85}
+\contentsline {subsection}{\numberline {13.3}Criterio de reducci\IeC {\'o}n m\IeC {\'o}dulo un primo}{86}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {12.5}Criterio de irreducibilidad por traslaci\IeC {\'o}n}{86}
+\contentsline {subsection}{\numberline {13.4}Criterio de Eisenstein}{87}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {12.6}M\IeC {\'e}todo de Kronecker para la factorizaci\IeC {\'o}n de polinomios}{87}
+\contentsline {subsection}{\numberline {13.5}Criterio de irreducibilidad por traslaci\IeC {\'o}n}{88}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {13.6}M\IeC {\'e}todo de Kronecker para la factorizaci\IeC {\'o}n de polinomios}{89}
