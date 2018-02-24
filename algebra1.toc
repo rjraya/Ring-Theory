@@ -130,3 +130,15 @@
 \contentsline {subsection}{\numberline {13.5}Criterio de irreducibilidad por traslaci\IeC {\'o}n}{88}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {13.6}M\IeC {\'e}todo de Kronecker para la factorizaci\IeC {\'o}n de polinomios}{89}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {14}M\IeC {\'o}dulos}{91}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {14.1}Definiciones b\IeC {\'a}sicas}{91}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {14.2}Bases de m\IeC {\'o}dulos}{94}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {14.3}Homomorfismos de m\IeC {\'o}dulos}{94}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {14.4}Suma directa}{94}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {14.5}Teoremas de estructura de m\IeC {\'o}dulos finitamente generados sobre un DIP}{95}
