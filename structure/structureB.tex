@@ -1,0 +1,626 @@
+\subsection{Monoides}
+
+\begin{definition}[Monoide]
+Un monoide es un conjunto $X$ en el que hay definida una operación o ley de composición interna $\tau:X \times X \rightarrow X$ tal que a cada pareja $(a,b)$ se asigna $\tau(a,b) = a \, \tau \, b$ que verifica dos propiedades:
+
+1. Asociatividad: $a \tau (b \tau c) = (a \tau b) \tau c$ $\forall a,b,c \in X$.
+
+2. Elemento neutro: $\exists e \in X$ tal que $e \tau a = a = a \tau e$ $\forall a \in X$.
+
+Diremos que un monoide es conmutativo si cumple una tercera propiedad:
+
+3. Conmutatividad $\forall a,b \in X$ $a \tau b = b \tau a$.
+\end{definition}
+
+$\tau$ puede también escribirse como $\cdot$ en cuyo caso decimos que el monoide es multiplicativo y se escribe $a \cdot b = ab$ y el elemento neutro es el 1. También puede escribirse como $+$ en cuyo caso decimos que el monoide es aditivo y se escribe $a+b$ siendo 0 el elemento neutro. A partir de ahora adoptaremos la notación multiplicativa. 
+
+\begin{example}[Monoides conmutativos]
+$(\mathbb{N},+)$. Consideraremos que los naturales incluyen al cero. Es un monoide aditivo con $e = 0$.\\
+$(\mathbb{N},\cdot)$. Es un monoide multiplicativo con $e = 1$.\\
+$(\mathbb{P},\cdot)$. Es un monoide multiplicativo con $\mathbb{P} = \mathbb{N} - \{0\}$\\
+$(\mathbb{Z},+)$. Es un monoide aditivo con $e = 0$. \\
+$(\mathbb{Z},\cdot)$. Es un monoide multiplicativo con $e = 1$.\\
+$\powerset(X) = \{A \text{ conjunto}:A \subseteq X\}$.\\ 
+$(\powerset(X),\cup)$ es un monoide con elemento neutro $\emptyset$.\\
+$(\powerset(X),\cap)$ es un monoide con elemento neutro $X$.
+\end{example}
+
+\begin{example}[Monoides no conmutativos]
+$(M_n(\mathbb{R}),\cdot)$ es un monoide no conmutativo con elemento neutro $I_n$. \\
+$(M_{m \times n}(\mathbb{R}),+)$ es un monoide conmutativo con elemento neutro $0_n$. 
+\end{example}
+
+\begin{example}[No monoide]
+$(\mathbb{P},+)$ no es un monoide ya que no tiene elemento neutro.
+\end{example}
+
+(Pregunta se puede dar una definición equivalente sin conmutación como en grupos (ver algebra ii definicion y primeras propiedades de grupos)?)
+
+\begin{definition}[Elemento inverso]
+Dado un monoide $M$ y un elemento $u \in M$, decimos que $u$ es invertible o unidad si $\exists v \in M:uv = 1 = vu$. Nótese que un elemento no tiene por qué tener inversos, sin embargo, al conjunto de elementos que sí tienen inversos se les llama unidades del monoide, esto es, $U(M) = \{u \in M: \exists u^{-1} \in M\}$
+\end{definition}
+
+\begin{definition}[Producto reiterado]
+Dado un monoide $M$ y elementos $a_1,\cdots,a_n \in M$.
+
+Denotamos su producto reiterado como $a_1 = a_2 \cdots a_n = \prod_{i=1}^{n} a_i \in M$ y lo definimos inductivamente como: 
+
+Si $n = 1$ entonces $\prod_{i=1}^{n} a_i = a_1$ y supuesto definido el caso n, el caso $n+1$ es $\prod_{i=1}^{n+1} a_i = (\prod_{i=1}^{n} a_i)\cdot a_{n+1}$
+
+En el caso en que $a_1 = a_2 = \cdots = a_n = a^n$ notamos $\prod_{i=1}^{n} a = a^n$. Por convenio también $a^0 = 1$.
+\end{definition}
+
+\begin{proposition}[Aritmética en un monoide]
+Dado un monoide $M$ se verifica
+
+1. Unicidad del elemento neutro: si $e,e' \in M$ son elementos neutros entonces $e = e'$.\\
+2. Unicidad del elemento inverso: si $v,v' \in M$ son inversos de $u$ entonces $v = v'$. Al elemento inverso de $u$ lo denotaremos por $u^{-1}$.\\
+3. $(u^{-1})^{-1} = u$\\
+4. Si $u,v \in U(M)$ entonces $uv \in U(M)$ con $(uv)^{-1} = v^{-1}u^{-1}$. 
+\end{proposition}
+
+\begin{proposition}[Aritmética con productos reiterados]
+	1. Si $u_1,\cdots,u_n \in U(M)$ entonces $(\prod_{i=1}^{n} u_i)^{-1} = \prod_{i=n}^{1} u_i^{-1}$ en particular $(u^n)^{-1} = (u^{-1})^n$ y lo notaremos por $u^{-n}$.\\
+	2. Asociatividad generalizada: $\forall m$ tal que $1 \leq m \leq n$ se verifica $\prod_{i=1}^{n} a_i = (\prod_{i=1}^{m} a_i) \cdot (\prod_{i=m+1}^{n} a_i)$\\
+	3. Dado $a \in M$ $a^{n+m} = a^n \cdot a^m$, $(a^n)^m = a^{nm}$. \\
+	4. Dados $a,b \in M$ tales que $ab = ba$ (conmutan) entonces $(ab)^n = a^nb^n$ $\forall n \ge 0$.
+\end{proposition}
+
+\subsection{Grupos}
+
+\begin{definition}[Grupo]
+Un grupo es un monoide donde todo elemento es unidad. Si el monoide es conmutativo lo llamaremos grupo abeliano.
+\end{definition}
+
+\begin{example}
+1. En cualquier monoide el conjunto de las unidades tiene estructura de grupo y se llama grupo de las unidades del monoide.\\
+2. $U(\mathbb{N},+) = \{0\}$, $U(\mathbb{Z},+) = \mathbb{Z}$ es un grupo abeliano, $U(\mathbb{Z},\cdot) = \{-1,1\}$, $U(M_{m \times n}(\mathbb{R}),+) = M_{m \times n}(\mathbb{R})$ , $U(M_n(\mathbb{R}),\cdot) = Gl_n(\mathbb{R})$ es un grupo, $U(\mathbb{Z}_n,+) = \mathbb{Z}_n$ es un grupo abeliano.
+\end{example}
+
+
+\subsection{Anillos}
+
+\begin{definition}[Anillo]
+Un anillo $R$ es un conjunto no vacío en el que hay definidas dos operaciones internas $+:R \times R \rightarrow R$ y $\cdot:R \times R \rightarrow R$ tales que:
+
+\begin{enumerate}
+\item $(R,+)$ es un grupo abeliano.
+\item $(R,\cdot)$ es un monoide. 
+\item Se dan las propiedades distributivas: $a(b+c) = ab+ac \land (a+b)c = ac+bc$
+\end{enumerate}
+
+$R$ es un anillo conmutativo si $(R,\cdot)$ es un monoide conmutativo:
+
+4. Conmutativa para el producto: $ab = ba$
+\end{definition}
+
+\begin{example}[Primeros ejemplos de anillos]
+	1. El anillo trivial es $R = \{0\}$ donde $0 = 1$. \\
+	2. Si dado un anillo $R$ con operación producto denotada $\cdot$ tomamos un anillo donde el producto se define como $a*b = b\cdot a$ obtenemos un nuevo anillo conocido como el opuesto de $R$ y denotado $R^{op}$.\\	
+	3. $\mathbb{Z},\mathbb{Q},\mathbb{R},\mathbb{C}$ con sus operaciones usuales son anillos conmutativos. \\
+	4. Si $R,S$ son anillos entonces $R \times S$ con operaciones $(r,s) + (r',s') = (r+s,r'+s') \land (r,s) \cdot (r',s') = (rr',ss')$ es el anillo producto de $R$ y de $S$.\\
+	5. Si $R$ es un anillo conmutativo entonces $(\mathbb{M_n(R)},\cdot)$ es un anillo no conmutativo llamado el anillo de las matrices cuadradas sobre el anillo $R$. \\
+	6. Si $R$ es un anillo conmutativo entonces $R[X]$ es un anillo conmutativo llamado el anillo de polinomios sobre $R$.  \\
+	7. $\{f:[0,1] \to \mathbb{R}\}$ es un anillo conmutativo. 
+\end{example}
+
+Algunos de estos anillos aparecen más desarrollados en la sección de ejemplos de anillos y cuerpos. Cuando digamos anillos sobreentendemos que nos referimos a anillos conmutativos.
+
+\begin{proposition}[Aritmética en un anillo]
+Sea $R$ un anillo.
+
+1. Si $a \in R$ es tal que $2a = a$ entonces $a = 0$.\\
+2. $a0 = 0 = 0a$ $\forall a \in R$.\\
+3. Si $|R| \ge 2$ entonces $1 \neq 0$. En particular si $1 = 0 \iff |R| = 1$ y $R$ es el anillo trivial. \\
+4. $-(a+b) = ((-a) + (-b))$ (opuesto de la suma) \\
+   $(-a)b = -(ab) = a(-b)$ (opuesto del producto)\\
+5. $(-1)a = -a = a(-1)$\\
+6. $(-1)(-1) = -(-1) = 1$\\
+7. $(-a)(-b) = ab$\\
+8. Supuesto que exista el inverso, $-x^{-1} = (-x)^{-1}$ \\
+9. Distributividad generalizada: $(\sum_{i=1}^{n} a_i)(\sum_{j=1}^{m}b_j) = \sum_{i=1}^{n}\sum_{j=1}^{m}a_i b_j$
+\end{proposition}
+\begin{proof}
+1. Supongamos que para $a \in R$ se tiene $2a = a$. Entonces sumando el opuesto de $a$ en ambos miembros se llega a $a = 0$. \\
+2. Claramente, $a \cdot 0 = a \cdot (0 + 0) = a \cdot 0 + a \cdot 0 = 0$ donde en la última igualdad usamos la propiedad 1. \\
+4. Sabemos por la estructura de monoide que el opuesto de un elemento es único. Ahora, consideremos la suma $(a+b) + ((-a)+(-b)) = (a+b) + ((-b) + (-a)) = a + (b + ((-b) + (-a))) = a + ((b + (-b)) + (-a)) = a + (0 + (-a)) = a + (-a) = 0$ y por la propiedad conmutativa se sigue que $(-a) + (-b)$ es el elemento opuesto para $a+b$. 
+
+Para ver el opuesto del producto, apliquemos distributividad. $-(ab) + ab = ((-a) + a) \cdot b = 0 \cdot b = 0$. \\
+8. En efecto, sabemos que el opuesto de un elemento es único. Veamos que $(-x)^{-1}$ es opuesto de $x^{-1}$. $x^{-1} + (-x)^{-1} = $
+9. Se produce por doble inducción. 
+
+Comencemos por inducción sobre $m$. 
+
+\begin{itemize}
+\item Si $m = 1$ entonces $(\sum a_i)b_1 = \sum a_ib_1$. En efecto, procedamos por inducción sobre $n$:
+\begin{itemize}
+\item Si $n = 1$ entonces $a_1b_1 = a_1b_1$. 
+\item Si $n > 1$ entonces $$(\sum a_i)b_1 = ((\sum_{i = 1}^{n-1} a_i) + a_n)b_1 = (\sum_{i = 1}^{n-1} a_i)b_1 + a_nb_1 = (\sum_{i = 1}^{n-1} a_ib_1) + a_nb_1 = \sum_{i = 1}^n a_ib_1$$ donde hemos utilizado la propiedad distributiva, la hipótesis de inducción para $n-1$ y la propiedad asociativa generalizada. 
+\end{itemize}
+\item Si $m > 1$ entonces $$(\sum a_i)(\sum b_j) = (\sum a_i)(\sum_{j = 1}^{m-1} b_j)+b_m) = (\sum a_i)(\sum_{j = 1}^{m-1} b_j) + (\sum_{i = 1}^n a_i)b_m = \sum_i \sum_{j = 1}^{m-1} a_ib_j + \sum_i a_ib_m = \sum_i\sum_j a_ib_j$$ donde hemos utilizado el caso $m = 1$, la hipótesis de inducción en $m-1$ y la propiedad asociativa generalizada. 
+\end{itemize}
+\end{proof}
+
+\begin{definition}[Unidades de un anillo]
+Un elemento de un anillo se dice invertible o unidad si lo es como elemento del monoide multiplicativo asociado esto es si $\exists u^{-1}: uu^{-1} = 1 = u^{-1}u$. Denotaremos $U(R) = \{u \in R: \exists u^{-1}\}$ al grupo de las unidades del anillo $R$. En particular, si el anillo es conmutativo entonces el grupo es abeliano.
+\end{definition}
+
+\begin{example}
+Podemos calcular algunos grupos de unidades:
+
+\begin{enumerate}
+\item $U(M_n(\mathbb{R}),\cdot) = Gl_n(\mathbb{R})$
+\item $U(\mathbb{Z},\cdot) = \{-1,1\}$. Obsérvese que son unidades y que no hay más ya que si $u$ fuera unidad entonces $|uu^{-1}| = 1$.
+\end{enumerate}
+\end{example}
+
+\begin{definition}[Subanillo]
+Sean $A$ y $B$ dos anillos con $B \subseteq A$. 
+
+$B$ es un subanillo de $A$ si se verifican las siguientes condiciones:
+
+\begin{enumerate}
+	\item $B$ es un subgrupo de $A$ con la suma. 
+	\item el producto es cerrado en $B$.
+	\item $1 \in B$. 
+\end{enumerate} 
+\end{definition}
+
+\begin{proposition}[Descripción del subanillo generado por un conjunto]
+Sea $A$ un anillo conmutativo. 
+
+\begin{enumerate}
+\item Si $\mathcal{F}$ es una familia de subanillos de $A$ entonces $\cap_{S \in \mathcal{F}} S$ es un subanillo de $A$. 
+\item Si $\mathcal{F}$ es una familia de subanillos de $A$ que contiene a un conjunto $X$ entonces $\cap_{S \in \mathcal{F}} S$ es el menor subanillo de $A$ que contiene a $X$. Se le llama el subanillo generado por $X$. 
+\item Si $S$ es un subanillo de $A$ y $X$ es un subconjunto de $A$ denotamos por $S[X]$ al subanillo generado por $S \cup X$. Si $X = \{x_1,\ldots,x_n \}$ es un conjunto finito entonces: $$S[x_1,\ldots,x_n] = \{\sum_{(i_1,\ldots,i_n) \in \mathbb{N}^n} a_{i_1,\ldots,i_n} x_1^{i_1} \ldots x_n^{i_n}: a_{i_1,\ldots,i_n} \in S \text{ y todos son nulos salvo un número finito de n-uplas } \}$$
+\end{enumerate}
+%%%% en proceso de demostrar pag 12
+\begin{proof}
+\item Que sea un subanillo de A es equivalente a que:
+  \begin{itemize}
+  \item $ \forall x,y \in \cap_{S \in \mathcal{F}} S$ entonces $ x-y \in \cap_{S \in \mathcal{F}}S$ \\
+      Que $ x,y \in \cap_{S \in \mathcal{F}} S $ es equivalente a que $x,y \in S $ para todo $S \in F$ Apliquemos ahora que $S$ son subanillos de $A$ y como consecuencia $x-y \in S $ para todo subanillo $ S \in F$ \\
+       Si $x-y$ pertenece a todo $S$ entonces pertece a la intersección,  probando con ello lo que buscábamos.
+       
+    \item  $ \forall x,y \in \cap_{S \in \mathcal{F}} S$ entonces $ xy \in \cap_{S \in \mathcal{F}}S$ \\
+     Que $ x,y \in \cap_{S \in \mathcal{F}} S $ es equivalente a que $x,y \in S $ para todo $S \in F$ Apliquemos ahora que $S$ son subanillos de $A$ y como consecuencia $xy \in S $ para todo $S \in F$ \\
+       Si $xy$ pertenece a todo $S$ entonces pertece a la intersección,  probando con ello lo que buscábamos.
+       
+    \item $1 \in \cap_{S \in \mathcal{F}} S$  \\
+    Por ser $S$ subanillos el 1 pertenecerá a todos, por tanto se encontrará en la intersección. 
+    
+    \end{itemize}
+\end{proof}
+
+%%%% FALTAN LA 2 Y LA 3
+\end{proposition}
+
+\subsection{Ideales}
+
+\begin{definition}[Ideal de un anillo]
+Dado un anillo conmutativo y $I \subset A$ no vacío decimos que $I$ es un ideal de $A$ y lo denotamos por $I < A$ si:
+
+\begin{itemize}
+\item $\forall x,y \in I. x + y \in I$.
+\item $\forall x \in I,a \in A. ax \in I$. 
+\end{itemize}
+
+esto es, si es cerrado para sumas y para múltiplos.
+\end{definition}
+
+Existe otra manera de definirlo que consiste en sustituir la primera condición por $(I,+)$ es un subgrupo. Sin embargo, que el conjunto es cerrado para inversos y para el neutro de la suma ya se deriva de la segunda propiedad. 
+
+\begin{example}[Ejemplos de ideales]
+Tenemos los siguientes ejemplos básicos:
+
+\begin{itemize}
+\item $\{0\}$ y $A$ son los ideales impropios de $A$. 
+\item Un ideal $I = A \iff 1 \in I \iff \exists u \in U(A).u \in I$. Esto es, un ideal $I$ es subanillo $\iff$ es todo $A$. 
+\end{itemize}
+\end{example}
+
+\subsubsection{Operaciones con ideales}
+
+\begin{proposition}[Definición de las operaciones con ideales]
+	Sea $R$ un anillo conmutativo.
+	
+	\begin{enumerate}
+		\item La intersección arbitraria de ideales es un ideal, es decir: $$\{I_\lambda\}_{\lambda \in \Lambda} < R \implies \cap_{\lambda \in \Lambda} I_{\lambda} < R$$ De hecho, es el mayor de los ideales contenido en todos los de la familia. 
+		\item Sea $X$ un conjunto. El ideal generado por $X$ es el menor ideal que contiene a $X$: $$\langle X \rangle = \cap_{I < R \land X \subseteq I} I = \{\sum_{x \in X} rx:r \in R \land x \in X\ \land \text{ son todos nulos salvo un número finito}\}$$ en particular si $X = \{x_1,\cdots,x_n\}$ entonces $$\langle X \rangle = \{\sum_{i = 1}^n r_ix_i:r_i \in R,x_i \in X\}$$ y si $X = \{x\}$ entonces $$\langle \{x\} \rangle = Rx =  \{rx:r \in R\}$$ es llamado el ideal principal generado por $x$. 
+		\item La unión de ideales no es en general un ideal. Sin embargo, dada una familia de ideales $\{I_\lambda\}_{\lambda \in \Lambda} < R$ el ideal suma es el generado por la unión de todos ellos: $$\sum_{\lambda \in \Lambda} I_{\lambda} = \langle \cup_{\lambda \in \Lambda} \cup I_{\lambda} \rangle = \{\sum_{\lambda \in \Lambda} a_{\lambda}: a_{\lambda} \in I_{\lambda} \text{ tal que son todos nulos salvo un número finito }\}$$ y en particular, $$I_1 + \ldots + I_n = \{a_1+a_2+\ldots+a_n:a_i \in I_i\}$$
+		
+		De hecho, el ideal suma es el menor ideal que contiene a todos los de la familia. 
+		\item Sean $I_1,\ldots,I_n < R$ definimos su producto como  $$I_1 \cdot \ldots \cdot I_n = \langle \{\prod_{i = 1}^n a_i:a_i \in I_i\} \rangle$$ esto es sumas finitas de productos $\prod_{i = 1}^n a_i$. En particular si $I,J < R$ entonces $$IJ = \{\sum_{i = 1}^n a_ib_i:a_i \in I \land b_i \in J\}$$ Además siempre se verifica que $I_1 \cdot \ldots \cdot I_n \subseteq I_1 \cap \ldots \cap I_n$
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Sea $I = \cap_{\lambda \in \Lambda} I_\lambda$ y $a,b \in I$ entonces $a+b \in I$ por ser $a,b$ de cada $I_\lambda$. Análogamente también para $c \in R$ tenemos que $ca \in I$. 
+	
+		\item La primera igualdad es la definición del menor ideal que contiene a un conjunto y la segunda igualdad se prueba por doble inclusión. 
+		
+		Claramente, el miembro izquierdo es un ideal que contiene a $X$. Pero cualquier ideal que contenga a $X$ debe contener a sus elementos y por tanto coincide con el menor ideal que contiene a $X$.
+		
+		\item Claramente $2\mathbb{Z},3\mathbb{Z}$ son ideales de $\mathbb{Z}$ y sin embargo $2+3 = 5 \in 2\mathbb{Z} \cup 3\mathbb{Z}$. 
+		
+		Claramente un ideal que contenga a todos los $I_\lambda$ contiene a todos los elementos del miembro derecho y como el miembro derecho es un ideal, debe coincidir con el menor ideal que los contiene a todos. 
+		
+		\item Basta demostrar la última inclusión. Si tomo $y \in \prod I$ entonces será un sumatorio finito $\sum r \prod i_j$  pero cada sumando está en la intersección pues podemos verlo como un producto de elementos por un elemento de cada ideal. Como la intersección es un ideal. También la suma de los elementos anteriores está en el ideal. 
+	\end{enumerate}
+\end{proof}
+
+\begin{corollary}[Retículo de ideales de un anillo]
+Si consideramos el conjunto de los ideales ordenado mediante la inclusión entonces tiene estructura de retículo donde el supremo es la suma y el ínfimo es la intersección. 
+\end{corollary}
+
+\begin{proposition}[Condición de coprimalidad]
+	Sea $R$ un anillo conmutativo y $I_1,\ldots,I_n < R$ y supongamos que estos ideales son coprimos dos a dos, esto es, $I_i+I_j = R$ siempre que $i \neq j$ entonces $I_1 \ldots I_n = I_1 \cap \ldots \cap I_n$
+\end{proposition}
+\begin{proof}
+	Siempre se tiene que $\prod I_i \subseteq \cap I_i$. Para ver la otra inclusión procedemos por inducción sobre $n$. 
+	
+	Para $n = 2$ como $I+J = R$ entonces $\exists i \in I,j \in J.i+j = 1$ y dado $x \in I \cap J$ tenemos que $x = x1 = x(i+j) = xi + xj$ y tenemos que $xi,xj \in IJ$. Como $IJ$ es un ideal también $x \in IJ$. 
+	
+	Sea ahora $n > 2$. Probamos que $I_n + \prod_{i = 1}^{n-1} I_i = R$.
+
+	Consideramos que $I_k,I_n$ son comaximales. Entonces $\forall k \neq n. \exists x_k \in I_k,y_k \in I_n. x_k+y_k = 1$. Consideremos el elemento siguiente: $$a_n =  \prod_{j \neq n} x_k = \prod_{j \neq n} (1-y_k)$$ Claramente, el miembro izquierdo es de $\cap_{k \neq n} I_k$ y el miembro derecho será $1$ menos un sumatorio polinómico en los elementos $y_k$ que pertenecen todos a $I_n$ luego $a_n = 1-y$ con $y \in I_n$
+	
+	De este modo, aplicando el caso dos y la hipótesis de inducción se llega a que: $$\prod_{i = 1}^{n} I_i = I_n\prod_{i = 1}^{n-1} I_i = I_n \cap \cap_{i = 1}^{n-1} I_i = \cap_{i = 1}^n I_i$$
+\end{proof}
+
+\begin{example}
+	Es fácil demostrar por reducción al absurdo usando la estructura euclídea de $\mathbb{Z}$ que $\mathbb{Z}$ es un dominio de ideales principales. Esto es los ideales de $\mathbb{Z}$ son exactamente los $n\mathbb{Z}$ con $n \in \mathbb{N}$.
+	
+	\begin{itemize}
+		\item $m\mathbb{Z} \cap n\mathbb{Z} = mcm(m,n)\mathbb{Z}$
+		\item $2\mathbb{Z} \cup 3\mathbb{Z}$ no es un ideal ya que en otro caso contendría al $3-2 = 1$ y entonces sería todo $\mathbb{Z}$ pero no todo entero es múltiplo de 2 o de 3. 
+		\item $n\mathbb{Z}+m\mathbb{Z} = mcd(m,n)\mathbb{Z}$
+		\item $n\mathbb{Z}n\mathbb{Z} = mn\mathbb{Z}$
+	\end{itemize}
+\end{example}
+
+\subsubsection{Ideales primos y maximales}
+
+\begin{definition}[Ideal primo]
+Sea $A$ un anillo conmutativo e $I \le A$ un ideal. $I$ es un ideal primo si:
+
+\begin{enumerate}
+\item $I \neq A$.
+\item $\forall x,y \in A.xy \in I \implies x \in I \lor y \in I$. 
+\end{enumerate}
+\end{definition}
+
+La relación con la noción de elemento primo la daría el hecho de que $\langle xy \rangle \subseteq I \implies \langle x \rangle \subseteq I \land \langle y \rangle$ y bastaría interpretar estas inclusiones como una divisibilidad inversa. 
+
+\begin{corollary}[Ideales principales primos son los generados por primos]
+Sea $A$ un anillo conmutativo. Si $a \neq 0$ entonces:
+
+$\langle a \rangle$ es primo $\iff a$ es primo.
+\end{corollary}
+\begin{proof}
+Es fácil ver que: $$a|xy \implies a|x \lor a|y \text{ es equivalente a que } xy \in \langle a \rangle \implies x \in \langle a \rangle \lor y \in \langle a \rangle$$ 
+\end{proof}
+
+\begin{proposition}[Caracterización de ideales maximales]
+Sea $A$ un anillo conmutativo e $I \le A$ un ideal.
+
+$I$ es primo $\iff A/I$ es un dominio de integridad no trivial. 
+\end{proposition}
+\begin{proof}
+$\Rightarrow)$ Veamos que si $(x+I)(y+I) = 0+I$ entonces $x+ I = 0 + I \lor y + I = 0 + I$. En efecto, $(x+I)(y+I) = (xy) + I = 0+I \implies xy \in I$ y como $I$ es primo,se tendría que $x \in I \lor y \in I$, esto es, $x+ I = 0 + I \lor y + I = 0 + I$. En consecuencia, $A/I$ es un dominio de integridad que será no trivial ya que $A \neq I$. 
+
+$\Leftarrow)$ Como $A/I$ es no trivial, se tiene que $A \neq I$. Tomo $x,y \in A$ tales que $xy \in I$. Entonces $(x+I)(y+I) = (xy)+I = 0+I$ y como $A/I$ es un dominio de integridad entonces $x+I = 0+I \lor y+I = 0+I \implies x \in I \lor y \in I$ de modo que $I$ es un ideal primo. 
+\end{proof}
+
+\begin{definition}[Ideal maximal]
+Sea $A$ un anillo conmutativo e $I \le A$ un ideal. $I$ es un ideal maximal en $A$ si:
+
+\begin{enumerate}
+\item $I \neq A$. 
+\item $\forall J \le A$ ideal $. I \subset J \implies J = A$, esto es, no hay ningún ideal mayor que lo contenga.
+\end{enumerate}
+\end{definition}
+
+\begin{example}[Ejemplos de ideales maximales]
+\begin{enumerate}
+\item $\{0\}$ es maximal en cualquier cuerpo ya que si añadieramos un elemento distinto al ideal, sería una unidad, y entonces el ideal generado sería todo el cuerpo.
+
+\item $p\mathbb{Z}$ con $p$ un número primo es maximal en $\mathbb{Z}$. En efecto, si tomo un elemento $n \in \mathbb{Z} \setminus p\mathbb{Z}$ y lo añado a $p\mathbb{Z}$, como $p \nmid n$ entonces $(n,p) = 1$ y por el teorema de Bézout el ideal resultante daría el total. 
+\end{enumerate}
+\end{example}
+
+\begin{proposition}[Caracterización de ideales maximales]
+Sea $A$ un anillo conmutativo e $I \le A$ un ideal.
+
+$I$ es maximal $\iff A/I$ es un cuerpo no trivial. 
+\end{proposition}
+\begin{proof}
+$\Rightarrow)$ Sea $a+I \in A/I \setminus \{0+I\}$ y veamos que tiene un inverso para el producto en el anillo cociente. 
+
+Como $a+I \neq 0+I$, es claro que $a \notin I$ y entonces $I \subset \langle a \rangle + I = A$ ya que $I$ es maximal. Por tanto, $\exists b \in A,x \in I.1 = ba+x$. Por definición de las operaciones en el anillo cociente, tendríamos que $1 + I = (ba+x) + I = [(ba)+I] + (x+I) = (b+I)(a+I) + (0+I) = (b+I)(a+I)$, de modo que $(a+I)^{-1} = (b+I)$.
+
+Claramente, el cociente no puede ser trivial ya que por ser $I$ maximal, $I \neq A$ y por tanto $A/I \neq \{0\}$.
+
+$\Leftarrow)$ Ya que $A/I$ es un cuerpo no trivial, entonces $I \neq A$. 
+
+Sea ahora $J \le A$ un ideal tal que $I \subseteq J \subset A$ y sea $a \in J \setminus I$. Como $a \notin I$ entonces $a + I \neq 0 + I$ y por tanto, $\exists b+I \in A/I$ tal que $(b+I)(a+I) = 1+I \implies x = ba - 1 \in I$ de modo que $1 = ba-x \in J+I = J$ de donde $J = A$. Como queríamos demostrar. 
+\end{proof}
+
+\begin{corollary}[Ideales maximales son primos]
+Todo ideal maximal es primo.
+\end{corollary}
+\begin{proof}
+Basta utilizar que todo cuerpo es un dominio de integridad. 
+\end{proof}
+
+
+\subsection{Homomorfismos de anillos}
+
+\begin{definition}[Homomorfismo de anillos]
+	Dados dos anillos $A,B$, un homomorfismo de anillos es una aplicación $f:A \to B$ tal que:
+	
+	\begin{enumerate}
+		\item $\forall a,b \in A. f(a+b) = f(a) + f(b)$.
+		\item $\forall a,b \in A. f(a \cdot b) = f(a) \cdot f(b)$.
+		\item $f(1) = 1$.
+	\end{enumerate}
+
+	Si $f$ es inyectivo se dice monomorfismo, si es sobreyectivo epimorfismo y si es biyectivo se dice isomorfismo. Un homomorfismo de un anillo en sí mismo es un endomorfismo y si es biyectivo automorfismo. Si $f$ es un isomorfismo se dice que $A$ y $B$ son isomorfos. 
+\end{definition}
+
+\begin{example}
+	\begin{enumerate}
+		\item La identidad es siempre un homomorfismo de anillos.
+		\item La aplicación nula no es un homomorfismo de anillos ya que no lleva el $1$ en el $1$. 
+	\end{enumerate}
+\end{example}
+
+\begin{definition}[Imagen y núcleo de un homormofismo]
+Sea $f:A \to B$ un homomorfismo. El núcleo $f$ es $Ker(f) = f^*(\{0\})$ y la imagen de $f$ es $f_*(A)$. 
+\end{definition}
+
+\begin{proposition}[Propiedades de los homomorfismos de anillos]
+	Sea $f: A \to B$ un homomorfismo de anillos, se verifican las siguientes propiedades:
+	
+	\begin{enumerate}
+		\item $f(0) = 0 \land \forall a \in A. f(-a) = -f(a)$
+		\item $f_*(U(A)) \subseteq U(B) \land \forall u \in U(A).f(u^{-1}) = f(u)^{-1}$
+		\item $f_*,f^*$ llevan subanillos en subanillos. 
+		\item $f^*$ lleva ideales en ideales que contienen al núcleo y $f_*$ lleva ideales en ideales de la imagen. 
+		\item $Ker(f) = f^*(\{0\})$ es un ideal que no es un subanillo salvo que $A$ sea trivial. 
+		\item $Img(f)$ es un subanillo que no es ideal salvo que $f$ sea epimorfismo. 
+		\item $f$ es monomorfismo $\iff Ker(f) = \{0\}$.
+		\item $f$ es epimorfismo $\iff Img(f) = B$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+	\item $f(0) = f(0+0) = f(0) + f(0) \implies f(0) = 0$ y $f(-a) + f(a) = f(-a+a) = f(0) = 0$ y se usa que el opuesto es único. 
+	\item $f(u^{-1}) \cdot f(u) = f(u^{-1}u) = f(1) = 1$. 
+	\item Si $A$ es un subanillo entonces $f_*(A)$ es subanillo. Si $x,y \in f_*(A) \implies x = f(x_0) \land y = f(y_0)$ con $x_0,y_0 \in A$ y entonces $x-y = f(x_0) - f(y_0) = f(x_0-y_0) \in f_*(A)$ por ser $A$ un subanillo. Por otro lado, $xy = f(x_0)f(y_0) = f(x_0y_0) \in f_*(A)$ pues $A$ es un subanillo. Finalmente, como $A$ es un subanillo $1 \in A$ y por tanto $1 = f(1) \in f_*(A)$. 
+	
+	Sea $A$ un subanillo del codominio y sean $x,y \in f^*(A)$ entonces existen $x_1,y_1 \in A$ tales que $f(x) = x_1,f(y) = y_1$. Como $A$ es un subanillo $f(x-y) = f(x) - f(y) = x_1 - y_1 \in A$ y análogamente $f(xy) = f(x)f(y) = x_1y_1 \in A$. Finalmente, como $A$ es subanillo contienen al $1$ y como $f(1) = 1$ tenemos que $1 \in f^*(A)$. 
+	
+	\item Si $I$ es un ideal entonces $f_*(I)$ es un ideal de la imagen. Como antes, la imagen de un subgrupo es un subgrupo. Que es cerrado para el producto es lo que fuerza a que sea un ideal de la imagen y no del codominio en general. 
+	
+	Del mismo modo la imagen inversa resulta un idea y además contiene al núcleo ya que todo ideal $J$ contiene al cero y como para $f_*(Ker(f)) = \{0\}$ y sabemos que $f^*(J) \subseteq f^*(\{0\}) = f^*(f_*(Ker(f))) \supseteq  Ker(f)$. 
+	
+	\item Por el punto anterior, como $\{0\}$ es un ideal, $Ker(f)$ es un ideal. No puede ser un subanillo ya que $f(1) = 1$ por hipótesis luego sólo podría serlo si $1 = 0$ lo que ocurre únicamente en el anillo trivial $A = \{0\}$. 
+	
+	\item Por lo anterior $Img(f)$ es un subanillo de $B$. En particular $1 \in Img(f)$ y no puede ser ideal salvo si $B = Img(f)$ es decir si $f$ es sobreyectiva. 
+	
+	\item $Img(f) = B$ es la definición de sobreyectividad. 
+		
+	\item  $\Rightarrow)$ Si $x \in Ker(f)$ como $f(x) = 0 = f(0)$ y f es inyectiva, se tiene que $x = 0$ de modo que $Ker(f) = \{0\}$. 
+		
+	$\Leftarrow)$ Si $Ker(f) = \{0\}$ y $f(x) = f(y)$ entonces $0 = f(x) - f(y) = f(x-y)$ y por tanto $x-y = 0$ o equivalentemente $x = y$ luego $f$ es inyectiva. 
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}[$U(A)$ es un invariante por isomorfismo]
+	Si $A \cong B$ entonces $U(A) \cong U(B)$
+\end{proposition}
+\begin{proof}
+	Sea $f:A \to B$ un isomorfismo de anillos. Consideremos $g = f|_{U(A)}$. Por la proposición anterior $g$ está bien definida y claramente es un monomorfismo por serlo $f$. Veamos que es sobreyectiva. Dado $b \in U(B). \exists a,a' \in A. f(a) = b \land f(a') = b^{-1}$ por ser $f$ un sobreyectiva. Ahora, $$f(aa') = f(a)f(a') = bb^{-1} = 1 = f(1)$$ Como $f$ es inyectiva, $aa' = 1 \implies a^{-1} = a'$ y en particular $a \in U(A)$ con $f(a) = b$.  
+\end{proof}
+
+\begin{proposition}[Teorema de correspondencia]
+Sea $f:A \to B$ un homomorfismo. Entonces las funciones $f_*,f^*$ establecen una correspondencia biyectiva:
+
+$\{I < A:Ker(f) \subseteq I\} \leftrightarrow \{J < Img(f)\}$
+
+Si $I<A$ tal que $Ker(f) \subseteq I$ entonces $(f^*\circ f_*)(I) = I$ y si $J < Img(f)$ entonces $(f_* \circ f^*)(J) = J$. 
+\end{proposition}
+
+
+\subsection{Anillo cociente}
+
+\begin{definition}[Anillo de congruencias]
+	Sea $A$ un anillo conmutativo y $I < A$ un ideal. Consideremos la relación de congruencia módulo $I$. Esta relación es de equivalencia por la proposición \ref{prop-congruencias}. Detonamos por $\frac{A}{I}$ al conjunto cociente por esta relación de equivalencia. Esto es, $$\frac{A}{I} = \{[x]:x \in A\}$$ Este conjunto puede dotarse con estructura de anillo mediante las operaciones $$[x]+[y] = [x+y]$$ y $$[x] \cdot [y] = [xy]$$ El anillo se llama anillo de congruencias módulo $I$ o anillo cociente por la relación de congruencia módulo $I$. 
+\end{definition}
+
+Debe comprobarse que esta definición es buena en el sentido de que las operaciones no dependen del representante de la clase de equivalencia elegido ($[x] = [y] \iff x \equiv y mod(I)$).
+
+\begin{proposition}[Definición del anillo cociente]
+	Las operaciones $+,\cdot$ están bien definidas, además $(\frac{A}{I},+,\cdot)$ tiene estructura de anillo conmutativo.
+\end{proposition}
+\begin{proof}
+	Veamos que las operaciones están bien definidas. Sean representates $x,x',y,y'$ tales que $[x] = [x]' \land [y] = [y']$ 
+	
+	Veamos que $[x] + [y] = [x'] + [y']$. Pero esto es claro ya que como $[x] = [x'] \land [y] = [y']$ tenemos que $x-x' \in I \land y-y' \in I$ y sumando estos elementos obtenemos $x+y - (x'+y') \in I$ y con esto se tiene que $[x] + [y] = [x+y] = [x'+y'] = [x']+[y']$. 
+	
+	La buena definición del producto podría ser en principio más complicada pero podemos utilizar las propiedades de las congruencias para simplificarla. En efecto, veamos que $[x] \cdot [y] = [x'] \cdot [y']$. Como tenemos que $x \equiv x' mod(I) \land y \equiv y' mod(I)$ entonces por la isotonía para el producto tenemos que $xy \equiv x'y' mod(I)$ que es equivalente a que $[xy] = [x'y']$ y por tanto $[x][y] = [xy] = [x'y'] = [x'][y']$. 
+	
+	Que $(\frac{A}{I},+)$ es un grupo abeliano se deduce del hecho que $(A,+)$ es un grupo abeliano. Obsérvese que el neutro es $[0]$ y que $[0] = [x] \iff x \in I$. También se tiene que $-[x] = [-x]$.  Por otro lado también el neutro para el producto es $[1]$ y claramente es conmutativo luego $(\frac{A}{I},+,\cdot)$ es un anillo conmutativo y conunidad. 
+\end{proof}
+
+El término universal proviene de la teoría de categorías. Aunque no vamos a entrar aquí en ello, conviene recordar la interpretación de la palabra universal en el siguiente resultado. Se dice que el homomorfismo $\overline{f}$ que encontramos es universal respecto de todos los homomorfismos cuyo núcleo contiene a $I$, esto es, cualquier homomorfismo de esa forma, factoriza por una proyección y $\overline{f}$.
+
+\begin{proposition}[Propiedad universal del anillo cociente]
+	Dado un homomorfismo de anillos $f:A \to B$ e $I \subseteq Ker(f)$ un ideal de $A$ entonces existe un único homomorfismo de anillos $\overline{f}:\frac{A}{I} \to B$ tal que $\overline{f} \circ p = f$. Además, $$\overline{f} \text{ es epimorfismo } \iff f \text{ es epimorfismo }$$ $$\overline{f} \text{ es monomorfismo } \iff I = Ker(f)$$ El homomorfismo es $\overline{f}([x]) = f(x)$. 
+	
+	\begin{tikzcd}
+		A \arrow{r}{p} \arrow{dr}{f} &
+		\frac{A}{I} \arrow[dashed]{d}{\overline{f}} \\
+		& B
+	\end{tikzcd}
+\end{proposition}
+\begin{proof}
+	Sea $I$ un tal ideal y veamos que la aplicación $\overline{f}([x]) = f(x)$ verifica las condiciones del teorema. 
+	
+	En primer lugar, $\overline{f}$ está bien definida ya que $[x] = [y] \iff x-y \in I$ y por tanto $[x-y] = [0]$ de modo que $0 = \overline{f}([x-y]) = f(x-y) = f(x) - f(y) $ y por tanto $f(x) = f(y)$. Claramente, $\overline{f} = f \circ p$ donde $p$ es la proyección canónica al cociente.  
+	
+	En segundo lugar, veamos que $\overline{f}$ es un homomorfismo. En efecto, $$\overline{f}([x]+[y]) =\overline{f}([x+y]) = f(x+y) = f(x) + f(y) = \overline{f}(x) + \overline{f}(y)$$ Análogamente, se procede para el producto, $$\overline{f}([x][y]) =\overline{f}([xy]) = f(xy) = f(x)f(y) = \overline{f}(x)\overline{f}(y)$$ Finalmente, $\overline{f}([1]) = f(1) = 1$. 
+	
+	Sea otro homomorfismo $g$ que reúna las características de $\overline{f}$, entonces $g \circ p = f$ y por tanto $$\forall x \in A. g([x]) = f(x) = \overline{f}([x])$$ de donde $\overline{f} = g$ y se tiene la unicidad. 
+	
+	Si $\overline{f}$ es epimorfismo, como la proyección canónica es epimorfismo y la composición de epimorfismo es epimorfismo se tiene que $f$ es epimorfismo. Recíprocamente, si $f$ es epimorfismo, se tiene directamente que $\overline{f}$ es sobreyectiva por los resultados de  teoría de conjuntos. 
+	
+	Si $\overline{f}$ es monomorfismo entonces tomando $x \in I$ claramente $[x] = [0]$ y por tanto $f(x) = \overline{f}([x]) = \overline{f}([0]) = f(0) = 0$ de donde $x \in Ker(f)$. Si $x \in Ker(f)$ entonces $f(x) = 0$ y como $\overline{f}$ es inyectiva y $\overline{f}([x]) = f(x) = 0 = \overline{f}([0])$, se tiene que $[0] = [x] \iff x \in I$ (esta parte probablemente se puede simplificar). Recíprocamente, si $Ker(f) = I$ entonces $$\overline{f}([x]) = \overline{f}(y) \iff f(x) = f(y) \iff f(x-y) = 0 \iff x-y \in Ker(f) \iff x \equiv y \; mod(Ker(f)) \iff [x] = [y]$$ Por tanto, $\overline{f}$, esto es, $\overline{f}$ es inyectiva.
+\end{proof}
+
+\begin{corollary}[Primer teorema de isomorfía]
+	Sea $f:A \to B$ un homomorfismo de anillos. Existe un isomorfismo de anillos $$\frac{A}{Ker(f)} \cong f_*(A)$$
+\end{corollary}
+\begin{proof}
+	Basta darse cuenta de que como $Ker(f) = I$ la aplicación $\overline{f}$ anterior es inyectiva y que es sobreyectiva con la imagen de $A$. 
+\end{proof}
+
+\begin{proposition}[Retículo de ideales del anillo cociente]
+Sea $A$ un anillo y $I < A$. 
+
+Los ideales del anillo cociente $\frac{A}{I}$ son exactamente los cocientes $\frac{J}{I}$ tales que $J < A$ y $J \subseteq I$. 
+\end{proposition}
+\begin{proof}
+Consideremos la proyección al cociente $p:A \to \frac{A}{I}$, que es un epimorfismo con núcleo $Ker(p) = I$. Por el teorema de correspondencia los ideales que contienen el núcleo van a ideales del cociente. Es decir que los $\frac{J}{I}$ tales que $J < A$ y $J \subseteq I$ son todos ideales del cociente. Pero también por el teorema de correspondencia si tengo un ideal del cociente $\frac{J}{I}$ la imagen inversa me lo lleva a un ideal $J < A$ tal que $I \subseteq J$. 
+\end{proof}
+
+\begin{example}[Ideales de $\mathbb{Z}_n$]
+Los ideales de $\mathbb{Z}_n$ son los $m\mathbb{Z}/n\mathbb{Z}$ tales que $n|m$. En particular, podemos contar cuántos ideales tienen los anillos de restos módulo un entero. 
+\end{example}
+
+\begin{theorem}[Segundo teorema de isomorfía o del doble cociente]
+	Sea $A$ un anillo conmutativo $I,J < A$ con $I \subseteq J$. Entonces $\frac{J}{I} < \frac{A}{I}$ y $\frac{\frac{A}{I}}{\frac{J}{I}} \cong \frac{A}{J}$.
+\end{theorem}
+\begin{proof}
+Por el teorema anterior sabemos que $\frac{J}{I} < \frac{A}{I}$. El isomorfismo se sigue de la propiedad universal del anillo cociente:
+
+\begin{tikzcd}
+A \arrow{r}{p_1} \arrow{dr}{p_2} &
+\frac{A}{I} \arrow[dashed]{d}{\overline{p_2}} \\
+& \frac{A}{J}
+\end{tikzcd}
+
+donde $p_i$ son las proyecciones al cociente y observamos que $Ker(p_2) = J \supseteq I$. Por la propiedad universal sabemos que $\overline{p_2}$ es epimorfismo y su núcleo es $Ker(\overline{p_2}) = \frac{J}{I}$. Por el primer teorema de isomorfía se tiene que $\frac{\frac{A}{I}}{\frac{J}{I}} \cong \frac{A}{J}$.
+\end{proof}
+
+Por complitud, damos un tercer resultado clásico de isomorfía. 
+
+\begin{theorem}[Tercer teorema de isomorfía]
+Sea $A$ un anillo conmutativo, $S \subseteq A$ un subanillo e $I \le A$ un ideal. Entonces:
+
+\begin{enumerate}
+\item $S+I \subseteq A$ es un subanillo de $A$. 
+\item $S \cap I < S$ es un ideal de $S$. 
+\item $\frac{S+I}{I} \cong \frac{S}{S \cap I}$. 
+\end{enumerate}
+
+\begin{tikzcd}
+& S+I \arrow[dash]{dl} \arrow[dash]{dr} \\
+S \arrow[dash]{dr} & &
+I \arrow[dash]{dl} \\
+& S \cap I
+\end{tikzcd}
+\end{theorem}
+
+\subsection{Anillo producto}
+
+\begin{definition}[Anillo producto]
+	Dados dos anillos $A$ y $B$, su producto cartesiano $A \times B = \{(a,b):a \in A,b \in B\}$ tiene estructura de anillo con las operaciones: $$(a,b)+(a',b') = (a+a',b+b')$$ y $$(a,b) \cdot (a',b') = (a \cdot a',b \cdot b')$$ donde el elemento neutro para la suma es el $(0,0)$ y el elemento neutro para el producto es $(1,1)$ y el opuesto queda definido como $-(a,b) = (-a,-b)$. 
+\end{definition}
+
+\begin{proposition}[Propiedades del anillo producto]
+	Sean $A,B$ dos anillos.
+	
+	\begin{enumerate}
+	\item $(A \times B,+,\cdot)$ es un anillo (conmutativo y con unidad). 
+	\item $U(A \times B) = U(A) \times U(B)$. 
+	\item $O_{A \times B} = (O_A \times B) \cup (A \times O_B)$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	1. Simplemente indicamos que el neutro de la suma es $(0,0)$, el opuesto para la suma de un $(a,b)$ es $(-a,-b)$ y el neutro del producto es $(1,1)$. 
+	
+	2. $(a,b) \in U(A \times B) \iff \exists (x,y) \in A \times B. (a,b)(x,y) = (1,1) \iff \exists x \in A, y \in B. ax = 1 \land by = 1 \iff a \in U(A) \land b \in U(B) \iff  (a,b) \in U(A) \times U(B)$.
+	
+	3. Claramente se da la inclusión $\supseteq$ ya que si alguna componente, por ejemplo la primera, es divisor de cero existe $a_1 \neq 0$ tal que $a_1 a = 0$ y bastaría tomar $(a,b)(a_1,0) = (0,0)$.
+	
+	Si tenemos un divisor de cero del producto $(a,b)$ entonces existe $(a_1,b_1) \neq 0$ tal que $(a,b)(a_1,b_1) = (0,0)$ o sea $a a_1 = b b_1 = 0$. No puede ser que $a_1 = b_1 = 0$ luego supongamos por ejemplo que $a_1 \neq 0$. Esto me dice que $a$ es un divisor de cero en $A$ y como $b$ es libre $(a,b) \in O_A \times B$. 
+\end{proof}
+
+
+\begin{definition}[Proyecciones canónicas]
+Sea $A_j$ una colección finita de anillos. Las proyecciones canónicas $p_j:\prod A_i \to A_j$ tales que $(a_1,\ldots,a_n) \mapsto a_j$ son epimorfismos de anillos. 
+\end{definition}
+
+El anillo producto $\prod A_i$ junto con las proyecciones $p_i$ es universal respecto de cualquier familia de homomorfismos en sus componentes. 
+
+\begin{proposition}[Propiedad universal del anillo producto]
+Sea $B$ un anillo y sean $\{f_j:B \to A_j\}$ una colección finita de homormorfismos de anillos. Entonces existe un único homomorfismo de anillos $f:B \to \prod A_i$ tal que $p_j \circ f = f_j$ $\forall j$. 
+\begin{tikzcd}
+B \arrow[dashed]{d}{f} \arrow{r}{f_j} &
+A_j \\
+\prod A_i \arrow{ur}[swap]{p_j}
+\end{tikzcd}
+
+El homomorfismo es $f(b) = f(f_1(b),\ldots,f_n(b))$.
+\end{proposition}
+\begin{proof}
+Claramente el homomorfismo dado es homomorfismo y cumple las condiciones del teorema. Además es trivial ver que cualquier otro homomorfismo en las condiciones tendría que ser el dado. 
+\end{proof}
+
+\begin{theorem}[Teorema chino del resto]
+Sea $A$ un anillo conmutativo y sean $I_1,\ldots,I_n < A$. Sea $f:A \to \prod \frac{A}{I_j}$ el homomorfismo inducido por la familia de homomorfismos $\{q_j:A \to \frac{A}{I_j}\}$ donde $q_j(x) = x+I_j$. Entonces:
+
+\begin{enumerate}
+\item $f$ es epimorfismo $\iff \forall i \neq j. I_j,I_k$ son comaximales
+\item $f$ es monomorfismo $\iff \cap_{i = 1}^n I_j = \langle 0 \rangle$. 
+\end{enumerate}
+
+Por tanto, si son comaximales tendremos que $f$ es un epimorfismo con núcleo $Ker(f) = \cap I_j = \prod I_j$. 
+\end{theorem}
+\begin{proof}
+Se aplica la propiedad universal del anillo producto a la familia de homomorfismos $\{q_j:A \to \frac{A}{I_j}\}$ donde $q_j(x) = x+I_j$. Se obtiene así que el siguiente diagrama con $f(a) = (a+I_1,\ldots,a+I_n)$ es conmutativo:
+
+\begin{tikzcd}
+A \arrow[dashed]{d}[swap]{f} \arrow{r}{q_j} &
+\frac{A}{I_j} \\
+\prod \frac{A}{I_i} \arrow{ur}[swap]{p_j}
+\end{tikzcd}
+
+Además claramente, $Ker(f) = \cap I_j$ y por tanto $f$ es monomorfismo si y sólo si $\cap I_j = \langle 0 \rangle$. 
+
+$\Rightarrow)$ Si $f$ es epimorfismo, fijando $I_1$ vamos a ver que $I_1$ es comaximal con todos los demás y fijando otras componentes se tendría la comaximalidad correspondiente. 
+
+Tomo $(1,0,\ldots,0)$ que tendrá una preimagen $x$ tal que $$f(x) = (x+I_1,\ldots,x+I_n) = (1+I_1,I_2,\ldots,I_n)$$ Entonces $1-x \in I_1 \land x \in \cap_{j = 2}^n I_j$ por tanto $$1 = (1-x)+x \in I_1 + I_j$$ de donde $I_1 + I_j = A$. 
+
+$\Leftarrow)$ Si son comaximales dos a dos vamos a demostrar que $f$ es epimorfismo viendo primero que elementos de la forma $(0+I_1,\ldots,1+I_j,\ldots,0+I_n)$ tienen preimagen, luego que elementos de la forma $(0+I_1,\ldots,x_j+I_j,\ldots,0+I_n)$ tienen preimagen y a partir de aquí, como $Img(f)$ es un subanillo pues también cualquier elemento tiene preimagen. 
+
+Para ver que el elemento $(0+I_1,\ldots,1+I_j,\ldots,0+I_n)$ tiene preimagen consideramos que $I_k,I_j$ son comaximales. Entonces $\forall k \neq j. \exists x_k \in I_k,y_k \in I_j. x_k+y_k = 1$. Consideremos el elemento siguiente: $$a_j =  \prod_{j \neq k} x_k = \prod_{j \neq k} (1-y_k)$$ Claramente, el miembro izquierdo es de $\cap_{k \neq j} I_k$ y el miembro derecho será $1$ menos un sumatorio polinómico en los elementos $y_k$ que pertenecen todos a $I_j$ luego $a_j = 1-y$ con $y \in I_j$ y en consecuencia $$f(a_j) = f(0+I_1,\ldots,1+I_j,\ldots, 0+I_n)$$ En consecuencia, $$f(x_ja_j) = (0+I_1,\ldots,x_j+I_j,\ldots,0+I_n)$$ Como se quería demostrar.
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
