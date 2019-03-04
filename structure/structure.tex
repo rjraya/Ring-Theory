@@ -174,120 +174,63 @@ Sea $A$ un anillo conmutativo.
 \item Si $\mathcal{F}$ es una familia de subanillos de $A$ que contiene a un conjunto $X$ entonces $\cap_{S \in \mathcal{F}} S$ es el menor subanillo de $A$ que contiene a $X$. Se le llama el subanillo generado por $X$. 
 \item Si $S$ es un subanillo de $A$ y $X$ es un subconjunto de $A$ denotamos por $S[X]$ al subanillo generado por $S \cup X$. Si $X = \{x_1,\ldots,x_n \}$ es un conjunto finito entonces: $$S[x_1,\ldots,x_n] = \{\sum_{(i_1,\ldots,i_n) \in \mathbb{N}^n} a_{i_1,\ldots,i_n} x_1^{i_1} \ldots x_n^{i_n}: a_{i_1,\ldots,i_n} \in S \text{ y todos son nulos salvo un número finito de n-uplas } \}$$
 \end{enumerate}
-
 \end{proposition}
 \begin{proof}
-  Nos encontramos en un anillo (A, + , $\cdot$ ). Sea S un subanillo de A y $\mathds{X} \subseteqq A$ un conjunto cualquiera de elementos.
+Nos encontramos en un anillo (A, + , $\cdot$ ). Sea S un subanillo de A y $\mathds{X} \subseteq A$ un conjunto cualquiera de elementos.
 
-Definamos subanillo generado como
+Definamos subanillo generado como:
 $$ S[X] = \bigcap_{ \substack{ B \subseteq  A \\ (S \cup X) \subseteq B}} B $$ Donde todo B es un subanillo.
 Y vemos que C definido como :  $$ C = \{ \sum s_i x_{0}^{m_0} ...x_{n}^{m_n} \quad | s_i \in S, \quad x_i \in X,  \quad  m_0 \in \mathds{Z} \} $$ es igual a S[X]
-\begin{proof}
-Primero veamos que S[X] es un subanillo:
-\begin{enumerate}
-\item $ 1 \in S[X]$ , como para todo B el uno pertenece a B por tratarse de un subanillo entonces pertenecerá a la unión.
-\item si $a,b \in \cap B \Rightarrow a-b \in \cap B$
+	\begin{proof}
+	Primero veamos que S[X] es un subanillo:
+	\begin{enumerate}
+	\item $ 1 \in S[X]$ , como para todo B el uno pertenece a B por tratarse de un subanillo entonces pertenecerá a la unión.
+	\item si $a,b \in \cap B \Rightarrow a-b \in \cap B$
 $ a,b \in \cap B \Leftrightarrow \quad \forall B$ se cumple que $a,b \in B$ y como B es un subanillo entonces se tiene que $a-b \in B$, como se da para
-todos entoneces también se da para la intersección.
-\item si $a,b \in \cap B \Rightarrow ab \in \cap B$
+todos entonces también se da para la intersección.
+	\item si $a,b \in \cap B \Rightarrow ab \in \cap B$
 
-Mismo razonamiento que en el apartado anterior, como a, b pertencen a la intersección estarán en cada subanillo B, y por pertenecer al subanillo entonces ab también estará.
-Por estar en todos también estará en la unión.
+	Mismo razonamiento que en el apartado anterior, como a, b pertencen a la intersección estarán en cada subanillo B, y por pertenecer al subanillo entonces ab también estará.
+	Por estar en todos también estará en la unión.
+	\end{enumerate}
+	\end{proof}
 
-\end{enumerate}
-\end {proof}
+	Nos será útil también ver que C es un subanillo para demostrar la igualdad con S[X]:
+	\begin{proof}
+	C es un subanillo
 
-Nos será útil también ver que C es un subanillo para demostrar la igualdad con S[X]:
-\begin{proof}
-C es un subanillo
+	\begin{enumerate}
+	\item $1 \in C$
 
-\begin{enumerate}
-\item $1 \in C$
+	Como S es un subanillo entonces contiene al 1, y podemos expresar el 1 como elemento de la C de la forma $1 x0^0...x_n^0 = 1.1...1 = 1$  Donde el primer 1 es un elemento de S.
 
-Como S es un subanillo entonces contiene al 1, y podemos expresar el 1 como elemento de la C de la forma $1 x0^0...x_n^0 = 1.1...1 = 1$  Donde el primer 1 es un elemento de S.
+	\item Si $a,b \in C \Rightarrow a-b \in C $
+Se tiene que a será de la forma:$ a= \sum s_i x_{0}^{m_0} ...x_{n}^{m_n} $ y $b=\sum s_j x_{0}^{m_0} ...x_{n}^{m_n} $ por ser S un subanillo, las $s_j$ de b tienen opuesto, por tanto se tiene que la resta de a-b tendrá la forma de elemento de C y por tanto pertenecerá al conjunto.
 
-\item Si $a,b \in C \Rightarrow a-b \in C $
-Se tine que a será de la forma:$ a= \sum s_i x_{0}^{m_0} ...x_{n}^{m_n} $ y $b=\sum s_j x_{0}^{m_0} ...x_{n}^{m_n} $ por ser S un subanillo, las $s_j$ de b tienen opuesto, por tanto se tiene que la resta de a-b tendrá la forma de elemento de C y por tanto pertenecerá al conjunto.
-
- \item Si $a,b \in C \Rightarrow a.b \in C $
+	\item Si $a,b \in C \Rightarrow a.b \in C $
  Aplicando los mismos conceptos anteriores los distintas $s_i$ pertenecen a un subanillo por tanto es cerrado para el producto y aplicando la propiedad distributiva se tiene que sigue teniendo la forma de elementos de C y por tanto pertenece a tal conjunto.
-\end{enumerate}
-% --- añadido por Blanca 1
-Demostración: \\
-Por tanto ya nos hallamos en condiciones de ver que S[X]= C razonándolo mediante una doble inclusión.
-\begin{proof}
-S[X]= C
+	\end{enumerate}
+    \end{proof}
+	% --- añadido por Blanca 1
+	Demostración: \\
+	Por tanto ya nos hallamos en condiciones de ver que S[X]= C razonándolo mediante una doble inclusión.
+	\begin{proof}
+	S[X]= C
 
 
-$ S[x] \supseteq C $
+	$ S[x] \supseteq C $
 
-Todo elemento de $s_i \in S $ y $x_i \in X$ pertenece también a S[x] por cómo se ha definino, además que por ser S[X] un subanillo será cerrado para el producto y para la suma y
-por tanto todo elemento de C pertenecerá tambien a S[X].
+	Todo elemento de $s_i \in S $ y $x_i \in X$ pertenece también a S[x] por cómo se ha definido, además que por ser S[X] un subanillo será cerrado para el producto y para la suma y
+por tanto todo elemento de C pertenecerá también a S[X].
 
-$ S[X] \subseteq C$
+	$ S[X] \subseteq C$
 
-Para esta demostración queremos ver que $ \forall x \in S[x] \Rightarrow x  \in C$ y razonaremos por el contrarrecíproco $\forall x \notin C \Rightarrow S[X]$
+	Para esta demostración queremos ver que $ \forall x \in S[x] \Rightarrow x  \in C$ y razonaremos por el contrarrecíproco $\forall x \notin C \Rightarrow S[X]$
 
-Tenemos que $ x \notin C $ y puesto que C es un subanillo de A por tanto existe un subanillo B en al que X no pertenezca, como S[X] se define con la intersección de subanillos de A, ya conocemos un subanillo en el que no está y por tanto no podrá pertenecer a la interseción.
+	Tenemos que $ x \notin C $ y puesto que C es un subanillo de A por tanto existe un subanillo B en al que X no pertenezca, como S[X] se define con la intersección de subanillos de A, ya conocemos un subanillo en el que no está y por tanto no podrá pertenecer a la interseción.
 
-\end {proof}
-Nos encontramos en un anillo (A, + , $\cdot$ ). Sea S un subanillo de A y $\mathds{X} \subseteqq A$ un conjunto cualquiera de elementos.
-
-Definamos subanillo generado como
-$$ S[X] = \bigcap_{ \substack{ B \subseteq  A \\ (S \cup X) \subseteq B}} B $$ Donde todo B es un subanillo.
-Y vemos que C definido como :  $$ C = \{ \sum s_i x_{0}^{m_0} ...x_{n}^{m_n} \quad | s_i \in S, \quad x_i \in X,  \quad  m_0 \in \mathds{Z} \} $$ es igual a S[X]
-\begin{proof}
-Primero veamos que S[X] es un subanillo:
-\begin{enumerate}
-\item $ 1 \in S[X]$ , como para todo B el uno pertenece a B por tratarse de un subanillo entonces pertenecerá a la unión.
-\item si $a,b \in \cap B \Rightarrow a-b \in \cap B$
-$ a,b \in \cap B \Leftrightarrow \quad \forall B$ se cumple que $a,b \in B$ y como B es un subanillo entonces se tiene que $a-b \in B$, como se da para
-todos entoneces también se da para la intersección.
-\item si $a,b \in \cap B \Rightarrow ab \in \cap B$
-
-Mismo razonamiento que en el apartado anterior, como a, b pertencen a la intersección estarán en cada subanillo B, y por pertenecer al subanillo entonces ab también estará.
-Por estar en todos también estará en la unión.
-
-\end{enumerate}
-\end {proof}
-
-Nos será útil también ver que C es un subanillo para demostrar la igualdad con S[X]:
-\begin{proof}
-C es un subanillo
-
-\begin{enumerate}
-\item $1 \in C$
-
-Como S es un subanillo entonces contiene al 1, y podemos expresar el 1 como elemento de la C de la forma $1 x0^0...x_n^0 = 1.1...1 = 1$  Donde el primer 1 es un elemento de S.
-
-\item Si $a,b \in C \Rightarrow a-b \in C $
-Se tine que a será de la forma:$ a= \sum s_i x_{0}^{m_0} ...x_{n}^{m_n} $ y $b=\sum s_j x_{0}^{m_0} ...x_{n}^{m_n} $ por ser S un subanillo, las $s_j$ de b tienen opuesto, por tanto se tiene que la resta de a-b tendrá la forma de elemento de C y por tanto pertenecerá al conjunto.
-
- \item Si $a,b \in C \Rightarrow a.b \in C $
- Aplicando los mismos conceptos anteriores los distintas $s_i$ pertenecen a un subanillo por tanto es cerrado para el producto y aplicando la propiedad distributiva se tiene que sigue teniendo la forma de elementos de C y por tanto pertenece a tal conjunto.
-\end{enumerate}
+	\end{proof}
 \end{proof}
-
-Por tanto ya nos hallamos en condiciones de ver que S[X]= C razonándolo mediante una doble inclusión.
-\begin{proof}
-S[X]= C
-
-
-$ S[x] \supseteq C $
-
-Todo elemento de $s_i \in S $ y $x_i \in X$ pertenece también a S[x] por cómo se ha definino, además que por ser S[X] un subanillo será cerrado para el producto y para la suma y
-por tanto todo elemento de C pertenecerá tambien a S[X].
-
-$ S[X] \subseteq C$
-
-Para esta demostración queremos ver que $ \forall x \in S[x] \Rightarrow x  \in C$ y razonaremos por el contrarrecíproco $\forall x \notin C \Rightarrow S[X]$
-
-Tenemos que $ x \notin C $ y puesto que C es un subanillo de A por tanto existe un subanillo B en al que X no pertenezca, como S[X] se define con la intersección de subanillos de A, ya conocemos un subanillo en el que no está y por tanto no podrá pertenecer a la interseción.
-
-\end {proof}
-
-Por tanto hemos probado que $ S[X]= \{ \sum s_i x_{0}^{m_0} ...x_{n}^{m_n} \quad | s_i \in S, \quad x_i \in X,  \quad  m_0 \in \mathds{Z} \}$
-
 %--- fin añadido por Blanca 1
 
 \subsection{Ideales}
